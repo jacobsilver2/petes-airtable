@@ -1,10 +1,47 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: "Pete\'s Candy Store",
+    description: `Pete\'s Candy Store\s new website!`,
+    author: `Jacob Silver`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API, 
+        tables: [
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `home`,
+            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
+            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
+            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `about`,
+            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
+            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
+            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `series`,
+            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
+            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
+            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
+          },
+
+        ]
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
