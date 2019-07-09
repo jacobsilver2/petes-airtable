@@ -10,7 +10,7 @@ export default function createHtml(data) {
     case 'text':
       return <section key={data.id} className="content">{data.Content}</section>
     default:
-      return <section key={data.id}><p>I guess I'm the default...</p></section>
+      return <section key={data.id} className="content"><p>I guess I'm the default...</p></section>
   }
 }
 
