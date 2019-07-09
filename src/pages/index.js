@@ -1,21 +1,49 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import Helmet from "react-helmet"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+// import Image from "../components/image"
+import createHtml from '../utility/createHtml';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+export const pageQuery = graphql`
+  {
+    allAirtable(
+      filter: { table: { eq: "home" } }
+      sort: { order: ASC, fields: data___order }
+    ) {
+      nodes {
+        data {
+          Name
+          Content
+          type
+          website
+          id
+          Attachments {
+            url
+          }
+        }
+      }
+    }
+  }
+`
 
+const IndexPage = ({ data }) => {
+  const { nodes } = data.allAirtable;
+  const myhtml = nodes.map(node => createHtml(node.data))
+  return (
+    <>
+      <Layout>
+        <div>
+          {myhtml}
+        </div>
+      </Layout>
+    </>
+  )
+}
+export const frontmatter = {
+  title: "Welcome",
+  url: '/'
+}
 export default IndexPage
+

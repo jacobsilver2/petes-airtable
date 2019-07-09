@@ -1,10 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from 'styled-components';
+import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
-import Footer from './footer';
-import "./layout.css"
+import Navbar from "./navbar"
+import Footer from "./footer"
+// import "./layout.scss"
+import './myStyles.scss';
+import Helmet from 'react-helmet';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,22 +21,33 @@ const Wrapper = styled.div`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query siteQuery {
       site {
         siteMetadata {
           title
         }
       }
+    allJavascriptFrontmatter {
+    edges {
+      node {
+        frontmatter {
+          title
+          url
+        }
+      }
+    }
+  }
     }
   `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Helmet title={data.site.siteMetadata.title}/>
+      <Navbar siteTitle={data.site.siteMetadata.title} navItems={data.allJavascriptFrontmatter.edges}/>
       <Wrapper>
         <main>{children}</main>
-        <Footer />
       </Wrapper>
+        <Footer />
     </>
   )
 }
@@ -43,4 +56,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout;
+export default Layout

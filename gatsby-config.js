@@ -9,34 +9,24 @@ module.exports = {
     author: `Jacob Silver`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-airtable`,
+      
       options: {
         apiKey: process.env.AIRTABLE_API, 
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `home`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `about`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `events and series`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
           },
 
         ]
@@ -46,10 +36,11 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
+    "gatsby-transformer-javascript-frontmatter",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
