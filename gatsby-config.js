@@ -32,7 +32,7 @@ module.exports = {
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `series`,
+            tableName: `events and series`,
             // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
             // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
             // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"

@@ -1,5 +1,6 @@
 const path = require('path');
 const slash = require('slash');
+const slugify = require('./src/utility/slugify');
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
   switch (stage) {
@@ -46,7 +47,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
         result.data.allAirtable.distinct.forEach(edge => {
           createPage({
-            path: `${edge}`,
+            path: slugify.slugify(edge),
             component: slash(firstTemplate),
             context: {
               name: edge

@@ -35,7 +35,7 @@ export default PostTemplate;
 
 export const pageQuery = graphql`
   query($name: String!) {
-    allAirtable(filter: {table: {eq: $name}}) {
+    allAirtable(filter: {table: {eq: $name}}, sort: {fields: data___order, order: ASC}) {
     edges {
       node {
         data {
@@ -44,6 +44,7 @@ export const pageQuery = graphql`
           id
           type
           website
+          order
           Attachments {
             url
           }
