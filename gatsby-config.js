@@ -9,50 +9,6 @@ module.exports = {
     author: `Jacob Silver`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-source-airtable`,
-      
-      options: {
-        apiKey: process.env.AIRTABLE_API, 
-        tables: [
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `home`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `events and series`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `photo shoots`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `parties`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `booking`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `history`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `press`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `contact`,
-          },
-
-        ]
-      }
-    },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -67,6 +23,58 @@ module.exports = {
           path: `${__dirname}/src/images/`,
       },
     },
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-airtable`,
+      
+      options: {
+        apiKey: process.env.AIRTABLE_API, 
+        tables: [
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `home`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `events and series`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `photo shoots`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `parties`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `booking`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `history`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `press`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `contact`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+
+        ]
+      }
+    },
+    `gatsby-plugin-react-helmet`,
     "gatsby-transformer-javascript-frontmatter",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

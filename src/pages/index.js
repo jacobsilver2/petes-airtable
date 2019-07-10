@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from '../utility/createHtml';
@@ -9,7 +7,6 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "home" } }
-      sort: { order: ASC, fields: data___order }
     ) {
       nodes {
         data {
@@ -19,28 +16,35 @@ export const pageQuery = graphql`
           website
           id
           Attachments {
-            url
+            localFiles {
+              childImageSharp {
+                fluid(maxWidth: 1024) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
     }
     file(relativePath: { eq: "petes.jpg" }) {
-    childImageSharp {
-      fluid(maxWidth: 2048) {
-        ...GatsbyImageSharpFluid
+      childImageSharp {
+        fluid(maxWidth: 2048) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
-  }
   }
 `
 
 
 const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable;
+  console.log(nodes);
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid}>
+      <Layout fluid={data.file.childImageSharp.fluid} fullheight={true} >
         <div>
           {myhtml}
         </div>

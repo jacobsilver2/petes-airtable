@@ -1,9 +1,7 @@
-import React from 'react';
-import { Link } from "gatsby";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createHtml from '../utility/createHtml';
+import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
   {
@@ -19,7 +17,13 @@ export const pageQuery = graphql`
           website
           id
           Attachments {
-            url
+            localFiles {
+              childImageSharp {
+                fluid(maxWidth: 1024) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
@@ -28,14 +32,12 @@ export const pageQuery = graphql`
 `
 
 const PressPage = ({ data }) => {
-  const { nodes } = data.allAirtable;
+  const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
       <Layout>
-        <div>
-          {myhtml}
-        </div>
+        <div>{myhtml}</div>
       </Layout>
     </>
   )
@@ -43,6 +45,6 @@ const PressPage = ({ data }) => {
 
 export const frontmatter = {
   title: "Press",
-  url: '/press'
+  url: "/press",
 }
-export default PressPage;
+export default PressPage

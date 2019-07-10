@@ -1,9 +1,7 @@
-import React from 'react';
-import { Link } from "gatsby";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createHtml from '../utility/createHtml';
+import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
   {
@@ -19,31 +17,34 @@ export const pageQuery = graphql`
           website
           id
           Attachments {
-            url
+            localFiles {
+              childImageSharp {
+                fluid(maxWidth: 1024) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
     }
     file(relativePath: { eq: "music_room.png" }) {
-    childImageSharp {
-      fluid(maxWidth: 2048) {
-        ...GatsbyImageSharpFluid
+      childImageSharp {
+        fluid(maxWidth: 2048) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }
-  }
 `
 
-
 const PhotoShootsPage = ({ data }) => {
-  const { nodes } = data.allAirtable;
+  const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid}>
-        <div>
-          {myhtml}
-        </div>
+        <div>{myhtml}</div>
       </Layout>
     </>
   )
@@ -51,6 +52,6 @@ const PhotoShootsPage = ({ data }) => {
 
 export const frontmatter = {
   title: "Photo Shoots",
-  url: '/photo-shoots'
+  url: "/photo-shoots",
 }
-export default PhotoShootsPage;
+export default PhotoShootsPage

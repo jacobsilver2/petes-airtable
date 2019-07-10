@@ -7,7 +7,7 @@ const Navbar = ({ siteTitle, navItems }) => {
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
   const mappedNavItems = navItems.map(item => (
-    <Link className="navbar-item" to={item.node.frontmatter.url}>{item.node.frontmatter.title}</Link>
+    <Link key={item.node.frontmatter.title} className="navbar-item" to={item.node.frontmatter.url}>{item.node.frontmatter.title}</Link>
   ))
 
   function toggleHamburger() {
@@ -16,7 +16,7 @@ const Navbar = ({ siteTitle, navItems }) => {
   }
 
   return (
-    <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
+    <nav className="navbar is-transparent is-fixed-top" role="navigation" aria-label="main-navigation">
     <div className="container">
         {/* Hamburger Menu */}
         <div className={`navbar-burger burger ${navBarActiveClass}`} data-targer="navMenu" onClick={() => toggleHamburger()}>
