@@ -4,9 +4,9 @@ import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
 import Footer from "./footer"
-// import "./layout.scss"
 import './myStyles.scss';
 import Helmet from 'react-helmet';
+import Img from "gatsby-image"
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   padding-top: 0;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, fluid }) => {
   const data = useStaticQuery(graphql`
     query siteQuery {
       site {
@@ -44,10 +44,9 @@ const Layout = ({ children }) => {
     <>
       <Helmet title={data.site.siteMetadata.title}/>
       <Navbar siteTitle={data.site.siteMetadata.title} navItems={data.allJavascriptFrontmatter.edges}/>
-      <Wrapper>
-        <main>{children}</main>
-      </Wrapper>
-        <Footer />
+      {fluid ? <Img fluid={fluid}/> : null}
+      <main className="container is-fluid">{children}</main>
+      <Footer />
     </>
   )
 }

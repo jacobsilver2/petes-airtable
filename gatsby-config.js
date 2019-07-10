@@ -22,11 +22,31 @@ module.exports = {
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `about`,
+            tableName: `events and series`,
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `events and series`,
+            tableName: `photo shoots`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `parties`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `booking`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `history`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `press`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `contact`,
           },
 
         ]
@@ -36,8 +56,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
+          name: `pages`,
+          path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+          name: `images`,
+          path: `${__dirname}/src/images/`,
       },
     },
     "gatsby-transformer-javascript-frontmatter",
