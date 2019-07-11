@@ -45,6 +45,20 @@ const PhotoShootsPage = ({ data }) => {
     <>
       <Layout fluid={data.file.childImageSharp.fluid}>
         <div>{myhtml}</div>
+          <div className="container">
+            <div className="field">
+              <label className="label is-medium">Medium input</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input className="input is-medium" type="email" placeholder="Extra small"/>
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-envelope fa-xs"></i>
+                  </span>
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-check fa-xs"></i>
+                  </span>
+                </div>
+            </div>
+          </div>
       </Layout>
     </>
   )

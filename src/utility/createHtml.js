@@ -1,6 +1,19 @@
 import React from "react"
 import Img from "gatsby-image"
-import Iframe from "react-iframe"
+import styled from 'styled-components';
+
+export const StyledVideoContainer = styled.div`
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px; height: 0; overflow: hidden;
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 export default function createHtml(data) {
   switch (data.type) {
@@ -35,18 +48,36 @@ export default function createHtml(data) {
           </div>
         </div>
       )
+    case "heading1":
+      return (
+        <div className="container" key={data.id}>
+          <div className="content">
+            <h1 className="has-text-danger" style={{textAlign: "center"}}>{data.Content}</h1>
+          </div>
+        </div>
+      )
+    case "heading2":
+      return (
+        <div className="container" key={data.id}>
+          <div className="content">
+            <h2 className="has-text-danger" style={{textAlign: "center"}}>{data.Content}</h2>
+          </div>
+        </div>
+      )
+    case "heading3":
+      return (
+        <div className="container" key={data.id}>
+          <div className="content">
+            <h3 style={{textAlign: "center"}}>{data.Content}</h3>
+          </div>
+        </div>
+      )
     case "video":
       return (
         <div className="container" key={data.id}>
-          <Iframe
-            url={data.website}
-            width="100%"
-            height="1000px"
-            id="myId"
-            className="myClassname"
-            display="inline"
-            position="relative"
-          />
+          <StyledVideoContainer>
+            <iframe src={data.website} width='853' height='480'/>
+          </StyledVideoContainer>
         </div>
       )
     default:

@@ -67,10 +67,28 @@ module.exports = {
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `gallery`,
+            mapping: { 'Attachments': `fileNode` },
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
             tableName: `contact`,
             mapping: { 'Attachments': `fileNode` },
           },
-
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API,
+        tables: [
+          {
+            baseId: `app4Eb0X39KtGToOS`,
+            tableName: `Events`,
+            tableView: `Future`,
+            mapping: { 'Act Image': `fileNode` },
+          },
         ]
       }
     },

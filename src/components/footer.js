@@ -1,16 +1,17 @@
 import React from "react"
-import styled from "styled-components"
-
-const StyledFooter = styled.footer``
+import styled from 'styled-components';
 
 const StyledTable = styled.table`
-  width: 100%;
-  border: none;
-`
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+
 
 const footer = props => (
-  <StyledFooter>
-    <StyledTable>
+  <footer className="footer">
+  <div className="container">
+    <StyledTable className="table is-narrow">
       <tbody>
         <tr>
           <th>Location</th>
@@ -34,7 +35,8 @@ const footer = props => (
         </tr>
       </tbody>
     </StyledTable>
-  </StyledFooter>
+    </div>
+  </footer>
 )
 
 export default footer
