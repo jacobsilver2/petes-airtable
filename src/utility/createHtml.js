@@ -1,5 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
+import Iframe from "react-iframe"
 
 export default function createHtml(data) {
   switch (data.type) {
@@ -10,7 +11,7 @@ export default function createHtml(data) {
             <div className="level-item">
               <a
                 href={data.website}
-                className="button is-large is-primary is-outlined is-rounded"
+                className="button is-large is-primary is-outlined is-rounded is-inverted"
               >
                 {data.Content}
               </a>
@@ -30,8 +31,22 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <div className="box">
-              <p style={{textAlign: 'center'}}>{data.Content}</p>
+            <p style={{ textAlign: "center" }}>{data.Content}</p>
           </div>
+        </div>
+      )
+    case "video":
+      return (
+        <div className="container" key={data.id}>
+          <Iframe
+            url={data.website}
+            width="100%"
+            height="1000px"
+            id="myId"
+            className="myClassname"
+            display="inline"
+            position="relative"
+          />
         </div>
       )
     default:

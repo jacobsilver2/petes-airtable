@@ -40,7 +40,6 @@ export const pageQuery = graphql`
 
 const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable;
-  console.log(nodes);
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
