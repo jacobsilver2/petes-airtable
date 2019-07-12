@@ -46,7 +46,7 @@ const PhotoShootsPage = ({ data }) => {
       <Layout fluid={data.file.childImageSharp.fluid}>
         <div>{myhtml}</div>
         <div className="container">
-
+          <form name="booking" netlify>
           <div className="field">
               <label className="label is-small has-text-white">Name</label>
               <div className="field">
@@ -191,7 +191,7 @@ const PhotoShootsPage = ({ data }) => {
               <button className="button is-link has-background-danger">Submit</button>
             </div>
           </div>
-
+          </form>
         </div>
       </Layout>
     </>
