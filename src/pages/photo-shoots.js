@@ -55,6 +55,7 @@ const PhotoShootsPage = ({ data }) => {
                     className="input"
                     type="text"
                     placeholder="First and Last Name"
+                    name="name"
                   />
                 </p>
               </div>
@@ -72,6 +73,7 @@ const PhotoShootsPage = ({ data }) => {
                       className="input"
                       type="tel"
                       placeholder="Phone Number"
+                      name="phone"
                     />
                   </p>
                 </div>
@@ -86,6 +88,7 @@ const PhotoShootsPage = ({ data }) => {
                       className="input"
                       type="email"
                       placeholder="Email"
+                      name="email"
                     />
                   </p>
               </div>
@@ -98,6 +101,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="total-number-of-cast-and-crew"
                   />
                 </p>
               </div>
@@ -109,6 +113,7 @@ const PhotoShootsPage = ({ data }) => {
                 <p className="control is-expanded">
                   <textarea
                     className="textarea"
+                    name="type-of-shoot"
                   ></textarea>
                 </p>
               </div>
@@ -121,6 +126,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="desired-date"
                   />
                 </p>
               </div>
@@ -133,6 +139,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="desired-hours"
                   />
                 </p>
               </div>
@@ -145,6 +152,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="name-of-production"
                   />
                 </p>
               </div>
@@ -157,6 +165,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="production-company"
                   />
                 </p>
               </div>
@@ -169,6 +178,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="where-would-you-like-to-shoot"
                   />
                 </p>
               </div>
@@ -181,6 +191,7 @@ const PhotoShootsPage = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="how-many-vehicles"
                   />
                 </p>
               </div>
