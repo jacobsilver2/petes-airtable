@@ -27,7 +27,7 @@ const PrivateParty = ({ data }) => {
         <div>{myhtml}</div>
 
         <div className="container">
-
+        <form name="private party form" action="/" method="POST" data-netlify="true">
           <div className="field">
             <label className="label is-small has-text-white">Name</label>
             <div className="field">
@@ -36,6 +36,7 @@ const PrivateParty = ({ data }) => {
                   className="input"
                   type="text"
                   placeholder="First and Last Name"
+                  name="name"
                   required
                 />
               </p>
@@ -50,6 +51,7 @@ const PrivateParty = ({ data }) => {
                   className="input"
                   type="email"
                   placeholder="Email"
+                  name="email"
                   required
                 />
               </p>
@@ -68,6 +70,7 @@ const PrivateParty = ({ data }) => {
                       className="input"
                       type="tel"
                       placeholder="Phone Number"
+                      name="phone"
                     />
                   </p>
                 </div>
@@ -81,6 +84,7 @@ const PrivateParty = ({ data }) => {
                 <input
                   className="input"
                   type="text"
+                  name="how-many-people"
                   required
                 />
               </p>
@@ -94,6 +98,7 @@ const PrivateParty = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="desired-date"
                   />
                 </p>
               </div>
@@ -106,6 +111,7 @@ const PrivateParty = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="what time"
                   />
                 </p>
               </div>
@@ -118,6 +124,7 @@ const PrivateParty = ({ data }) => {
                   <input
                     className="input"
                     type="text"
+                    name="how-many-hours"
                     required
                   />
                 </p>
@@ -129,7 +136,7 @@ const PrivateParty = ({ data }) => {
               Inside or outside?*
             </label>
             <div className="select">
-              <select required>
+              <select name="how-many-hours" required>
                 <option>Inside</option>
                 <option>Outside</option>
               </select>
@@ -141,7 +148,7 @@ const PrivateParty = ({ data }) => {
               Open bar or cash bar?*
             </label>
             <div className="select">
-              <select required>
+              <select name="open-bar-or-cash-bar" required>
                 <option>Open bar</option>
                 <option>Cash bar</option>
               </select>
@@ -152,7 +159,7 @@ const PrivateParty = ({ data }) => {
             <label className="label is-small has-text-white">What's the occasion?</label>
             <div className="field">
               <p className="control is-expanded">
-                <textarea className="textarea" />
+                <textarea className="textarea" name="whats-the-occasion" />
               </p>
             </div>
           </div>
@@ -161,18 +168,20 @@ const PrivateParty = ({ data }) => {
             <label className="label is-small has-text-white">Anything else we should know? Special requests, etc.</label>
             <div className="field">
               <p className="control is-expanded">
-                <textarea className="textarea" />
+                <textarea className="textarea" name="anything-else-we-should-know" />
               </p>
             </div>
           </div>
 
           <div className="field">
             <div className="control">
-              <button className="button is-link has-background-danger">
+              <button type="submit" className="button is-link has-background-danger">
                 Submit
               </button>
             </div>
           </div>
+          <input type="hidden" name="form-name" value="private party form" />
+          </form>
         </div>
       </Layout>
     </>
