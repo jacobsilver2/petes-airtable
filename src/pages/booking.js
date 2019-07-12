@@ -45,6 +45,100 @@ const BookingPage = ({ data }) => {
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
         <div>{myhtml}</div>
+        <div className="container">
+          <div className="field">
+            <label className="label is-small has-text-white">Name</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="First and Last Name"
+                  required
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Email</label>
+            <div className="field is-expanded">
+              <p className="control is-expanded">
+                <input className="input" type="email" placeholder="Email" required />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">
+              Name of Act
+            </label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input className="input" type="text" />
+              </p>
+            </div>
+          </div>
+
+          <div className="control">
+          <label className="label is-small has-text-white">
+              Number of Band Members*
+          </label>
+            <div className="select">
+              <select required>
+                <option>Solo</option>
+                <option>Duo</option>
+                <option>Trio</option>
+                <option>Quartet</option>
+                <option>5pc +</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Website</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input className="input" type="url" placeholder="http://" />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Link 1</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input className="input" type="url" placeholder="http://" />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Link 2</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input className="input" type="url" placeholder="http://" />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Message</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <textarea className="textarea" />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <button className="button is-link has-background-danger">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   )
