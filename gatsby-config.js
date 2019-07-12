@@ -75,6 +75,18 @@ module.exports = {
             tableName: `contact`,
             mapping: { 'Attachments': `fileNode` },
           },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `private party`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `public party`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `host a cool event`,
+          },
         ]
       }
     },

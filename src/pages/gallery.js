@@ -23,7 +23,6 @@ export const pageQuery = graphql`
 `
 
 const GalleryPage = ({ data }) => {
-  console.log(data)
   const hurrayForGallery = [];
   data.allAirtable.nodes.forEach(node => {
     hurrayForGallery.push({

@@ -6,8 +6,15 @@ const Navbar = ({ siteTitle, navItems }) => {
   const  [active, setActive]  = useState(false);
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
-  const mappedNavItems = navItems.map(item => (
-    <Link key={item.node.frontmatter.title} className="navbar-item" to={item.node.frontmatter.url}>{item.node.frontmatter.title}</Link>
+  //!filtering Nav Items so 'Private Party' and 'Public Party" aren't on the navbar.
+  const filteredAndMappedNavItems = navItems.filter(item => (
+    (item.node.frontmatter.title !== 'Private Party') 
+    && 
+    (item.node.frontmatter.title !== 'Public Party')
+    &&
+    (item.node.frontmatter.title !== 'Host A Cool Event')
+  )).map(item => (
+    <Link key={item.node.frontmatter.title} className="navbar-item is-size-5" to={item.node.frontmatter.url}>{item.node.frontmatter.title}</Link>
   ))
 
   function toggleHamburger() {
@@ -27,7 +34,7 @@ const Navbar = ({ siteTitle, navItems }) => {
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
         <div className="navbar-start has-text-centered">
-          {mappedNavItems}
+          {filteredAndMappedNavItems}
         </div>
       </div>
   </nav>

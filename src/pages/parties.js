@@ -43,7 +43,7 @@ const PartiesPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid}>
+      <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
         <div>{myhtml}</div>
       </Layout>
     </>

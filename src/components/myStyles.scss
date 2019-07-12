@@ -37,13 +37,17 @@ $box-background-color: black;
 $box-color: white;
 $box-shadow: none;
 
-$navbar-height: 6rem;
+$navbar-height: 4rem;
 $navbar-background-color: black;
 $navbar-item-color: $red;
 
 
+
 $footer-background-color: black;
 
+.image-gallery-image img {
+  max-height: 853px;
+ }
 
 @import "~bulma/bulma.sass";
 @import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";

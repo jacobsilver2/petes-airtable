@@ -1,46 +1,98 @@
 import React from "react"
 import Img from "gatsby-image"
-import styled from 'styled-components';
+import styled from "styled-components"
+import { Link } from "gatsby"
+import ImageGallery from 'react-image-gallery';
 
 export const StyledVideoContainer = styled.div`
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 30px; height: 0; overflow: hidden;
-  iframe, object, embed {
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  iframe,
+  object,
+  embed {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-`;
+`
 
 export default function createHtml(data) {
   switch (data.type) {
     case "button":
       return (
         <div className="container" key={data.id}>
+          <section className="section">
           <div key={data.id} className="level">
             <div className="level-item">
-              <a
-                href={data.website}
+              <Link
+                to={data.website}
                 className="button is-large is-primary is-outlined is-rounded is-inverted"
               >
                 {data.Content}
-              </a>
+              </Link>
             </div>
           </div>
+          </section>
         </div>
       )
     case "image":
+      if (data.website) {
+        return (
+          <div className="container" key={data.id}>
+          <section className="section">
+            <Link to={data.website} className="image">
+              <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
+            </Link> 
+          </section>
+        </div>
+        )
+      }
+      if (data.email) {
+      const emailWithMailto = `mailto:${data.email}`
+       return (
+        <div className="container" key={data.id}>
+        <section className="section">
+          <a href={emailWithMailto} className="image">
+            <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
+          </a>
+        </section>
+      </div>
+       ) 
+      }
       return (
         <div className="container" key={data.id}>
-          <figure className="image">
-            <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
-          </figure>
+          <section className="section">
+            <figure className="image">
+              <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
+            </figure>
+          </section>
         </div>
       )
     case "text":
+      if (data.website) {
+        return (
+          <div className="container" key={data.id}>
+            <div className="box">
+              <a href={data.website}> <p style={{ textAlign: "center" }}>{data.Content}</p> </a>
+            </div>
+          </div>
+        )
+      }
+      if (data.email) {
+        const emailWithMailto = `mailto:${data.email}`
+        return (
+          <div className="container" key={data.id}>
+            <div className="box">
+              <a href={emailWithMailto}> <p style={{ textAlign: "center" }}>{data.Content}</p> </a>
+            </div>
+          </div>
+        )
+      }
       return (
         <div className="container" key={data.id}>
           <div className="box">
@@ -52,7 +104,9 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <div className="content">
-            <h1 className="has-text-danger" style={{textAlign: "center"}}>{data.Content}</h1>
+            <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+              {data.Content}
+            </h1>
           </div>
         </div>
       )
@@ -60,7 +114,9 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <div className="content">
-            <h2 className="has-text-danger" style={{textAlign: "center"}}>{data.Content}</h2>
+            <h2 className="has-text-danger" style={{ textAlign: "center" }}>
+              {data.Content}
+            </h2>
           </div>
         </div>
       )
@@ -68,7 +124,7 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <div className="content">
-            <h3 style={{textAlign: "center"}}>{data.Content}</h3>
+            <h3 style={{ textAlign: "center" }}>{data.Content}</h3>
           </div>
         </div>
       )
@@ -76,8 +132,18 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <StyledVideoContainer>
-            <iframe src={data.website} width='853' height='480'/>
+            <iframe src={data.website} width="853" height="480" />
           </StyledVideoContainer>
+        </div>
+      )
+    case "gallery":
+      const arrayforGallery = [];
+      data.Attachments.localFiles.forEach(file => {
+        arrayforGallery.push({original: file.childImageSharp.fluid.src})
+      })
+      return (
+        <div className="container" key={data.id}>
+          <ImageGallery items={arrayforGallery}/>
         </div>
       )
     default:

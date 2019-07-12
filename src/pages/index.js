@@ -14,6 +14,7 @@ export const pageQuery = graphql`
           Content
           type
           website
+          email
           id
           Attachments {
             localFiles {
