@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Airtable from 'airtable';
 import { navigate } from 'gatsby';
 const apiKey = process.env.AIRTABLE_API;
+console.log(apiKey)
 const base = new Airtable({apiKey}).base('appNuB0fX4vQbOqdy');
 
 
