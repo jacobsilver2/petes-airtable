@@ -5,7 +5,6 @@ import BookingForm from '../components/Forms/BookingForm'
 import PhotoshootForm from '../components/Forms/PhotoshootForm'
 import PrivatePartyForm from '../components/Forms/PrivatePartyForm'
 import GeneralForm from '../components/Forms/GeneralForm';
-import COGNITOFORM from '../components/Forms/CognitoEventSubmissionForm';
 // import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
@@ -58,7 +57,7 @@ export const pageQuery = graphql`
 
 const ContactPage = ({ data }) => {
   const  [active, setActive]  = useState('MEDIA INQUIRIES');
-  const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES', 'COGNITO']
+  const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES']
 
   const mappedListItems = formNames.map( name => <li key={name} className={active === name ? 'is-active' : ''} onClick={() => setActive(name)}><a>{name}</a></li> )
   
@@ -78,11 +77,6 @@ const ContactPage = ({ data }) => {
     if (active === 'ALL OTHER INQUIRIES') {
       return <GeneralForm />
     }
-    if (active === 'COGNITO') {
-      return <COGNITOFORM />
-    }
-
-
   }
   return (
     <>
