@@ -34,6 +34,9 @@ const CalendarPage = ({ data }) => {
   return (
     <Layout>
       <div className="container"> 
+      <h1 className="has-text-danger" style={{ textAlign: "center" }}>SHOWTIMES</h1>
+      <p style={{ textAlign: "center" }}>ALL SHOWS ARE FREE(unless otherwise listed)</p>
+      <p style={{ textAlign: "center" }}>($5 suggested donation)</p>
         {renderedCalendar}
       </div>
     </Layout>
@@ -44,6 +47,7 @@ const CalendarPage = ({ data }) => {
 export const frontmatter = {
   title: "Calendar",
   url: "/calendar",
+  navOrder: 2
 }
 
 export default CalendarPage;

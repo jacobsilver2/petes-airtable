@@ -38,6 +38,7 @@ const Layout = ({ children, fluid, fullheight }) => {
             frontmatter {
               title
               url
+              navOrder
             }
           }
         }

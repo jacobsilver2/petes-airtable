@@ -53,5 +53,6 @@ const PartiesPage = ({ data }) => {
 export const frontmatter = {
   title: "Parties",
   url: "/parties",
+  navOrder: 5
 }
 export default PartiesPage

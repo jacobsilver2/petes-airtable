@@ -55,5 +55,6 @@ const PhotoShootsPage = ({ data }) => {
 export const frontmatter = {
   title: "Photo Shoots",
   url: "/photo-shoots",
+  navOrder: 4
 }
 export default PhotoShootsPage

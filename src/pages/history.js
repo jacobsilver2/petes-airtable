@@ -53,5 +53,6 @@ const HistoryPage = ({ data }) => {
 export const frontmatter = {
   title: "History",
   url: "history",
+  navOrder: 8
 }
 export default HistoryPage

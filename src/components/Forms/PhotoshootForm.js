@@ -16,6 +16,7 @@ const PhotoshootForm = () => {
   const [productionCompany, setProductionCompany] = useState('');
   const [location, setLocation] = useState('');
   const [vehicles, setVehicles] = useState('');
+  const [additionalInfo, setAdditionalInfo] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +31,8 @@ const PhotoshootForm = () => {
       "production name": nameOfProduction,
       "production company": productionCompany,
       location,
-      "number of vehicles": vehicles
+      "number of vehicles": vehicles,
+      "additional info": additionalInfo
     }, function(err, record) {
       if (err) {
         console.error(err);
@@ -214,6 +216,21 @@ const PhotoshootForm = () => {
           </p>
         </div>
     </div>
+
+    <div className="field">
+        <label className="label is-small has-text-white">Additional Info</label>
+        <div className="field">
+          <p className="control is-expanded">
+            <textarea
+              className="textarea"
+              name="type-of-shoot"
+              value={additionalInfo}
+              onChange={e => setAdditionalInfo(e.target.value)}
+            ></textarea>
+          </p>
+        </div>
+    </div>
+  
   
     <div className="field">
       <div className="control">

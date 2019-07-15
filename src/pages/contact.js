@@ -5,6 +5,7 @@ import BookingForm from '../components/Forms/BookingForm'
 import PhotoshootForm from '../components/Forms/PhotoshootForm'
 import PrivatePartyForm from '../components/Forms/PrivatePartyForm'
 import GeneralForm from '../components/Forms/GeneralForm';
+import MediaInquiriesForm from '../components/Forms/MediaInquiries';
 // import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
@@ -63,7 +64,7 @@ const ContactPage = ({ data }) => {
   
   function renderForm() {
     if (active === 'MEDIA INQUIRIES') {
-      return <GeneralForm />
+      return <MediaInquiriesForm />
     }
     if (active === 'MUSIC BOOKING') {
       return <BookingForm />
@@ -95,5 +96,6 @@ const ContactPage = ({ data }) => {
 export const frontmatter = {
   title: "Contact",
   url: "/contact",
+  navOrder: 11
 }
 export default ContactPage

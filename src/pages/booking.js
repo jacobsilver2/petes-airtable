@@ -55,5 +55,6 @@ const BookingPage = ({ data }) => {
 export const frontmatter = {
   title: "Booking",
   url: "/booking",
+  navOrder: 6
 }
 export default BookingPage

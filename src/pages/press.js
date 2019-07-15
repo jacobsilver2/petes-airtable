@@ -46,5 +46,6 @@ const PressPage = ({ data }) => {
 export const frontmatter = {
   title: "Press",
   url: "/press",
+  navOrder: 9
 }
 export default PressPage

@@ -6,7 +6,7 @@ import PrivatePartyForm from '../components/Forms/PrivatePartyForm';
 
 export const pageQuery = graphql`
   {
-    allAirtable(filter: { table: { eq: "private party" } }) {
+    allAirtable(filter: { table: { eq: "private party" } }, sort: {fields: data___order}) {
       nodes {
         data {
           Name

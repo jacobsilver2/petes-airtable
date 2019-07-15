@@ -6,7 +6,7 @@ import PublicPartyForm from '../components/Forms/PublicPartyForm';
 
 export const pageQuery = graphql`
   {
-    allAirtable(filter: { table: { eq: "public party" } }) {
+    allAirtable(filter: { table: { eq: "public party" } }, sort: {fields: data___order}) {
       nodes {
         data {
           Name

@@ -6,7 +6,7 @@ import createHtml from '../utility/createHtml';
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "home" } }
+      filter: { table: { eq: "home" } }, sort: {fields: data___order}
     ) {
       nodes {
         data {
@@ -54,7 +54,8 @@ const IndexPage = ({ data }) => {
 }
 export const frontmatter = {
   title: "Welcome",
-  url: '/'
+  url: '/',
+  navOrder: 1
 }
 export default IndexPage
 
