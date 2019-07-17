@@ -7,7 +7,7 @@ const Navbar = ({ siteTitle, navItems }) => {
   const [selected, setSelected] = useState('')
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
-  //!filtering Nav Items so 'Private Party' and 'Public Party", and "Host A Cool Event" aren't on the navbar.
+  //!filtering Nav Items so 'Private Party' and 'Public Party", and "Host A Cool Event", "Reading Series", and "Open Mic" aren't on the navbar.
   const filteredAndMappedNavItems = navItems.filter(item => (
     (item.node.frontmatter.title !== 'Private Party') 
     && 
@@ -16,6 +16,9 @@ const Navbar = ({ siteTitle, navItems }) => {
     (item.node.frontmatter.title !== 'Host A Cool Event')
     &&
     (item.node.frontmatter.title !== 'Open Mic')
+    &&
+    (item.node.frontmatter.title !== 'Reading Series')
+
   )).sort(function(a,b) {return a.node.frontmatter.navOrder - b.node.frontmatter.navOrder}).map(item => (
     <Link 
       key={item.node.frontmatter.title} 
