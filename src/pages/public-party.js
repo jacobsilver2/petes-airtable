@@ -25,6 +25,14 @@ const PublicParty = ({ data }) => {
   return (
     <>
       <Layout fluid={null} fullheight={false}>
+      <div className="container" key={data.id}>
+          <div className="content">
+            <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+              RESERVE SOME TABLES AT PETE'S
+            </h1>
+            <p style={{textAlign: "center"}}>Please give us a few details to reserve your tables.  Check out the FAQ below for more info.</p>
+          </div>
+        </div>
         <PublicPartyForm />
         <div>{myhtml}</div>
       </Layout>

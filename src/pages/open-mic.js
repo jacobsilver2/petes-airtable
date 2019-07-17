@@ -6,7 +6,7 @@ import createHtml from "../utility/createHtml"
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "history" } }
+      filter: { table: { eq: "open mic" } }
       sort: { order: ASC, fields: data___order }
     ) {
       nodes {
@@ -16,6 +16,7 @@ export const pageQuery = graphql`
           type
           website
           id
+          order
           Attachments {
             localFiles {
               childImageSharp {
@@ -28,9 +29,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "history.png" }) {
+    file(relativePath: { eq: "matty.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
+        fluid(maxWidth: 500, maxHeight: 100) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -38,12 +39,12 @@ export const pageQuery = graphql`
   }
 `
 
-const HistoryPage = ({ data }) => {
+const OpenMicPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
+      <Layout fluid={data.file.childImageSharp.fluid} fixed={null} fullheight={false}>
         <div>{myhtml}</div>
       </Layout>
     </>
@@ -51,8 +52,7 @@ const HistoryPage = ({ data }) => {
 }
 
 export const frontmatter = {
-  title: "History",
-  url: "/history",
-  navOrder: 8
+  title: "Open Mic",
+  url: "/open-mic",
 }
-export default HistoryPage
+export default OpenMicPage;

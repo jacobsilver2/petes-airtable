@@ -32,7 +32,7 @@ const CalendarPage = ({ data }) => {
   const { nodes } = data.allAirtable;
   const renderedCalendar = nodes.map(node => CalendarEvent(node.data))
   return (
-    <Layout>
+    <Layout fluid={null} fullheight={false}>
       <div className="container"> 
       <h1 className="has-text-danger" style={{ textAlign: "center" }}>SHOWTIMES</h1>
       <p style={{ textAlign: "center" }}>ALL SHOWS ARE FREE(unless otherwise listed)</p>

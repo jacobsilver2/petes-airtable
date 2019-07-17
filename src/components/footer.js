@@ -14,11 +14,11 @@ const footer = props => (
     <StyledTable className="table is-narrow">
       <tbody>
         <tr>
-          <th>Location</th>
-          <th>Hours</th>
+          <th>LOCATION</th>
+          <th>HOURS</th>
         </tr>
         <tr>
-          <td>Williamsburg</td>
+          <td><i>Williamsburg</i></td>
           <td>Sun 3p-2a</td>
         </tr>
         <tr>
@@ -30,11 +30,12 @@ const footer = props => (
           <td>Thu 5p-2a</td>
         </tr>
         <tr>
-          <td>718 207 7902</td>
+          <td>718 302-3770</td>
           <td>Fri-Sat 4p-4a</td>
         </tr>
       </tbody>
     </StyledTable>
+    <p style={{textAlign: 'center'}}>Take the L Train to Lorimer St - or the G Train to Metropolitan Ave</p>
     </div>
   </footer>
 )

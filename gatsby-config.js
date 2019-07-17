@@ -87,6 +87,14 @@ module.exports = {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `host a cool event`,
           },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `open mic`,
+          },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: `reading series`,
+          },
         ]
       }
     },

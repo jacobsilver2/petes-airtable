@@ -55,7 +55,7 @@ const Layout = ({ children, fluid, fullheight }) => {
       />
       {fluid ? renderHero(fluid, fullheight) : null}
 
-      <section className="section">{children}</section>
+      <section style={{paddingTop: "6rem"}} className="section">{children}</section>
       <Footer />
     </>
   )

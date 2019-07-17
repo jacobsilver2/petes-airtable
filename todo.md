@@ -1,10 +1,10 @@
 # todo
 
-[] get html working
-[] get youtube links
-[] get image gallery
+[x] get html working
+[x] get youtube links
+[x] get image gallery
 [] twitter feed
 [] instagram feed
-[] forms (netlify)
-[] custom order in navbar
-[] excluded pages in navbar
+[x] forms (netlify)(ended up using airtable)
+[x] custom order in navbar
+[x] excluded pages in navbar

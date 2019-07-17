@@ -6,6 +6,7 @@ import PhotoshootForm from '../components/Forms/PhotoshootForm'
 import PrivatePartyForm from '../components/Forms/PrivatePartyForm'
 import GeneralForm from '../components/Forms/GeneralForm';
 import MediaInquiriesForm from '../components/Forms/MediaInquiries';
+import EventBookingForm from '../components/Forms/EventBookingForm';
 // import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
@@ -58,7 +59,7 @@ export const pageQuery = graphql`
 
 const ContactPage = ({ data }) => {
   const  [active, setActive]  = useState('MEDIA INQUIRIES');
-  const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES']
+  const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'EVENT BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES']
 
   const mappedListItems = formNames.map( name => <li key={name} className={active === name ? 'is-active' : ''} onClick={() => setActive(name)}><a>{name}</a></li> )
   
@@ -68,6 +69,9 @@ const ContactPage = ({ data }) => {
     }
     if (active === 'MUSIC BOOKING') {
       return <BookingForm />
+    }
+    if (active === 'EVENT BOOKING') {
+      return <EventBookingForm />
     }
     if (active === 'PHOTO SHOOTS') {
       return <PhotoshootForm />

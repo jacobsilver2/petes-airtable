@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import Airtable from 'airtable';
 import { navigate } from 'gatsby';
-const apiKey = process.env.GATSBY_AIRTABLE_API;
-console.log(apiKey)
-const base = new Airtable({apiKey}).base('appNuB0fX4vQbOqdy');
+const base = new Airtable({apiKey: process.env.GATSBY_AIRTABLE_API}).base('appNuB0fX4vQbOqdy');
 
 
 

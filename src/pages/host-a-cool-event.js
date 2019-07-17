@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from "gatsby"
 import Layout from '../components/layout';
 import createHtml from "../utility/createHtml"
+import EventBookingForm from '../components/Forms/EventBookingForm'
 
 export const pageQuery = graphql`
   {
@@ -28,6 +29,7 @@ const HostACoolEventComponent = ({ data }) => {
       <Layout fullheight={false} fluid={null}>
         <div>
           {myhtml}
+          <EventBookingForm />
         </div>
       </Layout>
     </>

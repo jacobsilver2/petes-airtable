@@ -25,8 +25,18 @@ const PrivateParty = ({ data }) => {
   return (
     <>
       <Layout fluid={null} fullheight={false}>
-        <div>{myhtml}</div>
+      <div className="container" key={data.id}>
+          <div className="content">
+            <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+            PRIVATE PARTY AT PETE'S
+            </h1>
+            <p style={{textAlign: 'center'}}>
+            Let us know a few details, and we'll get back to you fast!  Check out the FAQ for more info.
+            </p>
+          </div>
+        </div>
         <PrivatePartyForm />
+        <div>{myhtml}</div>
       </Layout>
     </>
   )
