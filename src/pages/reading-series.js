@@ -37,7 +37,7 @@ const OpenMicPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
+      <Layout fluid={null} fullheight={false}>
         <div>{myhtml}</div>
       </Layout>
     </>
