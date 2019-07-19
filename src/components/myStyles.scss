@@ -23,6 +23,8 @@ $fullhd-enabled: false;
 // Update some of Bulma's component variables
 $body-background-color: black;
 $body-color: white;
+$link-hover: white;
+
 
 $control-border-width: 2px;
 $input-border-color: transparent;
@@ -40,6 +42,7 @@ $box-shadow: none;
 $navbar-height: 3rem;
 $navbar-background-color: black;
 $navbar-item-color: $red;
+$navbar-item-hover-color: white;
 
 
 

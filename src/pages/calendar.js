@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import CalendarEvent from '../components/CalendarEvent';
 import CalendarEventCard from '../components/CalendarEventCard';
+import CalendarFrame from '../components/CalendarFrame';
 
 export const pageQuery = graphql`
   {
@@ -22,6 +23,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid(maxWidth: 150, maxHeight: 150) {
                   ...GatsbyImageSharpFluid
+                  originalImg
                 }
               }
             }
@@ -29,14 +31,25 @@ export const pageQuery = graphql`
         }
       }
     }
+    allFile(filter: {name: {regex: "/rand/"}}) {
+    nodes {
+      childImageSharp {
+        fluid(maxWidth: 150, maxHeight: 150) {
+          ...GatsbyImageSharpFluid
+          originalImg
+        }
+      }
+    }
+  }
   }
 `
 
 
 
 const CalendarPage = ({ data }) => {
-  const { nodes } = data.allAirtable;
-  const renderedCalendar = nodes.map(node => CalendarEventCard(node.data))
+  // const { nodes } = data.allAirtable;
+  // const renderedCalendar = nodes.map(node => CalendarEventCard(node.data, data.allFile.nodes))
+  const renderedCalendar = <CalendarFrame data={data}/>
   return (
     <Layout fluid={null} fullheight={false}>
       <div className="container"> 

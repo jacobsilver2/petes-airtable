@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 const Navbar = ({ siteTitle, navItems }) => {
   const  [active, setActive]  = useState(false);
-  const [selected, setSelected] = useState('')
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
   //!filtering Nav Items so 'Private Party' and 'Public Party", and "Host A Cool Event", "Reading Series", and "Open Mic" aren't on the navbar.
@@ -22,9 +21,9 @@ const Navbar = ({ siteTitle, navItems }) => {
   )).sort(function(a,b) {return a.node.frontmatter.navOrder - b.node.frontmatter.navOrder}).map(item => (
     <Link 
       key={item.node.frontmatter.title} 
-      className={`navbar-item is-size-5 ${selected === item.node.frontmatter.title ? 'has-text-white' : ''}`} 
-      onClick={() => setSelected(item.node.frontmatter.title)}
+      className="navbar-item is-size-5"
       to={item.node.frontmatter.url}
+      activeClassName="has-text-white"
     >
     {item.node.frontmatter.title}
     </Link>

@@ -29,7 +29,7 @@ module.exports = {
       
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API, 
-        concurrency: 0,
+        concurrency: 5,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -110,6 +110,20 @@ module.exports = {
             tableView: `Future`,
             mapping: { 'Act Image': `fileNode` },
           },
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              linkImagesToOriginal: false,
+            },
+          },
+          `gatsby-remark-images-zoom`,
         ]
       }
     },
