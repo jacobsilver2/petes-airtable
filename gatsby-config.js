@@ -29,6 +29,7 @@ module.exports = {
       
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API, 
+        concurrency: 0,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,

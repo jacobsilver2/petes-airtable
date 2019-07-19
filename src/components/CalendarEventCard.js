@@ -2,7 +2,6 @@ import React from "react"
 import fakeBlurb from "../utility/fakeblurb"
 import moment from "moment"
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Image = styled.div`
@@ -53,7 +52,7 @@ const Image = styled.div`
 
 const Information = styled.div`
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: inline-block;
     color: white;
     transition: all 0.4s;
@@ -85,11 +84,19 @@ const Wrapper = styled.article`
   margin: 0 3rem;
 `;
 
+const Container = styled.div`
+  text-align: center;
+  margin: auto;
+  padding: 3rem 0.5rem;
+  width: 40%;
+  height: 100%;
+  flex: 1;
+`
+
 function renderImage(image) {
   return (
     <Image>
       <Img fluid={image}/>
-      {/* <img src={image} alt="placeholder" /> */}
     </Image>
   )
 }
@@ -109,12 +116,11 @@ function renderName(name, date) {
 }
 
 
+
 function CalendarEventCard(data) {
-  console.log(data)
   return (
-    <section className="section" key={data.id}>
+    <Container key={data.id}>
       <Wrapper>
-        {data.Act_Image ? renderImage(data.Act_Image.localFiles[0].childImageSharp.fluid) : null}
         <Information>
           {renderDate(data.Date)}
           {data.Act_Website ? (
@@ -123,9 +129,9 @@ function CalendarEventCard(data) {
             renderName(data.Name, data.Date)
           )}
         </Information>
+        {data.Act_Image ? renderImage(data.Act_Image.localFiles[0].childImageSharp.fluid) : null}
       </Wrapper>
-
-    </section>
+    </Container>
   )
 }
 

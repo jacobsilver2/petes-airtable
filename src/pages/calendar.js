@@ -14,12 +14,13 @@ export const pageQuery = graphql`
         data {
           Date
           Name
+          id
           Act_Blurb
           Act_Website
           Act_Image {
             localFiles {
               childImageSharp {
-                fluid(maxWidth: 300) {
+                fluid(maxWidth: 150, maxHeight: 150) {
                   ...GatsbyImageSharpFluid
                 }
               }
