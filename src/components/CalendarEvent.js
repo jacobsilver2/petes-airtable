@@ -1,58 +1,78 @@
-import React from "react"
-import fakeBlurb from "../utility/fakeblurb"
-import moment from "moment"
+import React, {useState} from "react"
+import {Event, StyledDate, StyledBlurb, StyledImage, StyledTitle, StyledLink} from './CalendarStyles';
+import ImageZoom from 'react-medium-image-zoom';
+import Truncate from 'react-truncate';
 
-function CalendarEvent(data) {
+
+
+function renderTitleWithLink(title, link, time) {
   return (
-    <section className="section" key={data.id}>
-    <div className="card">
-      {data.Act_Image ? renderImage(data.Act_Image.raw[0].url) : null}
-      <div className="card-content">
+    <StyledLink href={link}>
+      <StyledTitle>{time} {title}</StyledTitle>
+    </StyledLink>
+  )
+}
+
+function renderTitleWithoutLink(title, time) {
+  return (
+    <StyledTitle>{time} {title}</StyledTitle>
+  )
+}
+
+  function renderImage(image){
+    return (
+      <StyledImage className="media-left">
+        <ImageZoom 
+          image={{src: image.src}}
+          zoomImage={{src: image.originalImg}}
+        />
+        
+      </StyledImage>
+    )
+  }
+
+function CalendarEvent({isFirstEvent, date, time, image, title, blurb, website, id}) {
+  const [expanded, setExpanded] = useState(false);
+  const [truncated, setTruncated] = useState(false);
+
+  function renderBlurb(blurb) {
+    return (
+      <StyledBlurb>
+        <Truncate
+          lines={!expanded && 3}
+          ellipsis={(<p><a href='#' onClick={(e) => toggleLines(e)}>Read More</a></p>)}
+          onTruncate={(e) => handleTruncate(e)}
+        > 
+          {blurb}
+        </Truncate>
+        {!truncated && expanded && (<p> <a href='#' onClick={(e) => toggleLines(e)}>Read Less</a> </p>)}
+      </StyledBlurb>
+    )
+  }
+
+  function toggleLines(event) {
+    event.preventDefault();
+    setExpanded(!expanded);
+  }
+
+  function handleTruncate(isTruncated) {
+    if (truncated !== isTruncated) {
+      setTruncated(truncated)
+    }
+  }
+
+
+  return (
+    <Event key={id}>
+      {isFirstEvent && <StyledDate>{date}</StyledDate>}
+      <div className="media">
+        {renderImage(image)}
         <div className="media-content">
-          {data.Act_Website ? (
-            <a href={data.Act_Website[0]}>{renderName(data.Name, data.Date)}</a>
-          ) : (
-            renderName(data.Name, data.Date)
-          )}
-          {renderDate(data.Date)}
-        </div>
-        <div className="content">
-          {data.Act_Blurb
-            ? renderContent(data.Act_Blurb[0])
-            : renderContent(fakeBlurb)}
+          {website ? renderTitleWithLink(title, website, time) : renderTitleWithoutLink(title, time)}
+          {renderBlurb(blurb)}
         </div>
       </div>
-    </div>
-    </section>
+    </Event>
   )
 }
-
-function renderImage(image) {
-  return (
-    <div className="card-image">
-      <figure className="image is-square">
-        <img src={image} alt="placeholder" />
-      </figure>
-    </div>
-  )
-}
-
-function renderName(name, date) {
-  const time = moment.utc(date).format("h:mma")
-  return (
-    <p className="title is-4">
-      {time} - {name}
-    </p>
-  )
-}
-
-function renderDate(date) {
-  const formattedDate = moment.utc(date).format("dddd, MMMM DD")
-  return <p className="subtitle is-6">{formattedDate}</p>
-}
-
-function renderContent(content) {
-  return content
-}
-
 export default CalendarEvent
