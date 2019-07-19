@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import CalendarEvent from '../components/CalendarEvent';
-import CalendarEventCard from '../components/CalendarEventCard';
 import CalendarFrame from '../components/CalendarFrame';
 
 export const pageQuery = graphql`
