@@ -61,7 +61,7 @@ const ContactPage = ({ data }) => {
   const  [active, setActive]  = useState('MEDIA INQUIRIES');
   const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'EVENT BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES']
 
-  const mappedListItems = formNames.map( name => <li key={name} className={active === name ? 'is-active' : ''} onClick={() => setActive(name)}><a>{name}</a></li> )
+  const mappedListItems = formNames.map( name => <li key={name} className={`${active === name ? 'is-active' : ''} has-text-white`} onClick={() => setActive(name)}><a>{name}</a></li> )
   
   function renderForm() {
     if (active === 'MEDIA INQUIRIES') {

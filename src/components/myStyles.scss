@@ -11,7 +11,6 @@ $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
 $red: #fd0f0e;
 
-// Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
@@ -20,7 +19,6 @@ $link: $red;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-// Update some of Bulma's component variables
 $body-background-color: black;
 $body-color: white;
 $link-hover: white;
@@ -44,10 +42,11 @@ $navbar-background-color: black;
 $navbar-item-color: $red;
 $navbar-item-hover-color: white;
 
-
-
-
 $footer-background-color: black;
+
+$tabs-link-color: $red;
+$tabs-link-hover-color: white;
+$tabs-link-active-color: white;
 
 .image-gallery-image img {
   max-height: 853px;
