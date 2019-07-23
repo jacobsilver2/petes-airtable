@@ -4,17 +4,14 @@ import {Wrapper, Events } from './CalendarStyles';
 import CalendarEvent from './CalendarEvent';
 
 
-
 function getRandomImage(randomImages) {
   const randomImageIndex = Math.floor(Math.random() * randomImages.length);
   return randomImages[randomImageIndex].childImageSharp.fluid
 }
 
 const CalendarFrame = ({ data: {allAirtable, allFile} }) => {
-
   let prevDate = '';
   const renderedEvents = [];
-
   allAirtable.nodes.forEach(event => {
     const formattedDate = moment.utc(event.data.Date).format('MMMM Do (dddd)');
     const formattedTime = moment.utc(event.data.Date).format("h:mma")

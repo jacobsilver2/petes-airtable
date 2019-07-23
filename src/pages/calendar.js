@@ -42,11 +42,7 @@ export const pageQuery = graphql`
   }
 `
 
-
-
 const CalendarPage = ({ data }) => {
-  // const { nodes } = data.allAirtable;
-  // const renderedCalendar = nodes.map(node => CalendarEventCard(node.data, data.allFile.nodes))
   const renderedCalendar = <CalendarFrame data={data}/>
   return (
     <Layout fluid={null} fullheight={false}>
@@ -59,7 +55,6 @@ const CalendarPage = ({ data }) => {
     </Layout>
   )
 }
-
 
 export const frontmatter = {
   title: "Calendar",

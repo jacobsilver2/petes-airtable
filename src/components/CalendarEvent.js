@@ -3,8 +3,6 @@ import {Event, StyledDate, StyledBlurb, StyledImage, StyledTitle, StyledLink} fr
 import ImageZoom from 'react-medium-image-zoom';
 import Truncate from 'react-truncate';
 
-
-
 function renderTitleWithLink(title, link, time) {
   return (
     <StyledLink href={link}>
@@ -19,17 +17,16 @@ function renderTitleWithoutLink(title, time) {
   )
 }
 
-  function renderImage(image){
-    return (
-      <StyledImage className="media-left">
-        <ImageZoom 
-          image={{src: image.src}}
-          zoomImage={{src: image.originalImg}}
-        />
-        
-      </StyledImage>
-    )
-  }
+function renderImage(image) {
+  return (
+    <StyledImage className="media-left">
+      <ImageZoom 
+        image={{src: image.src}}
+        zoomImage={{src: image.originalImg}}
+      />
+    </StyledImage>
+  )
+}
 
 function CalendarEvent({isFirstEvent, date, time, image, title, blurb, website, id}) {
   const [expanded, setExpanded] = useState(false);
@@ -41,17 +38,17 @@ function CalendarEvent({isFirstEvent, date, time, image, title, blurb, website, 
         <Truncate
           lines={!expanded && 3}
           ellipsis={(<p><a href='#' onClick={(e) => toggleLines(e)}>Read More</a></p>)}
-          onTruncate={(e) => handleTruncate(e)}
+          onTruncate={e => handleTruncate(e)}
         > 
           {blurb}
         </Truncate>
-        {!truncated && expanded && (<p> <a href='#' onClick={(e) => toggleLines(e)}>Read Less</a> </p>)}
+        {!truncated && expanded && (<p> <a href='#' onClick={e => toggleLines(e)}>Read Less</a> </p>)}
       </StyledBlurb>
     )
   }
 
-  function toggleLines(event) {
-    event.preventDefault();
+  function toggleLines(e) {
+    e.preventDefault();
     setExpanded(!expanded);
   }
 
@@ -61,18 +58,17 @@ function CalendarEvent({isFirstEvent, date, time, image, title, blurb, website, 
     }
   }
 
-
   return (
     <Event key={id}>
-      {isFirstEvent && <StyledDate>{date}</StyledDate>}
+      { isFirstEvent && <StyledDate>{date}</StyledDate> }
       <div className="media">
         {renderImage(image)}
         <div className="media-content">
-          {website ? renderTitleWithLink(title, website, time) : renderTitleWithoutLink(title, time)}
+          { website ? renderTitleWithLink(title, website, time) : renderTitleWithoutLink(title, time) }
           {renderBlurb(blurb)}
         </div>
       </div>
     </Event>
   )
 }
-export default CalendarEvent
+export default CalendarEvent;
