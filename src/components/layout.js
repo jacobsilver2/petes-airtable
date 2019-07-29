@@ -5,24 +5,7 @@ import Navbar from "./navbar"
 import Footer from "./footer"
 import "./myStyles.scss"
 import Helmet from "react-helmet"
-import Img from "gatsby-image"
-
-function renderHero(fluid, fullheight) {
-  if (fluid && fullheight) {
-    return (
-      <section className="hero is-fullheight">
-        <Img className="hero-body" fluid={fluid} />
-      </section>
-    )
-  }
-  if (fluid) {
-    return (
-      <section className="hero">
-        <Img className="hero-body" fluid={fluid} />
-      </section>
-    )
-  }
-}
+import { renderHero } from "./renderHero";
 
 const Layout = ({ children, fluid, fullheight }) => {
   const data = useStaticQuery(graphql`
@@ -54,7 +37,6 @@ const Layout = ({ children, fluid, fullheight }) => {
         navItems={data.allJavascriptFrontmatter.edges}
       />
       {fluid ? renderHero(fluid, fullheight) : null}
-
       <section style={{paddingTop: "6rem"}} className="section">{children}</section>
       <Footer />
     </>
@@ -65,4 +47,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default Layout;

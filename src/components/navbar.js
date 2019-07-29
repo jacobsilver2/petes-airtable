@@ -1,33 +1,11 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from 'react';
+import filterNavItems from '../utility/filterNavItems';
 
 const Navbar = ({ siteTitle, navItems }) => {
   const  [active, setActive]  = useState(false);
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
-
-  //!filtering Nav Items so 'Private Party' and 'Public Party", and "Host A Cool Event", "Reading Series", and "Open Mic" aren't on the navbar.
-  const filteredAndMappedNavItems = navItems.filter(item => (
-    (item.node.frontmatter.title !== 'Private Party') 
-    && 
-    (item.node.frontmatter.title !== 'Public Party')
-    &&
-    (item.node.frontmatter.title !== 'Host A Cool Event')
-    &&
-    (item.node.frontmatter.title !== 'Open Mic')
-    &&
-    (item.node.frontmatter.title !== 'Reading Series')
-
-  )).sort(function(a,b) {return a.node.frontmatter.navOrder - b.node.frontmatter.navOrder}).map(item => (
-    <Link 
-      key={item.node.frontmatter.title} 
-      className="navbar-item is-size-5"
-      to={item.node.frontmatter.url}
-      activeClassName="has-text-white"
-    >
-    {item.node.frontmatter.title}
-    </Link>
-  ))
 
   function toggleHamburger() {
     setActive(!active);
@@ -38,7 +16,7 @@ const Navbar = ({ siteTitle, navItems }) => {
     <nav className="navbar is-transparent is-fixed-top" role="navigation" aria-label="main-navigation">
     <div className="container">
         {/* Hamburger Menu */}
-        <div className={`navbar-burger burger ${navBarActiveClass}`} data-targer="navMenu" onClick={() => toggleHamburger()}>
+        <div className={`navbar-burger burger ${navBarActiveClass}`} data-target="navMenu" onClick={() => toggleHamburger()}>
           <span />
           <span />
           <span />
@@ -46,7 +24,7 @@ const Navbar = ({ siteTitle, navItems }) => {
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
         <div className="navbar-start has-text-centered">
-          {filteredAndMappedNavItems}
+          {filterNavItems(navItems)}
         </div>
       </div>
   </nav>

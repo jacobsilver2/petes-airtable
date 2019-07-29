@@ -1,12 +1,12 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import BookingForm from '../components/Forms/BookingForm'
-import PhotoshootForm from '../components/Forms/PhotoshootForm'
-import PrivatePartyForm from '../components/Forms/PrivatePartyForm'
-import GeneralForm from '../components/Forms/GeneralForm';
-import MediaInquiriesForm from '../components/Forms/MediaInquiries';
-import EventBookingForm from '../components/Forms/EventBookingForm';
+import BookingForm from "../components/Forms/BookingForm"
+import PhotoshootForm from "../components/Forms/PhotoshootForm"
+import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
+import GeneralForm from "../components/Forms/GeneralForm"
+import MediaInquiriesForm from "../components/Forms/MediaInquiries"
+import EventBookingForm from "../components/Forms/EventBookingForm"
 // import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
@@ -44,42 +44,44 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// const ContactPage = ({ data }) => {
-//   const { nodes } = data.allAirtable
-//   const myhtml = nodes.map(node => createHtml(node.data))
-//   return (
-//     <>
-//       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
-//         <div>{myhtml}</div>
-//       </Layout>
-//     </>
-//   )
-// }
-
 const ContactPage = ({ data }) => {
-  const  [active, setActive]  = useState('MEDIA INQUIRIES');
-  const formNames = ['MEDIA INQUIRIES', 'PHOTO SHOOTS', 'MUSIC BOOKING', 'EVENT BOOKING', 'PRIVATE PARTY', 'ALL OTHER INQUIRIES']
+  const [active, setActive] = useState("MEDIA INQUIRIES")
+  const formNames = [
+    "MEDIA INQUIRIES",
+    "PHOTO SHOOTS",
+    "MUSIC BOOKING",
+    "EVENT BOOKING",
+    "PRIVATE PARTY",
+    "ALL OTHER INQUIRIES",
+  ]
 
-  const mappedListItems = formNames.map( name => <li key={name} className={`${active === name ? 'is-active' : ''} has-text-white`} onClick={() => setActive(name)}><a>{name}</a></li> )
-  
+  const mappedListItems = formNames.map(name => (
+    <li
+      key={name}
+      className={`${active === name ? "is-active" : ""} has-text-white`}
+      onClick={() => setActive(name)}
+    >
+      <a>{name}</a>
+    </li>
+  ))
+
   function renderForm() {
-    if (active === 'MEDIA INQUIRIES') {
+    if (active === "MEDIA INQUIRIES") {
       return <MediaInquiriesForm />
     }
-    if (active === 'MUSIC BOOKING') {
+    if (active === "MUSIC BOOKING") {
       return <BookingForm />
     }
-    if (active === 'EVENT BOOKING') {
+    if (active === "EVENT BOOKING") {
       return <EventBookingForm />
     }
-    if (active === 'PHOTO SHOOTS') {
+    if (active === "PHOTO SHOOTS") {
       return <PhotoshootForm />
     }
-    if (active === 'PRIVATE PARTY') {
+    if (active === "PRIVATE PARTY") {
       return <PrivatePartyForm />
     }
-    if (active === 'ALL OTHER INQUIRIES') {
+    if (active === "ALL OTHER INQUIRIES") {
       return <GeneralForm />
     }
   }
@@ -87,19 +89,17 @@ const ContactPage = ({ data }) => {
     <>
       <Layout fluid={null} fullheight={false}>
         <div className="tabs is-centered">
-          <ul className="">
-            {mappedListItems}
-          </ul>
+          <ul className="">{mappedListItems}</ul>
         </div>
         {renderForm()}
       </Layout>
-    </>    
+    </>
   )
 }
 
 export const frontmatter = {
   title: "Contact",
   url: "/contact",
-  navOrder: 11
+  navOrder: 11,
 }
 export default ContactPage

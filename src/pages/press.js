@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import createHtml from "../utility/createHtml"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import createHtml from "../utility/createHtml";
 
 export const pageQuery = graphql`
   {
@@ -36,7 +36,7 @@ const PressPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout>
+      <Layout fluid={null} fullheight={false}>
         <div>{myhtml}</div>
       </Layout>
     </>
