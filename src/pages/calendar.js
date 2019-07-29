@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import CalendarFrame from '../components/Calendar/CalendarFrame';
@@ -43,7 +43,23 @@ export const pageQuery = graphql`
 `
 
 const CalendarPage = ({ data }) => {
-  const renderedCalendar = <CalendarFrame data={data}/>
+  const [hasError, setErrors] = useState(false);
+  const [shows, setShows] = useState();
+
+  useEffect(() => {
+    fetch('https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?view=Future', 
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer keyY11TcpoTR646Fh' 
+        }
+      }
+    )
+      .then(results => results.json())
+      .then(data => { setShows(data) })
+  }, [])
+
+  const renderedCalendar = <CalendarFrame data={data} shows={shows}/>
   return (
     <Layout fluid={null} fullheight={false}>
       <div className="container"> 

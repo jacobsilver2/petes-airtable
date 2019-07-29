@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from "gatsby";
 import Layout from "../components/layout"
-import createHtml from "../utility/createHtml"
+import createEventsAndSeriesHtml from '../utility/createEventsAndSeriesHtml';
 
 export const pageQuery = graphql`
   {
@@ -33,10 +33,10 @@ export const pageQuery = graphql`
 
 const EventsAndSeriesPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createHtml(node.data))
+  const myhtml = nodes.map(node => createEventsAndSeriesHtml(node.data))
   return (
     <>
-      <Layout>
+      <Layout fluid={null} fullheight={false}>
         <div>
           {myhtml}
         </div>

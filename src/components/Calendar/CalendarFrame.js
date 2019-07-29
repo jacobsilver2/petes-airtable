@@ -6,7 +6,7 @@ import getRandomImage from '../../utility/getRandomImage';
 import formatCalendarDate from '../../utility/formatCalendarDate';
 import formatCalendarTime from '../../utility/formatCalendarTime';
 
-const CalendarFrame = ({ data: {allAirtable, allFile} }) => {
+const CalendarFrame = ({ data: {allAirtable, allFile}, shows }) => {
   let prevDate = '';
   const renderedEvents = [];
   allAirtable.nodes.forEach(event => {
@@ -20,6 +20,7 @@ const CalendarFrame = ({ data: {allAirtable, allFile} }) => {
         blurb={event.data.Act_Blurb}
         website={event.data.Act_Website}
         id={event.data.id}
+        key={event.data.id}
       />
     renderedEvents.push(theEvent);
     prevDate = event.data.Date;

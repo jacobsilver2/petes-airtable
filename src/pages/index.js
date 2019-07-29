@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from '../utility/createHtml';
+import TodayAtPetes from '../components/TodayAtPetes';
 
 export const pageQuery = graphql`
   {
@@ -46,6 +47,7 @@ const IndexPage = ({ data }) => {
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={true} >
         <div>
+          <TodayAtPetes />
           {myhtml}
         </div>
       </Layout>

@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createHtml from "../utility/createHtml"
+import createEventsAndSeriesHtml from '../utility/createEventsAndSeriesHtml';
 import BookingForm from '../components/Forms/BookingForm';
 
 export const pageQuery = graphql`
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
 
 const BookingPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createHtml(node.data))
+  const myhtml = nodes.map(node => createEventsAndSeriesHtml(node.data))
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>

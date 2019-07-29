@@ -29,7 +29,7 @@ module.exports = {
       
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API, 
-        concurrency: 100,
+        concurrency: 5,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -96,6 +96,10 @@ module.exports = {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `reading series`,
           },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: 'menu',
+          }
         ]
       }
     },
@@ -109,6 +113,12 @@ module.exports = {
             tableName: `Events`,
             tableView: `Future`,
             mapping: { 'Act Image': `fileNode` },
+          },
+          {
+            baseId: `app4Eb0X39KtGToOS`,
+            tableName: `Events`,
+            tableView: `TodayGrid`,
+            queryName: `TodayGrid`
           },
         ]
       }
