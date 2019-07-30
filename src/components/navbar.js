@@ -8,8 +8,9 @@ const Navbar = ({ siteTitle, navItems }) => {
 
   function toggleHamburger(e) {
     e.preventDefault();
-    setActive(!active);
-    active ? setNavBarActiveClass('is-active') : setNavBarActiveClass('')
+    // setActive(!active);
+    // active ? setNavBarActiveClass('is-active') : setNavBarActiveClass('')
+    navBarActiveClass === 'is-active' ? setNavBarActiveClass('') : setNavBarActiveClass('is-active')
   }
 
   return (
