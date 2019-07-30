@@ -6,7 +6,8 @@ const Navbar = ({ siteTitle, navItems }) => {
   const  [active, setActive]  = useState(false);
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
-  function toggleHamburger() {
+  function toggleHamburger(e) {
+    e.preventDefault();
     setActive(!active);
     active ? setNavBarActiveClass('is-active') : setNavBarActiveClass('')
   }
@@ -15,7 +16,7 @@ const Navbar = ({ siteTitle, navItems }) => {
     <nav className="navbar is-transparent is-fixed-top" role="navigation" aria-label="main-navigation">
     <div className="container">
         {/* Hamburger Menu */}
-        <div className={`navbar-burger burger ${navBarActiveClass}`} data-target="navMenu" onClick={() => toggleHamburger()}>
+        <div className={`navbar-burger burger ${navBarActiveClass}`} data-target="navMenu" onClick={(e) => toggleHamburger(e)}>
           <span />
           <span />
           <span />
