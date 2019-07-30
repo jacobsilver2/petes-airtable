@@ -132,7 +132,7 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <StyledVideoContainer>
-            <iframe src={data.website} width="853" height="480" />
+            <iframe title={data.Name} src={data.website} width="853" height="480" />
           </StyledVideoContainer>
         </div>
       )

@@ -65,9 +65,6 @@ const PhotoshootForm = () => {
       <label className="label is-small has-text-white">Phone</label>
         <div className="field is-expanded">
           <div className="field has-addons">
-            <p className="control">
-              <a className="button is-static">+1</a>
-            </p>
             <p className="control is-expanded">
               <input
                 className="input"

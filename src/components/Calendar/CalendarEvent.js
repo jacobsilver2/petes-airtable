@@ -22,12 +22,12 @@ export default function CalendarEvent({isFirstEvent, date, time, image, title, b
       <StyledBlurb>
         <Truncate
           lines={!expanded && 3}
-          ellipsis={(<p><a style={{color: '#ffff04'}} href='#' onClick={(e) => toggleLines(e)}>Read More</a></p>)}
+          ellipsis={(<p style={{color: '#ffff04', cursor: 'pointer'}} onClick={(e) => toggleLines(e)}>Read More</p>)}
           onTruncate={e => handleTruncate(e)}
         > 
           {blurb}
         </Truncate>
-        {!truncated && expanded && (<p> <a style={{color: '#ffff04'}} href='#' onClick={e => toggleLines(e)}>Read Less</a> </p>)}
+        {!truncated && expanded && (<p style={{color: '#ffff04', cursor: 'pointer'}} onClick={e => toggleLines(e)}>Read Less </p>)}
       </StyledBlurb>
   )
 

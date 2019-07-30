@@ -47,5 +47,9 @@ export default function createEventsAndSeriesHtml(data) {
         </div>
       </div>
       )
+    default: 
+        return (
+          <div></div>
+        )
   }
 }

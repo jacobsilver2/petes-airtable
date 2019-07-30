@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import filterNavItems from '../utility/filterNavItems';
 
 const Navbar = ({ siteTitle, navItems }) => {
-  const  [active, setActive]  = useState(false);
+  // const  [active, setActive]  = useState(false);
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
   function toggleHamburger(e) {
