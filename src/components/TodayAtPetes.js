@@ -27,7 +27,7 @@ export default () => (
       ))
       return (
         <>
-          <h1 style={{fontSize: '1.5em', marginBottom: '0.5em'}} className="has-text-danger has-text-centered has-text-weight-bold">TONIGHT AT PETE'S</h1>
+          <h1 style={{fontSize: '2em', marginBottom: '0.5em'}} className="has-text-danger has-text-centered has-text-weight-bold">TONIGHT AT PETE'S</h1>
           {html}
         </>
       )
