@@ -35,7 +35,7 @@ export default function createEventsAndSeriesHtml(data) {
           return (
             <div className="container" key={data.id}>
               <div className="box">
-                 <p style={{ textAlign: "left", marginTop: '0', marginBottom: '-2rem' }}><a href={data.website}>{data.Content}</a></p> 
+                 <p style={{ textAlign: "left", marginTop: '0', marginBottom: '-2rem' }}><a target="_blank" href={data.website}>{data.Content}</a></p> 
               </div>
             </div>
           )

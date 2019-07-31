@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from '../utility/createHtml';
 import TodayAtPetes from '../components/TodayAtPetes';
+import Button from '../components/Button';
 
 export const pageQuery = graphql`
   {
@@ -47,6 +48,7 @@ const IndexPage = ({ data }) => {
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={true} >
         <div>
+          <Button title="FULL CALENDAR" link="/calendar"/>
           <TodayAtPetes />
           {myhtml}
         </div>

@@ -3,7 +3,7 @@ import { StyledTitle, StyledLink } from './CalendarStyles';
 
 export function renderTitleWithLink(title, link, time) {
   return (
-    <StyledLink href={link}>
+    <StyledLink target="_blank" href={link}>
       <StyledTitle>{time} {title}</StyledTitle>
     </StyledLink>);
 }
