@@ -28,6 +28,13 @@ export const pageQuery = graphql`
         }
       }
     }
+    file(relativePath: { eq: "events.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2048) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `
 
@@ -36,7 +43,7 @@ const EventsAndSeriesPage = ({ data }) => {
   const myhtml = nodes.map(node => createEventsAndSeriesHtml(node.data))
   return (
     <>
-      <Layout fluid={null} fullheight={false}>
+      <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
         <div>
           {myhtml}
         </div>

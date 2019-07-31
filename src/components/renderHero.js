@@ -1,5 +1,17 @@
 import React from "react"
 import Img from "gatsby-image"
+import styled from 'styled-components';
+
+const StyledImg = styled(Img)`
+  /* margin: 1rem; */
+
+  @media screen and (min-height: 751px) {
+    max-height: calc(25vh);
+  }
+  @media screen and (max-height: 750px) {
+    max-height: 70vh;
+  }
+`;
 
 export function renderHero(fluid, fullheight) {
   if (fluid && fullheight) {
@@ -12,7 +24,7 @@ export function renderHero(fluid, fullheight) {
   if (fluid) {
     return (
       <section className="hero">
-        <Img className="hero-body" fluid={fluid} />
+        <StyledImg className="hero-body" fluid={fluid} imgStyle={{ objectFit: 'cover' }}/>
       </section>
     )
   }

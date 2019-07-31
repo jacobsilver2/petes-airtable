@@ -30,7 +30,7 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "parties.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
+        fluid(maxWidth: 960) {
           ...GatsbyImageSharpFluid
         }
       }

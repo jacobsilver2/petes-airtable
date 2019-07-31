@@ -87,7 +87,7 @@ const ContactPage = ({ data }) => {
   }
   return (
     <>
-      <Layout fluid={null} fullheight={false}>
+      <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
         <div className="tabs is-centered">
           <ul className="">{mappedListItems}</ul>
         </div>
