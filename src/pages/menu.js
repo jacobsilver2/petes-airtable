@@ -19,6 +19,13 @@ export const pageQuery = graphql`
         }
       }
     }
+    file(relativePath: { eq: "menu.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2048) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `
 
