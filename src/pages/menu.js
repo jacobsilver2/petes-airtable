@@ -46,6 +46,6 @@ const MenuPage = ({ data }) => {
 export const frontmatter = {
   title: "Menu",
   url: '/menu',
-  navOrder: 10
+  navOrder: 9
 }
 export default MenuPage;

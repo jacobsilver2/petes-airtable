@@ -100,6 +100,6 @@ const ContactPage = ({ data }) => {
 export const frontmatter = {
   title: "Contact",
   url: "/contact",
-  navOrder: 11,
+  navOrder: 10,
 }
 export default ContactPage

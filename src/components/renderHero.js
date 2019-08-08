@@ -6,7 +6,7 @@ const StyledImg = styled(Img)`
   /* margin: 1rem; */
 
   @media screen and (min-height: 751px) {
-    max-height: calc(25vh);
+    max-height: calc(50vh);
   }
   @media screen and (max-height: 750px) {
     max-height: 70vh;

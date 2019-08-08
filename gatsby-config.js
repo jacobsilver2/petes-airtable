@@ -63,11 +63,6 @@ module.exports = {
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `press`,
-            mapping: { 'Attachments': `fileNode` },
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
             tableName: `gallery`,
             mapping: { 'Attachments': `fileNode` },
           },
