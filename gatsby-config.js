@@ -10,6 +10,10 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/staff/*`] },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
           name: `pages`,
@@ -148,8 +152,5 @@ module.exports = {
         icon: `src/images/favicon.jpg`, 
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
