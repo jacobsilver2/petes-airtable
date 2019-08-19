@@ -32,7 +32,7 @@ class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/staff/profile`)
+            navigate(`/staff/sound-form`)
           }}
         >
           <div className="field">

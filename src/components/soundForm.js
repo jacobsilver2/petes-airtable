@@ -33,6 +33,7 @@ const SoundForm = props => {
           render={data => {
             const cards = data.allAirtable.edges.map(edge => (
               <SoundCard 
+                key={edge.node.data.id}
                 name={edge.node.data.Name}
                 time={formatCalendarTime(edge.node.data.Date)}
                 id={edge.node.data.id}
