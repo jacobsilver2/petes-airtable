@@ -33,7 +33,7 @@ module.exports = {
       
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API, 
-        concurrency: 5,
+        concurrency: 10,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -117,7 +117,11 @@ module.exports = {
             baseId: `app4Eb0X39KtGToOS`,
             tableName: `Events`,
             tableView: `TodayGrid`,
-            queryName: `TodayGrid`
+            queryName: `TodayGrid`,
+            defaultValues: {
+              Report: '',
+              Draw: 0
+            }
           },
         ]
       }

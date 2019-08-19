@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { Router } from "@reach/router"
 import Login from "../components/login"
-import Profile from "../components/profile"
+import SoundForm from '../components/soundForm';
 import PrivateRoute from "../components/privateRoute"
 
 const StaffPage = props => {
@@ -10,7 +10,7 @@ const StaffPage = props => {
     <>
       <Layout fluid={null} fullheight={false}>
         <Router>
-          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/sound-form" component={SoundForm} />
           <Login path="/login" />
         </Router>
       </Layout>

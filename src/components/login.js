@@ -21,34 +21,58 @@ class Login extends React.Component {
 
   render() {
     if (isLoggedIn()) {
-      navigate(`/staff/profile`)
+      navigate(`/staff/sound-form`)
     }
 
     return (
-      <>
+      <div className="container">
         <h1>Log in</h1>
         <form
+          name="staff login form"
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
             navigate(`/staff/profile`)
           }}
         >
-          <label>
-            Username
-            <input type="text" name="username" onChange={this.handleUpdate} />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
-          </label>
-          <input type="submit" value="Log In" />
+          <div className="field">
+            <label className="label is-small has-text-white">Username</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  type="text"
+                  name="username"
+                  onChange={this.handleUpdate}
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Password</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  type="password"
+                  name="password"
+                  onChange={this.handleUpdate}
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <button
+                type="submit"
+                className="button is-link has-background-danger"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
         </form>
-      </>
+      </div>
     )
   }
 }
