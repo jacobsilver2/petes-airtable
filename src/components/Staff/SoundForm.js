@@ -1,21 +1,30 @@
 import React, { useState } from "react"
-import Airtable from 'airtable';
-const base = new Airtable({apiKey: process.env.GATSBY_AIRTABLE_API}).base('app4Eb0X39KtGToOS');
+// import Airtable from 'airtable';
+// const base = new Airtable({apiKey: process.env.GATSBY_AIRTABLE_API}).base('app4Eb0X39KtGToOS');
 
-const SoundCard = ({ name, time, id, Report, Draw }) => {
+const SoundCard = ({ name, time, id, Report, Draw, handleSubmit }) => {
   const [report, setReport] = useState("")
   const [draw, setDraw] = useState(0)
+  const [buttonName, setButtonName] = useState('Submit')
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    base('Events').update(id, {
-      Report: report,
-      Draw: draw
-    })
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   base('Events').update(id, {
+  //     Report: report,
+  //     Draw: draw
+  //   }, function (err, record) {
+  //     if (err) {
+  //       console.error(err);
+  //       return;
+  //     }
+  //   },
+  //   setButtonName('Successfully Submitted')
+  //   )};
 
   return (
-    <div className="container">
+
+    
+    <div className="container" style={{marginBottom: '5em'}}>
       <form
         name="sound engineer submission"
         onSubmit={e => handleSubmit(e)}
@@ -38,7 +47,7 @@ const SoundCard = ({ name, time, id, Report, Draw }) => {
             </div>
           </div>
         </fieldset>
-        
+
         <fieldset disabled>
           <div className="field">
             <label className="label is-large has-text-white">Act Name</label>
@@ -99,7 +108,7 @@ const SoundCard = ({ name, time, id, Report, Draw }) => {
         <div className="field">
         <div className="control">
           <button type="submit" className="button is-link has-background-danger">
-            Submit
+            {buttonName}
           </button>
         </div>
       </div>
@@ -111,19 +120,3 @@ const SoundCard = ({ name, time, id, Report, Draw }) => {
 
 export default SoundCard
 
-// <div className="card">
-//   <header className="card-header">
-//     <p className="card-header-title">
-//       {time} - {name}
-//     </p>
-//   </header>
-//   <div className="card-content">
-//     <div className="content">Report: {Report}</div>
-//     <br />
-//     <div className="content">Draw: {Draw}</div>
-//   </div>
-//   <footer className="card-footer">
-//     <button className="card-footer-item">Save</button>
-//     <button className="card-footer-item">Edit</button>
-//   </footer>
-// </div>
