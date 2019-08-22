@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import formatCalendarTime from "../../utility/formatCalendarTime"
+import formatCalendarDate from '../../utility/formatCalendarDate'
 import SoundCard from './SoundCard';
 
 class SoundClass extends Component {
@@ -24,6 +25,7 @@ class SoundClass extends Component {
         key={event.id}
         name={event.fields.Name}
         time={formatCalendarTime(event.fields.Date)}
+        date={formatCalendarDate(event.fields.Date)}
         id={event.id}
         initialReport={event.fields.Report}
         initialDraw={event.fields.Draw}

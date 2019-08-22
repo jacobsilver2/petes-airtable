@@ -4,10 +4,11 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "app4Eb0X39KtGToOS"
 )
 
-const SoundCard = ({ name, time, id, initialReport, initialDraw }) => {
+const SoundCard = ({ name, time, date, id, initialReport, initialDraw }) => {
   const [report, setReport] = useState("")
   const [draw, setDraw] = useState()
   const [buttonName, setButtonName] = useState("Submit")
+  const [buttonStyle, setButtonStyle] = useState('has-background-danger')
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -23,15 +24,16 @@ const SoundCard = ({ name, time, id, initialReport, initialDraw }) => {
           return
         }
       },
-      setButtonName("Successfully Submitted")
+      setButtonName("Successfully Submitted"),
+      setButtonStyle('is-success')
     )
   }
 
   return (
     <div className="card">
       <header className="card-header">
-        <p className="card-header-title">
-          {time} - {name}
+        <p className="card-header-title is-centered">
+          {date} {time} - {name}
         </p>
       </header>
       <div className="card-content">
@@ -42,26 +44,23 @@ const SoundCard = ({ name, time, id, initialReport, initialDraw }) => {
               onSubmit={e => handleSubmit(e)}
               method="POST"
             >
-              <label className="label is-large has-text-white">Report</label>
-
+              <label className="label has-text-white">Report</label>
               <div className="field">
                 <p className="control is-expanded">
-                  <input
-                    className="input"
-                    type="text"
-                    name="name"
-                    value={report}
-                    placeholder={initialReport}
-                    onChange={e => setReport(e.target.value)}
-                    required
-                  />
+                <textarea 
+                  className="textarea" 
+                  name="report" 
+                  value={report}
+                  placeholder={initialReport}
+                  onChange={e => setReport(e.target.value)}
+                />
                 </p>
               </div>
 
               <br />
 
               <div className="field">
-                <label className="label is-large has-text-white">Draw</label>
+                <label className="label has-text-white">Draw</label>
                 <div className="field">
                   <p className="control is-expanded">
                     <input
@@ -79,7 +78,7 @@ const SoundCard = ({ name, time, id, initialReport, initialDraw }) => {
 
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className={`button is-link is-fullwidth ${buttonStyle}`}
                 onSubmit={e => handleSubmit(e)}
               >
                 {buttonName}
@@ -88,6 +87,7 @@ const SoundCard = ({ name, time, id, initialReport, initialDraw }) => {
           </div>
         </div>
       </div>
+      <hr />
     </div>
   )
 }
