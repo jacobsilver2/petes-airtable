@@ -6,24 +6,25 @@ import getRandomImage from '../../utility/getRandomImage';
 import formatCalendarDate from '../../utility/formatCalendarDate';
 import formatCalendarTime from '../../utility/formatCalendarTime';
 
-const CalendarFrame = ({ data: {allAirtable, allFile} }) => {
+const CalendarFrame = ({ events, data: {allFile} }) => {
   let prevDate = '';
   const renderedEvents = [];
-  allAirtable.nodes.forEach(event => {
+  events.forEach(event => {
+    console.log(event)
     const theEvent = 
       <CalendarEvent 
-        isFirstEvent={!moment(event.data.Date).isSame(prevDate, 'day')}
-        date={formatCalendarDate(event.data.Date)}
-        time={formatCalendarTime(event.data.Date)}
-        image={event.data.Act_Image ? event.data.Act_Image.localFiles[0].childImageSharp.fluid : getRandomImage(allFile.nodes)}
-        title={event.data.Name}
-        blurb={event.data.Act_Blurb}
-        website={event.data.Act_Website}
-        id={event.data.id}
-        key={event.data.id}
+        isFirstEvent={!moment(event.fields.Date).isSame(prevDate, 'day')}
+        date={formatCalendarDate(event.fields.Date)}
+        time={formatCalendarTime(event.fields.Date)}
+        image={event.fields['Act Image'] ? event.fields['Act Image'][0].url : getRandomImage(allFile.nodes)}
+        title={event.fields.Name}
+        blurb={event.fields['Act Blurb']}
+        website={event.fields['Act Website']}
+        id={event.id}
+        key={event.id}
       />
     renderedEvents.push(theEvent);
-    prevDate = event.data.Date;
+    prevDate = event.fields.Date;
   })
 
   return (
