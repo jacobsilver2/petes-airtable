@@ -5,6 +5,6 @@ import ImageZoom from 'react-medium-image-zoom';
 export function renderImage(image) {
   return (
     <StyledImage className="media-left">
-      <ImageZoom image={{ src: image.src }} zoomImage={{ src: image.originalImg }} />
+      <ImageZoom image={{ src: image }} zoomImage={{ src: image }} />
     </StyledImage>);
 }
