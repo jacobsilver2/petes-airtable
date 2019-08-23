@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import CalendarFrame from '../components/Calendar/CalendarFrame';
-import getEvents from '../services/getCalendarEvents';
+import {getAllEvents} from '../services/getCalendarEvents';
 
 
 export const pageQuery = graphql`
@@ -27,7 +27,7 @@ class calendar extends Component {
 
   componentDidMount() {
     new Promise((resolve, reject) => {
-      getEvents(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=Future`, [], resolve, reject)
+      getAllEvents(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=Future`, [], resolve, reject)
     })
       .then(response => {
         this.setState({events: response})
