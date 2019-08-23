@@ -1,11 +1,12 @@
 import axios from 'axios';
+import {airtableEventsUrl} from '../utility/airtableUrls';
 
 export const getAllEvents = (url, events, resolve, reject) => {
   axios.get(url)
     .then(response => {
       const retrievedEvents = events.concat(response.data.records)
       if (response.data.offset) {
-        getAllEvents(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=Future&offset=${response.data.offset}`, retrievedEvents, resolve, reject)
+        getAllEvents(`${airtableEventsUrl}&view=Future&offset=${response.data.offset}`, retrievedEvents, resolve, reject)
       } else {
         resolve(retrievedEvents)
       }

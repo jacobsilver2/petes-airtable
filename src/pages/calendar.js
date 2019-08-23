@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import CalendarFrame from '../components/Calendar/CalendarFrame';
 import {getAllEvents} from '../services/getCalendarEvents';
+import {airtableEventsUrl} from '../utility/airtableUrls';
 
 
 export const pageQuery = graphql`
@@ -27,7 +28,7 @@ class calendar extends Component {
 
   componentDidMount() {
     new Promise((resolve, reject) => {
-      getAllEvents(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=Future`, [], resolve, reject)
+      getAllEvents(`${airtableEventsUrl}&view=Future`, [], resolve, reject)
     })
       .then(response => {
         this.setState({events: response})
@@ -59,32 +60,6 @@ export const frontmatter = {
 
 export default calendar;
 
-      // const event = {
-      //   title: data.fields.Name,
-      //   date: data.fields.Date,
-      //   image: data.fields['Act Image'][0].url,
-      //   blurb: data.fields['Act Blurb'][0],
-      //   website: data.fields['Act Website'][0],
-      //   id: data.id
-      // }
-
-
-// base('Events').select({view: 'Future'})
-// .eachPage(
-//   (events, fetchNextPage) => {
-//     events.forEach(event => {
-//       const theEvent = {
-//         date: event.fields.Date,
-//         image: event.fields['Act Image'] ? event.fields['Act Image'][0].url : null,
-//         title: event.fields.Name,
-//         blurb: event.fields['Act Blurb'] ? event.fields['Act Blurb'][0] : null,
-//         website: event.fields['Act Website'] ? event.fields['Act Website'][0] : null,
-//         id: event.id
-//       }
-//       this.state.events.push(theEvent)
-//     })
-//     fetchNextPage()
-//   })
   
 
 
