@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import CalendarFrame from '../components/Calendar/CalendarFrame';
-// triggering a github redeploy
 export const pageQuery = graphql`
   {
     allAirtable(
