@@ -10,7 +10,6 @@ const CalendarFrame = ({ events, data: {allFile} }) => {
   let prevDate = '';
   const renderedEvents = [];
   events.forEach(event => {
-    console.log(event)
     const theEvent = 
       <CalendarEvent 
         isFirstEvent={!moment(event.fields.Date).isSame(prevDate, 'day')}
@@ -18,13 +17,13 @@ const CalendarFrame = ({ events, data: {allFile} }) => {
         time={formatCalendarTime(event.fields.Date)}
         image={event.fields['Act Image'] ? event.fields['Act Image'][0].url : getRandomImage(allFile.nodes)}
         title={event.fields.Name}
-        blurb={event.fields['Act Blurb']}
-        website={event.fields['Act Website']}
+        blurb={event.fields['Act Blurb'] ? event.fields['Act Blurb'][0] : null}
+        website={event.fields['Act Website'] ? event.fields['Act Website'][0] : null}
         id={event.id}
         key={event.id}
       />
     renderedEvents.push(theEvent);
-    prevDate = event.fields.Date;
+    prevDate = event.fields.Date
   })
 
   return (
