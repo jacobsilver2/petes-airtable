@@ -32,7 +32,7 @@ const SoundCard = ({ name, time, date, id, initialReport, initialDraw }) => {
   return (
     <div className="card">
       <header className="card-header">
-        <p className="card-header-title is-centered">
+        <p className="is-size-3 has-text-danger has-text-centered">
           {date} {time} - {name}
         </p>
       </header>

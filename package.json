@@ -36,6 +36,7 @@
     "react-helmet": "^5.2.1",
     "react-iframe": "^1.8.0",
     "react-image-gallery": "^0.8.18",
+    "react-loader-spinner": "^3.1.2",
     "react-medium-image-zoom": "^3.1.1",
     "react-player": "^1.11.1",
     "react-read-more-less": "^0.1.6",
