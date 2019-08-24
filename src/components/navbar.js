@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types"
-import { Link, navigate } from "gatsby"
-import { getUser, isLoggedIn, logout } from "../services/auth"
+// import { Link, navigate } from "gatsby"
+// import { getUser, isLoggedIn, logout } from "../services/auth"
 import filterNavItems from '../utility/filterNavItems';
 
 
@@ -9,12 +9,12 @@ const Navbar = ({ siteTitle, navItems }) => {
   // const  [active, setActive]  = useState(false);
   const [navBarActiveClass, setNavBarActiveClass] = useState('');
 
-  const content = { message: "", login: true }
-  if (isLoggedIn()) {
-    content.message = `Hello, ${getUser().name}`
-  } else {
-    content.message = "You are not logged in"
-  }
+  // const content = { message: "", login: true }
+  // if (isLoggedIn()) {
+  //   content.message = `Hello, ${getUser().name}`
+  // } else {
+  //   content.message = "You are not logged in"
+  // }
 
   function toggleHamburger(e) {
     e.preventDefault();

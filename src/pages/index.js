@@ -1,6 +1,6 @@
 import React from "react"
-import { Link } from 'gatsby';
-import { getUser, isLoggedIn } from '../services/auth';
+// import { Link } from 'gatsby';
+// import { getUser, isLoggedIn } from '../services/auth';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from '../utility/createHtml';
