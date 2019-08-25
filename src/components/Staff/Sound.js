@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import formatCalendarTime from "../../utility/formatCalendarTime"
 import formatCalendarDate from '../../utility/formatCalendarDate'
 import SoundCard from './SoundCard';
+import { airtableEventsUrl } from '../../utility/airtableUrls';
 
 class SoundClass extends Component {
   state = { 
@@ -9,7 +10,7 @@ class SoundClass extends Component {
    }
 
    componentDidMount() {
-    fetch(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=TodayGrid`)
+    fetch(`${airtableEventsUrl}&view=TodayGrid`)
     .then((resp) => resp.json())
     .then(data => {
        this.setState({ events: data.records });
