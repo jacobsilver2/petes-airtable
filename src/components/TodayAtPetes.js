@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 import {getTodaysEvents} from '../services/getCalendarEvents';
-import formatCalendarTime from "../utility/formatCalendarTime"
-
+import formatCalendarTime from "../utility/formatCalendarTime";
+import { airtableEventsUrl } from '../utility/airtableUrls';
 class TodayAtPetes extends Component {
   state = { events: [] }
   componentDidMount() {
     new Promise((resolve, reject) => {
-      getTodaysEvents(`https://api.airtable.com/v0/app4Eb0X39KtGToOS/Events?api_key=${process.env.GATSBY_AIRTABLE_API}&view=Today`, resolve, reject)
+      getTodaysEvents(`${airtableEventsUrl}&view=Today`, resolve, reject)
     })
       .then(response => {
         this.setState({events: response.data.records})

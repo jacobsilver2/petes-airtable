@@ -21,17 +21,11 @@ const StaffPage = props => {
   return (
     <>
       <Layout fluid={null} fullheight={false}>
-        <nav className="navbar">
           <div className="container">
-            <div className="navbar-menu">
-              <div className="navbar-start has-text-centered">
               <Link to="/staff/">Staff Home</Link>{" "}
               <Link to="/staff/sound-form">Sound Form</Link>{" "}
               <a href="#logout" onClick={e => { logout(); e.preventDefault() }} > Log Out </a>
-              </div>
-            </div>
           </div>
-        </nav>
         <Router>
           <StaffHome path="/" user={user} />
           <Sound path="/sound-form" />
