@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import { Router } from "@reach/router"
 import { login, isAuthenticated, getProfile, logout } from "../services/auth"

@@ -3,8 +3,6 @@ import Airtable from 'airtable';
 import { navigate } from 'gatsby';
 const base = new Airtable({apiKey: process.env.GATSBY_AIRTABLE_API}).base('appNuB0fX4vQbOqdy');
 
-
-
 const BookingForm = () => {
   const [name, setName] = useState('');
   const [actName, setActName] = useState('');
