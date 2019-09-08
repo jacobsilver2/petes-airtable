@@ -15,16 +15,17 @@ const ReportForm = ({ date, id, initialNote }) => {
     base("Logbook").update(
       id,
       {
-        Notes: note,
-        Staff: ["rechSv8MDgIA3f7U4"],
+        "Notes": note,
+        "Staff": ["rechSv8MDgIA3f7U4"],
       },
       function(err, record) {
         if (err) {
           console.error(err)
           return
         }
-        setButtonName("Successfully Submitted"), setButtonStyle("is-success")
-      }
+      },
+      setButtonName("Successfully Submitted"), 
+      setButtonStyle("is-success")
     )
   }
 

@@ -33,7 +33,7 @@ module.exports = {
       
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API, 
-        concurrency: 10,
+        concurrency: 5,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -121,6 +121,14 @@ module.exports = {
             defaultValues: {
               Report: '',
               Draw: 0
+            }
+          },
+          {
+            baseId: `app4Eb0X39KtGToOS`,
+            tableName: `Logbook`,
+            tableView: `LogbookGrid`,
+            defaultValues: {
+              Notes: '',
             }
           },
         ]
