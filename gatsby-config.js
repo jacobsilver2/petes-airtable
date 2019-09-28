@@ -1,10 +1,10 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
   siteMetadata: {
-    title: "Pete\'s Candy Store",
+    title: "Pete's Candy Store",
     description: `Pete\'s Candy Store\s new website!`,
     author: `Jacob Silver`,
   },
@@ -16,64 +16,64 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-          name: `pages`,
-          path: `${__dirname}/src/pages/`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-          name: `images`,
-          path: `${__dirname}/src/images/`,
+        name: `images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-airtable`,
-      
+
       options: {
-        apiKey: process.env.GATSBY_AIRTABLE_API, 
-        concurrency: 10,
+        apiKey: process.env.GATSBY_AIRTABLE_API,
+        concurrency: 5,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `home`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `events and series`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `photo shoots`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `parties`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `booking`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `history`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `gallery`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `contact`,
-            mapping: { 'Attachments': `fileNode` },
+            mapping: { Attachments: `fileNode` },
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -97,10 +97,10 @@ module.exports = {
           },
           {
             baseId: `appNuB0fX4vQbOqdy`,
-            tableName: 'menu',
-          }
-        ]
-      }
+            tableName: "menu",
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-source-airtable`,
@@ -111,7 +111,7 @@ module.exports = {
             baseId: `app4Eb0X39KtGToOS`,
             tableName: `Events`,
             tableView: `Future`,
-            mapping: { 'Act Image': `fileNode` },
+            mapping: { "Act Image": `fileNode` },
           },
           {
             baseId: `app4Eb0X39KtGToOS`,
@@ -119,34 +119,34 @@ module.exports = {
             tableView: `TodayGrid`,
             queryName: `TodayGrid`,
             defaultValues: {
-              Report: '',
-              Draw: 0
-            }
+              Report: "",
+              Draw: 0,
+            },
           },
           {
             baseId: `app4Eb0X39KtGToOS`,
             tableName: `Logbook`,
             tableView: `LogbookGrid`,
             defaultValues: {
-              Notes: '',
-            }
+              Notes: "",
+            },
           },
-        ]
-      }
+        ],
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               linkImagesToOriginal: false,
             },
           },
           `gatsby-remark-images-zoom`,
-        ]
-      }
+        ],
+      },
     },
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-javascript-frontmatter",
@@ -161,7 +161,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.jpg`, 
+        icon: `src/images/favicon.jpg`,
       },
     },
   ],
