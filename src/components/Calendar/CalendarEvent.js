@@ -1,9 +1,18 @@
 import React, { useState } from "react"
+import ReactPlayer from "react-player"
 import { Event, StyledDate, StyledBlurb } from "./CalendarStyles"
 import Truncate from "react-truncate"
 import { renderTitleWithLink } from "./renderTitleWithLink"
 import { renderImage } from "./renderImage"
 import { renderTitleWithoutLink } from "./renderTitleWithoutLink"
+import styled from "styled-components"
+
+const PlayerWrapper = styled.div`
+  .player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  }
+`
 
 export default function CalendarEvent({
   isFirstEvent,
@@ -14,7 +23,6 @@ export default function CalendarEvent({
   blurb,
   website,
   soundcloud,
-  bandcamp,
   id,
 }) {
   const [expanded, setExpanded] = useState(false)
@@ -25,7 +33,6 @@ export default function CalendarEvent({
     setExpanded(!expanded)
   }
   const handleTruncate = isTruncated => {
-    // if (truncated !== isTruncated) { setTruncated(truncated) }
     truncated !== isTruncated && setTruncated(truncated)
   }
 
@@ -56,14 +63,28 @@ export default function CalendarEvent({
     </StyledBlurb>
   )
 
-  let content = null
-  if (soundcloud) {
-    content = soundcloud
-  } else if (bandcamp) {
-    content = bandcamp
-  } else {
-    content = renderBlurb(blurb)
-  }
+  // const content = soundcloud ? (
+  //   <PlayerWrapper>
+  //     <ReactPlayer
+  //       url={soundcloud}
+  //       config={{
+  //         soundcloud: {
+  //           options: {
+  //             show_user: "false",
+  //             sharing: "false",
+  //             download: "false",
+  //             show_artwork: "false",
+  //             color: "#fcec03",
+  //           },
+  //         },
+  //       }}
+  //     />
+  //   </PlayerWrapper>
+  // ) : (
+  //   renderBlurb(blurb)
+  // )
+
+  const content = renderBlurb(blurb)
 
   return (
     <Event key={id}>

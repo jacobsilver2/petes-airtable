@@ -2,7 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import ImageGallery from 'react-image-gallery';
+import ImageGallery from "react-image-gallery"
 
 export const StyledVideoContainer = styled.div`
   position: relative;
@@ -27,48 +27,67 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <section className="section">
-          <div key={data.id} className="level">
-            <div className="level-item">
-              <Link
-                to={data.website}
-                className="button is-large is-primary is-outlined is-rounded is-inverted"
-              >
-                {data.Content}
-              </Link>
+            <div key={data.id} className="level">
+              <div className="level-item">
+                <Link
+                  to={data.website}
+                  className="button is-large is-primary is-outlined is-rounded is-inverted"
+                >
+                  {data.Content}
+                </Link>
+              </div>
             </div>
-          </div>
           </section>
         </div>
       )
     case "image":
       if (data.website) {
+        if (data.website.includes("http")) {
+          return (
+            <div className="container" key={data.id}>
+              <section className="section">
+                <a href={data.website} className="image" target="_blank">
+                  <Img
+                    fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                  />
+                </a>
+              </section>
+            </div>
+          )
+        }
         return (
           <div className="container" key={data.id}>
-          <section className="section">
-            <Link to={data.website} className="image">
-              <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
-            </Link> 
-          </section>
-        </div>
+            <section className="section">
+              <Link to={data.website} className="image">
+                <Img
+                  fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                />
+              </Link>
+            </section>
+          </div>
         )
       }
       if (data.email) {
-      const emailWithMailto = `mailto:${data.email}`
-       return (
-        <div className="container" key={data.id}>
-        <section className="section">
-          <a href={emailWithMailto} className="image">
-            <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
-          </a>
-        </section>
-      </div>
-       ) 
+        const emailWithMailto = `mailto:${data.email}`
+        return (
+          <div className="container" key={data.id}>
+            <section className="section">
+              <a href={emailWithMailto} className="image">
+                <Img
+                  fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                />
+              </a>
+            </section>
+          </div>
+        )
       }
       return (
         <div className="container" key={data.id}>
           <section className="section">
             <figure className="image">
-              <Img fluid={data.Attachments.localFiles[0].childImageSharp.fluid} />
+              <Img
+                fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+              />
             </figure>
           </section>
         </div>
@@ -78,7 +97,10 @@ export default function createHtml(data) {
         return (
           <div className="container" key={data.id}>
             <div className="box">
-              <a href={data.website}> <p style={{ textAlign: "center" }}>{data.Content}</p> </a>
+              <a href={data.website}>
+                {" "}
+                <p style={{ textAlign: "center" }}>{data.Content}</p>{" "}
+              </a>
             </div>
           </div>
         )
@@ -88,7 +110,10 @@ export default function createHtml(data) {
         return (
           <div className="container" key={data.id}>
             <div className="box">
-              <a href={emailWithMailto}> <p style={{ textAlign: "center" }}>{data.Content}</p> </a>
+              <a href={emailWithMailto}>
+                {" "}
+                <p style={{ textAlign: "center" }}>{data.Content}</p>{" "}
+              </a>
             </div>
           </div>
         )
@@ -132,18 +157,23 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <StyledVideoContainer>
-            <iframe title={data.Name} src={data.website} width="853" height="480" />
+            <iframe
+              title={data.Name}
+              src={data.website}
+              width="853"
+              height="480"
+            />
           </StyledVideoContainer>
         </div>
       )
     case "gallery":
-      const arrayforGallery = [];
+      const arrayforGallery = []
       data.Attachments.localFiles.forEach(file => {
-        arrayforGallery.push({original: file.childImageSharp.fluid.src})
+        arrayforGallery.push({ original: file.childImageSharp.fluid.src })
       })
       return (
         <div className="container" key={data.id}>
-          <ImageGallery items={arrayforGallery}/>
+          <ImageGallery items={arrayforGallery} />
         </div>
       )
     default:

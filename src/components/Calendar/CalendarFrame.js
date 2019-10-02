@@ -9,7 +9,6 @@ import formatCalendarTime from "../../utility/formatCalendarTime"
 const CalendarFrame = ({ events, data: { allFile } }) => {
   let prevDate = ""
   const renderedEvents = []
-  console.log(events)
   events.forEach(event => {
     const theEvent = (
       <CalendarEvent
@@ -30,9 +29,6 @@ const CalendarFrame = ({ events, data: { allFile } }) => {
           event.fields["Act Soundcloud"]
             ? event.fields["Act Soundcloud"][0]
             : null
-        }
-        bandcamp={
-          event.fields["Act Bandcamp"] ? event.fields["Act Bandcamp"][0] : null
         }
         id={event.id}
         key={event.id}
