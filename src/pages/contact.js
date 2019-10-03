@@ -70,7 +70,7 @@ const ContactPage = ({ data }) => {
       navigate("/booking")
     }
     if (active === "PITCH A SHOW") {
-      return <EventBookingForm />
+      navigate("/host-a-cool-event")
     }
     if (active === "PHOTO SHOOTS") {
       navigate("/photo-shoots")
