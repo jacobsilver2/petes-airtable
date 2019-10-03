@@ -7,6 +7,7 @@ import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
 import GeneralForm from "../components/Forms/GeneralForm"
 import MediaInquiriesForm from "../components/Forms/MediaInquiries"
 import EventBookingForm from "../components/Forms/EventBookingForm"
+import { navigate } from "gatsby"
 // import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
@@ -47,10 +48,9 @@ export const pageQuery = graphql`
 const ContactPage = ({ data }) => {
   const [active, setActive] = useState("MEDIA INQUIRIES")
   const formNames = [
-    "MEDIA INQUIRIES",
     "PHOTO SHOOTS",
     "MUSIC BOOKING",
-    "EVENT BOOKING",
+    "PITCH A SHOW",
     "PRIVATE PARTY",
     "ALL OTHER INQUIRIES",
   ]
@@ -66,23 +66,28 @@ const ContactPage = ({ data }) => {
   ))
 
   function renderForm() {
-    if (active === "MEDIA INQUIRIES") {
-      return <MediaInquiriesForm />
-    }
     if (active === "MUSIC BOOKING") {
-      return <BookingForm />
+      navigate("/booking")
     }
-    if (active === "EVENT BOOKING") {
+    if (active === "PITCH A SHOW") {
       return <EventBookingForm />
     }
     if (active === "PHOTO SHOOTS") {
-      return <PhotoshootForm />
+      navigate("/photo-shoots")
     }
     if (active === "PRIVATE PARTY") {
-      return <PrivatePartyForm />
+      navigate("/private-party")
     }
     if (active === "ALL OTHER INQUIRIES") {
-      return <GeneralForm />
+      return (
+        <>
+          <p className="has-text-centered">
+            Fill out this form for general information, media inquiries, website
+            typos.
+          </p>
+          <GeneralForm />
+        </>
+      )
     }
   }
   return (
