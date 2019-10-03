@@ -51,7 +51,7 @@ const ContactPage = ({ data }) => {
     "PHOTO SHOOTS",
     "MUSIC BOOKING",
     "PITCH A SHOW",
-    "PRIVATE PARTY",
+    "BOOK A PARTY",
     "ALL OTHER INQUIRIES",
   ]
 
@@ -75,8 +75,8 @@ const ContactPage = ({ data }) => {
     if (active === "PHOTO SHOOTS") {
       navigate("/photo-shoots")
     }
-    if (active === "PRIVATE PARTY") {
-      navigate("/private-party")
+    if (active === "BOOK A PARTY") {
+      navigate("/parties")
     }
     if (active === "ALL OTHER INQUIRIES") {
       return (
