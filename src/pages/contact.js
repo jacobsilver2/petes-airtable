@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import GeneralForm from "../components/Forms/GeneralForm"
 import { navigate } from "gatsby"
+// adding a comment to test a git thingy
 
 export const pageQuery = graphql`
   {
