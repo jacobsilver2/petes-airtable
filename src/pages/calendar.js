@@ -6,6 +6,8 @@ import { getAllEvents } from "../services/getCalendarEvents"
 import { airtableEventsUrl } from "../utility/airtableUrls"
 import Loader from "react-loader-spinner"
 
+//? making a mock change to calendar to practice my Gitflow technique.
+
 export const pageQuery = graphql`
   {
     allFile(filter: { name: { regex: "/rand/" } }) {
