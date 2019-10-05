@@ -1,14 +1,8 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import BookingForm from "../components/Forms/BookingForm"
-import PhotoshootForm from "../components/Forms/PhotoshootForm"
-import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
 import GeneralForm from "../components/Forms/GeneralForm"
-import MediaInquiriesForm from "../components/Forms/MediaInquiries"
-import EventBookingForm from "../components/Forms/EventBookingForm"
 import { navigate } from "gatsby"
-// import createHtml from "../utility/createHtml"
 
 export const pageQuery = graphql`
   {
