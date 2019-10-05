@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Wrapper = styled.div`
   position: relative;
@@ -13,24 +13,22 @@ export const Wrapper = styled.div`
 `
 
 export const Events = styled.ul`
-  border: 1px solid white;
-`;
+  /* border: 1px solid white; */
+`
 
 export const Event = styled.li`
   margin-bottom: 3rem;
-`;
+`
 
 export const StyledDate = styled.div`
-  border-top: 1px solid white;
-  font-size: 3.0rem;
+  /* border-top: 1px solid white; */
+  font-size: 3rem;
   color: white;
-  text-align: center;
-  padding-bottom: .5rem;
-`;
+  text-align: left;
+  padding-bottom: 0.5rem;
+`
 
-export const StyledBlurb = styled.div`
-
-`;
+export const StyledBlurb = styled.div``
 
 export const StyledImage = styled.div`
   width: 8rem;
@@ -42,13 +40,13 @@ export const StyledTitle = styled.h3`
   margin: 0 0 8px 0;
   font-size: 2rem;
   line-height: 1;
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: 0.02em;
   text-decoration: none;
   &:hover {
     color: red;
   }
-`;
+`
 
 export const StyledLink = styled.a`
   color: red;
@@ -56,5 +54,4 @@ export const StyledLink = styled.a`
   &:hover {
     color: white;
   }
-`;
-
+`

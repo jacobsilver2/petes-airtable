@@ -1,10 +1,13 @@
-import React from "react";
-import { StyledImage } from './CalendarStyles';
-import ImageZoom from 'react-medium-image-zoom';
+import React from "react"
+import { StyledImage } from "./CalendarStyles"
+import ImageZoom from "react-medium-image-zoom"
 
 export function renderImage(image) {
   return (
     <StyledImage className="media-left">
-      <ImageZoom image={{ src: image }} zoomImage={{ src: image }} />
-    </StyledImage>);
+      <p className="image is-128x128">
+        <ImageZoom image={{ src: image }} zoomImage={{ src: image }} />
+      </p>
+    </StyledImage>
+  )
 }
