@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Event, StyledDate, StyledBlurb } from "./CalendarStyles"
+import { Event, StyledDate, StyledBlurb, StyledContent } from "./CalendarStyles"
 import Truncate from "react-truncate"
 import { renderTitleWithLink } from "./renderTitleWithLink"
 import { renderImage } from "./renderImage"
@@ -8,6 +8,7 @@ import { renderTitleWithoutLink } from "./renderTitleWithoutLink"
 export default function CalendarEvent({
   isFirstEvent,
   date,
+  dateTwo,
   time,
   image,
   title,
@@ -57,23 +58,23 @@ export default function CalendarEvent({
   const content = renderBlurb(blurb)
 
   return (
-    <Event key={id}>
+    <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
-      <div className="media">
-        {renderImage(image)}
-        <div className="media-content">
+      <Event key={id}>
+        <div>{renderImage(image)}</div>
+        <div>
           {website
             ? renderTitleWithLink(title, website, time)
             : renderTitleWithoutLink(title, time)}
           {/* {content} */}
-          <p className="is-italic">{time}</p>
-          <p>
+          <StyledContent>{`${dateTwo} - ${time}`}</StyledContent>
+          <StyledContent>
             {soundcloud && <a href={soundcloud}>soundcloud</a>}
             {soundcloud && website && " | "}
             {website && <a href={website}>website</a>}
-          </p>
+          </StyledContent>
         </div>
-      </div>
-    </Event>
+      </Event>
+    </>
   )
 }
