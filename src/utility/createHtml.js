@@ -29,12 +29,22 @@ export default function createHtml(data) {
           <section className="section">
             <div key={data.id} className="level">
               <div className="level-item">
-                <Link
-                  to={data.website}
-                  className="button is-large is-primary is-outlined is-rounded is-inverted"
-                >
-                  {data.Content}
-                </Link>
+                {data.website.startsWith("http") ? (
+                  <a
+                    target="_blank"
+                    className="button is-large is-primary is-outlined is-rounded is-inverted"
+                    href={data.website}
+                  >
+                    {data.Content}
+                  </a>
+                ) : (
+                  <Link
+                    to={data.website}
+                    className="button is-large is-primary is-outlined is-rounded is-inverted"
+                  >
+                    {data.Content}
+                  </Link>
+                )}
               </div>
             </div>
           </section>
