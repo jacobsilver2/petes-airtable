@@ -1,22 +1,22 @@
 import React, { useState } from "react"
-import ReactPlayer from "react-player"
-import { Event, StyledDate, StyledBlurb } from "./CalendarStyles"
+import {
+  Event,
+  StyledDate,
+  StyledBlurb,
+  StyledContent,
+  StyledContentContainer,
+} from "./CalendarStyles"
 import Truncate from "react-truncate"
 import { renderTitleWithLink } from "./renderTitleWithLink"
 import { renderImage } from "./renderImage"
 import { renderTitleWithoutLink } from "./renderTitleWithoutLink"
-import styled from "styled-components"
 
-const PlayerWrapper = styled.div`
-  .player-wrapper {
-    position: relative;
-    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-  }
-`
+//!test
 
 export default function CalendarEvent({
   isFirstEvent,
   date,
+  dateTwo,
   time,
   image,
   title,
@@ -63,41 +63,25 @@ export default function CalendarEvent({
     </StyledBlurb>
   )
 
-  // const content = soundcloud ? (
-  //   <PlayerWrapper>
-  //     <ReactPlayer
-  //       url={soundcloud}
-  //       config={{
-  //         soundcloud: {
-  //           options: {
-  //             show_user: "false",
-  //             sharing: "false",
-  //             download: "false",
-  //             show_artwork: "false",
-  //             color: "#fcec03",
-  //           },
-  //         },
-  //       }}
-  //     />
-  //   </PlayerWrapper>
-  // ) : (
-  //   renderBlurb(blurb)
-  // )
-
   const content = renderBlurb(blurb)
 
   return (
-    <Event key={id}>
+    <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
-      <div className="media">
+      <Event key={id}>
         {renderImage(image)}
-        <div className="media-content">
+        <StyledContentContainer>
           {website
             ? renderTitleWithLink(title, website, time)
             : renderTitleWithoutLink(title, time)}
-          {content}
-        </div>
-      </div>
-    </Event>
+          <StyledContent>{`${time}`}</StyledContent>
+          <StyledContent>
+            {soundcloud && <a href={soundcloud}>soundcloud</a>}
+            {soundcloud && website && " | "}
+            {website && <a href={website}>website</a>}
+          </StyledContent>
+        </StyledContentContainer>
+      </Event>
+    </>
   )
 }

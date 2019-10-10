@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+//? In order to use environment variables with netflify, you must prefix them with GATSBY_ . We do it here and everywhere within the codebase for consistency.
+
 module.exports = {
   siteMetadata: {
     title: "Pete's Candy Store",
@@ -33,7 +35,7 @@ module.exports = {
 
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API,
-        concurrency: 5,
+        concurrency: 10,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,

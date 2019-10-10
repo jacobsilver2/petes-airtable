@@ -5,6 +5,7 @@ import CalendarEvent from "./CalendarEvent"
 import getRandomImage from "../../utility/getRandomImage"
 import formatCalendarDate from "../../utility/formatCalendarDate"
 import formatCalendarTime from "../../utility/formatCalendarTime"
+import { formatCalendarDate2 } from "../../utility/formatCalendarDate"
 
 const CalendarFrame = ({ events, data: { allFile } }) => {
   let prevDate = ""
@@ -14,6 +15,7 @@ const CalendarFrame = ({ events, data: { allFile } }) => {
       <CalendarEvent
         isFirstEvent={!moment(event.fields.Date).isSame(prevDate, "day")}
         date={formatCalendarDate(event.fields.Date)}
+        dateTwo={formatCalendarDate2(event.fields.Date)}
         time={formatCalendarTime(event.fields.Date)}
         image={
           event.fields["Act Image"]
@@ -38,11 +40,7 @@ const CalendarFrame = ({ events, data: { allFile } }) => {
     prevDate = event.fields.Date
   })
 
-  return (
-    <Wrapper>
-      <Events>{renderedEvents}</Events>
-    </Wrapper>
-  )
+  return <Wrapper>{renderedEvents}</Wrapper>
 }
 
 export default CalendarFrame

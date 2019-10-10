@@ -13,7 +13,7 @@ export const pageQuery = graphql`
     allFile(filter: { name: { regex: "/rand/" } }) {
       nodes {
         childImageSharp {
-          fluid(maxWidth: 128, maxHeight: 128) {
+          fluid(maxWidth: 300, maxHeight: 300) {
             ...GatsbyImageSharpFluid
             originalImg
           }
