@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+//? In order to use environment variables with netflify, you must prefix them with GATSBY_ . We do it here and everywhere within the codebase for consistency.
+
 module.exports = {
   siteMetadata: {
     title: "Pete's Candy Store",

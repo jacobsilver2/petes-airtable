@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
-  display: grid;
+  /* display: grid; */
   width: 100%;
   margin: 0 auto;
   top: 0;
@@ -18,10 +18,15 @@ export const Events = styled.ul`
 
 export const Event = styled.div`
   display: grid;
-  grid-template-columns: 300px 2fr;
-  grid-template-rows: 300px;
-  grid-gap: 5rem;
+  /* good for testing purposes */
+  /* border: 10px solid yellow; */
+  grid-template-columns: repeat(1, 300px 2fr);
+  grid-template-areas: "image content";
+  grid-gap: 2rem;
   margin-bottom: 3rem;
+  @media screen and (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const StyledDate = styled.div`
@@ -31,11 +36,22 @@ export const StyledDate = styled.div`
   color: white;
   text-align: left;
   padding-bottom: 0.5rem;
+  @media screen and (max-width: 980px) {
+    text-align: center;
+  }
 `
 
 export const StyledBlurb = styled.div``
 
-export const StyledImage = styled.div``
+export const StyledImage = styled.div`
+  /* pretty easy way to align center */
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  @media screen and (max-width: 980px) {
+    grid-column: span 2;
+  }
+`
 
 export const StyledTitle = styled.h3`
   color: #ffff04;
@@ -57,6 +73,13 @@ export const StyledLink = styled.a`
   text-decoration: none;
   &:hover {
     color: white;
+  }
+`
+
+export const StyledContentContainer = styled.div`
+  @media screen and (max-width: 980px) {
+    justify-self: center;
+    text-align: center;
   }
 `
 

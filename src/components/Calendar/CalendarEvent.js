@@ -1,5 +1,11 @@
 import React, { useState } from "react"
-import { Event, StyledDate, StyledBlurb, StyledContent } from "./CalendarStyles"
+import {
+  Event,
+  StyledDate,
+  StyledBlurb,
+  StyledContent,
+  StyledContentContainer,
+} from "./CalendarStyles"
 import Truncate from "react-truncate"
 import { renderTitleWithLink } from "./renderTitleWithLink"
 import { renderImage } from "./renderImage"
@@ -61,19 +67,18 @@ export default function CalendarEvent({
     <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
       <Event key={id}>
-        <div>{renderImage(image)}</div>
-        <div>
+        {renderImage(image)}
+        <StyledContentContainer>
           {website
             ? renderTitleWithLink(title, website, time)
             : renderTitleWithoutLink(title, time)}
-          {/* {content} */}
-          <StyledContent>{`${dateTwo} - ${time}`}</StyledContent>
+          <StyledContent>{`${time}`}</StyledContent>
           <StyledContent>
             {soundcloud && <a href={soundcloud}>soundcloud</a>}
             {soundcloud && website && " | "}
             {website && <a href={website}>website</a>}
           </StyledContent>
-        </div>
+        </StyledContentContainer>
       </Event>
     </>
   )
