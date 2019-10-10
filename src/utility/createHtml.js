@@ -29,6 +29,7 @@ export default function createHtml(data) {
           <section className="section">
             <div key={data.id} className="level">
               <div className="level-item">
+                {/* If the website is external we use a regular <a> tag, but if it's internal, we use the Link tag. */}
                 {data.website.startsWith("http") ? (
                   <a
                     target="_blank"
