@@ -1,6 +1,6 @@
 import React from "react"
 import moment from "moment"
-import { Wrapper } from "./CalendarStyles"
+import { Wrapper, Events } from "./CalendarStyles"
 import CalendarEvent from "./CalendarEvent"
 import getRandomImage from "../../utility/getRandomImage"
 import formatCalendarDate from "../../utility/formatCalendarDate"
