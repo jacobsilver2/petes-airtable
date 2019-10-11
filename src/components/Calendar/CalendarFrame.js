@@ -22,6 +22,9 @@ const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
           : getRandomImage(allFile.nodes)
       }
       title={event.fields.Name}
+      hosted={
+        event.fields["Act Hosted"] ? event.fields["Act Hosted"][0] : false
+      }
       blurb={event.fields["Act Blurb"] ? event.fields["Act Blurb"][0] : null}
       website={
         event.fields["Act Website"] ? event.fields["Act Website"][0] : null

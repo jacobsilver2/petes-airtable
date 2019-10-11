@@ -20,6 +20,7 @@ export default function CalendarEvent({
   time,
   image,
   title,
+  hosted,
   blurb,
   website,
   soundcloud,
@@ -64,7 +65,6 @@ export default function CalendarEvent({
   )
 
   const content = renderBlurb(blurb)
-
   return (
     <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
@@ -75,19 +75,23 @@ export default function CalendarEvent({
             ? renderTitleWithLink(title, website, time)
             : renderTitleWithoutLink(title, time)}
           <StyledContent>{`${time}`}</StyledContent>
-          <StyledContent>
-            {soundcloud && (
-              <a target="_blank" href={soundcloud}>
-                soundcloud
-              </a>
-            )}
-            {soundcloud && website && " | "}
-            {website && (
-              <a target="_blank" href={website}>
-                website
-              </a>
-            )}
-          </StyledContent>
+          {hosted ? (
+            <StyledBlurb>{blurb}</StyledBlurb>
+          ) : (
+            <StyledContent>
+              {soundcloud && (
+                <a target="_blank" href={soundcloud}>
+                  soundcloud
+                </a>
+              )}
+              {soundcloud && website && " | "}
+              {website && (
+                <a target="_blank" href={website}>
+                  website
+                </a>
+              )}
+            </StyledContent>
+          )}
         </StyledContentContainer>
       </Event>
     </>
