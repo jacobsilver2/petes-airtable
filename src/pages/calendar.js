@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import CalendarFrame from "../components/Calendar/CalendarFrame"
 import { getAllEvents } from "../services/getCalendarEvents"
 import { airtableEventsUrl } from "../utility/airtableUrls"
+import getFirstEventIds from "../utility/returnFirstEventOfDate"
 import Loader from "react-loader-spinner"
 
 //? making a mock change to calendar to practice my Gitflow technique.
@@ -29,13 +30,21 @@ class calendar extends Component {
     new Promise((resolve, reject) => {
       getAllEvents(`${airtableEventsUrl}&view=Future`, [], resolve, reject)
     }).then(response => {
-      this.setState({ events: response, isLoading: false })
+      this.setState({
+        events: response,
+        isLoading: false,
+        firstEventIds: getFirstEventIds(response),
+      })
     })
   }
 
   render() {
     const renderedCalendar = (
-      <CalendarFrame events={this.state.events} data={this.props.data} />
+      <CalendarFrame
+        events={this.state.events}
+        data={this.props.data}
+        firstEvents={this.state.firstEventIds}
+      />
     )
     return (
       <Layout fluid={null} fullheight={false}>
