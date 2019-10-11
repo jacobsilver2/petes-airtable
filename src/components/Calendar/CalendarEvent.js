@@ -76,9 +76,17 @@ export default function CalendarEvent({
             : renderTitleWithoutLink(title, time)}
           <StyledContent>{`${time}`}</StyledContent>
           <StyledContent>
-            {soundcloud && <a href={soundcloud}>soundcloud</a>}
+            {soundcloud && (
+              <a target="_blank" href={soundcloud}>
+                soundcloud
+              </a>
+            )}
             {soundcloud && website && " | "}
-            {website && <a href={website}>website</a>}
+            {website && (
+              <a target="_blank" href={website}>
+                website
+              </a>
+            )}
           </StyledContent>
         </StyledContentContainer>
       </Event>
