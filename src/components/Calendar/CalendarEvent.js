@@ -11,12 +11,9 @@ import { renderTitleWithLink } from "./renderTitleWithLink"
 import { renderImage } from "./renderImage"
 import { renderTitleWithoutLink } from "./renderTitleWithoutLink"
 
-//!test
-
 export default function CalendarEvent({
   isFirstEvent,
   date,
-  dateTwo,
   time,
   image,
   title,
@@ -26,6 +23,7 @@ export default function CalendarEvent({
   soundcloud,
   id,
 }) {
+  //! All this code is unused but will stay in, in case we decide to bring back blurbs
   const [expanded, setExpanded] = useState(false)
   const [truncated, setTruncated] = useState(false)
 
@@ -64,7 +62,6 @@ export default function CalendarEvent({
     </StyledBlurb>
   )
 
-  const content = renderBlurb(blurb)
   return (
     <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
