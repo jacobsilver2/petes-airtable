@@ -2,9 +2,9 @@
   Pete's Candy Store
 </h1>
 
-# Website for Pete's Candy Store, a bar/music venue in Brooklyn, NY.  Made with love by Jacob Silver
+# Website for Pete's Candy Store, a bar/music venue in Brooklyn, NY.  Made by Jacob Silver
 
-## Techno-la-la-la-logies
+## Technologies
 
 1. **React**
 
@@ -12,7 +12,7 @@
 
 2. **Gatsby**
 
-    Server-side rendering.  Oh yeah.
+    Static site generation, pulling data from Airtable.
 
 3. **Airtable**
 
