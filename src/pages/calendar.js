@@ -53,8 +53,7 @@ class calendar extends Component {
             SHOWTIMES
           </h1>
           <p style={{ textAlign: "center" }}>
-            ALL SHOWS ARE FREE(unless otherwise listed) Hello from the develop
-            branch.
+            ALL SHOWS ARE FREE(unless otherwise listed)
           </p>
           <p style={{ textAlign: "center" }}>($5 suggested donation)</p>
           <Loader
