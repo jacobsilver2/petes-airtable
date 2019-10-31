@@ -1,34 +1,50 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Airtable from "airtable"
 import { navigate } from "gatsby"
 import Loader from "react-loader-spinner"
-import moment from "moment"
+// import moment from "moment"
 
 // initialize Airtable
 const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
-  "appNuB0fX4vQbOqdy"
+  "app4Eb0X39KtGToOS"
 )
 
-const mediaRequestFormEarlyEvent = () => {
-  const [name, setname] = useState("")
+const mediaRequestForm = ({ id, date, time }) => {
+  //text state
+  const [firstName, setfirstName] = useState("")
+  const [lastName, setlastName] = useState("")
+  const [act, setAct] = useState("")
   const [email, setEmail] = useState("")
-  const [date, setDate] = useState(new Date().toDateString())
-  const [time, setTime] = useState(new Date().toTimeString())
-  const [facebook, setFacebook] = useState("")
+  const [website, setWebsite] = useState("")
+  const [soundcloud, setSoundCloud] = useState("")
   const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
-  const [website, setWebsite] = useState("")
-  const [isDisabled, setisDisabled] = useState(false)
+  const [blurb, setBlurb] = useState("")
+  //image state
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
   const [largeImage, setlargeImage] = useState(null)
+
+  //ui state
+  const [tooLarge, setTooLarge] = useState(false)
+  const [isDisabled, setisDisabled] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [tooLarge, settooLarge] = useState(false)
+
+  useEffect(() => {
+    base("Acts").find(id, function(err, record) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      setAct(record.fields.Name)
+      setEmail(record.fields.Email)
+    })
+  }, [])
 
   async function addImage(e) {
     e.preventDefault()
     if (e.target.files[0].size > 5000000) {
-      settooLarge(true)
+      setTooLarge(true)
       setisDisabled(true)
       return
     }
@@ -36,7 +52,7 @@ const mediaRequestFormEarlyEvent = () => {
     const files = e.target.files
     const data = new FormData()
     data.append("file", files[0])
-    data.append("upload_preset", "petes-early-events")
+    data.append("upload_preset", "petes-act-images")
     setLoading(true)
     try {
       const res = await fetch(
@@ -52,24 +68,29 @@ const mediaRequestFormEarlyEvent = () => {
     } catch (err) {
       throw new Error("Something went wrong.  I promise it's not your fault")
     }
-    settooLarge(false)
+    setTooLarge(false)
     setLoading(false)
     setisDisabled(false)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    base("Media Request Form Early Event").create(
-      {
-        Name: name,
-        Email: email,
-        Date: moment.utc(date + "" + time, "YYYY/MM/DD HH:mm"),
-        Facebook: facebook,
-        Website: website,
-        Instagram: instagram,
-        Twitter: twitter,
-        Image: [{ url: largeImage }],
-      },
+    base("Acts").update(
+      [
+        {
+          id: id,
+          fields: {
+            Name: act,
+            Blurb: blurb,
+            Email: email,
+            Soundcloud: soundcloud,
+            Website: website,
+            Instagram: instagram,
+            Twitter: twitter,
+            Image: [{ url: largeImage }],
+          },
+        },
+      ],
       function(err, record) {
         if (err) {
           console.error(err)
@@ -90,18 +111,49 @@ const mediaRequestFormEarlyEvent = () => {
           method="POST"
         >
           <div className="field">
-            <label className="label is-small has-text-white">
-              Name of Show
-            </label>
+            <label className="label is-small has-text-white">First Name</label>
             <div className="field">
               <p className="control is-expanded">
                 <input
                   className="input"
                   type="text"
-                  placeholder="Name of Show"
-                  name="name"
-                  onChange={e => setname(e.target.value)}
-                  value={name}
+                  placeholder="First Name"
+                  name="firstName"
+                  onChange={e => setfirstName(e.target.value)}
+                  value={firstName}
+                  required
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Last Name</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  onChange={e => setlastName(e.target.value)}
+                  value={lastName}
+                  required
+                />
+              </p>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label is-small has-text-white">Name of Act</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Name of Act"
+                  name="act"
+                  onChange={e => setAct(e.target.value)}
+                  value={act}
                   required
                 />
               </p>
@@ -135,7 +187,7 @@ const mediaRequestFormEarlyEvent = () => {
                     type="date"
                     placeholder="date"
                     value={date}
-                    onChange={e => setDate(e.target.value)}
+                    readOnly
                     name="date"
                     required
                   />
@@ -154,27 +206,9 @@ const mediaRequestFormEarlyEvent = () => {
                     type="time"
                     placeholder="time"
                     value={time}
-                    onChange={e => setTime(e.target.value)}
+                    readOnly
                     name="time"
                     required
-                  />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="field">
-            <label className="label is-small has-text-white">Facebook</label>
-            <div className="field is-expanded">
-              <div className="field has-addons">
-                <p className="control is-expanded">
-                  <input
-                    className="input"
-                    type="url"
-                    placeholder="url"
-                    value={facebook}
-                    onChange={e => setFacebook(e.target.value)}
-                    name="facebook"
                   />
                 </p>
               </div>
@@ -200,7 +234,7 @@ const mediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Twitter</label>
+            <label className="label is-small has-text-white">Soundcloud</label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
@@ -208,6 +242,26 @@ const mediaRequestFormEarlyEvent = () => {
                     className="input"
                     type="url"
                     placeholder="url"
+                    value={soundcloud}
+                    onChange={e => setSoundCloud(e.target.value)}
+                    name="soundcloud"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">
+              Twitter Handle
+            </label>
+            <div className="field is-expanded">
+              <div className="field has-addons">
+                <p className="control is-expanded">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="twitter"
                     value={twitter}
                     onChange={e => setTwitter(e.target.value)}
                     name="twitter"
@@ -218,17 +272,51 @@ const mediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Instagram</label>
+            <label className="label is-small has-text-white">
+              Instagram Handle
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
                     className="input"
-                    type="url"
-                    placeholder="url"
+                    type="text"
+                    placeholder="instagram"
                     value={instagram}
                     onChange={e => setInstagram(e.target.value)}
                     name="instagram"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">
+              Short blurb about your act (450 character limit)
+              {blurb.length > 450 && (
+                <label className="label is-small has-text-danger">
+                  Must be 450 characters or less
+                </label>
+              )}
+            </label>
+
+            <div className="field is-expanded">
+              <div className="field has-addons">
+                <p className="control is-expanded">
+                  <textarea
+                    className="textarea"
+                    placeholder="short blurb"
+                    value={blurb}
+                    onChange={e => {
+                      setBlurb(e.target.value)
+                      if (blurb.length > 450) {
+                        setisDisabled(true)
+                      } else {
+                        setisDisabled(false)
+                      }
+                    }}
+                    name="blurb"
                   />
                 </p>
               </div>
@@ -272,9 +360,9 @@ const mediaRequestFormEarlyEvent = () => {
           <div className="field">
             <div className="control">
               <button
+                disabled={loading || isDisabled}
                 type="submit"
                 className="button is-link has-background-danger"
-                disabled={isDisabled || loading}
               >
                 Submit
               </button>
@@ -286,4 +374,4 @@ const mediaRequestFormEarlyEvent = () => {
   )
 }
 
-export default mediaRequestFormEarlyEvent
+export default mediaRequestForm

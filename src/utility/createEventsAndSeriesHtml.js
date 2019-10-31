@@ -67,7 +67,11 @@ export default function createEventsAndSeriesHtml(data) {
                     marginBottom: "-2rem",
                   }}
                 >
-                  <a target="_blank" href={data.website}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data.website}
+                  >
                     {data.Content}
                   </a>
                 </p>
