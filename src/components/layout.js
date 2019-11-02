@@ -8,7 +8,6 @@ import Helmet from "react-helmet"
 import { renderHero } from "./renderHero"
 
 const Layout = ({ children, fluid, fullheight, regular = false }) => {
-  console.log(`regular is ${regular}`)
   const data = useStaticQuery(graphql`
     query siteQuery {
       site {
