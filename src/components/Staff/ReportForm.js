@@ -15,8 +15,8 @@ const ReportForm = ({ date, id, initialNote }) => {
     base("Logbook").update(
       id,
       {
-        "Notes": note,
-        "Staff": ["rechSv8MDgIA3f7U4"],
+        Notes: note,
+        Staff: ["rechSv8MDgIA3f7U4"],
       },
       function(err, record) {
         if (err) {
@@ -24,7 +24,7 @@ const ReportForm = ({ date, id, initialNote }) => {
           return
         }
       },
-      setButtonName("Successfully Submitted"), 
+      setButtonName("Successfully Submitted"),
       setButtonStyle("is-success")
     )
   }
@@ -33,7 +33,7 @@ const ReportForm = ({ date, id, initialNote }) => {
     <div className="card">
       <header className="card-header">
         <p className="is-size-3 has-text-danger has-text-centered">
-          {`Pete\'s Candy Store Logbook ${date}`}
+          {`Pete's Candy Store Logbook ${date}`}
         </p>
       </header>
       <div className="card-content">

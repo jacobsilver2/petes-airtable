@@ -33,6 +33,7 @@ export default function createHtml(data) {
                 {data.website.startsWith("http") ? (
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="button is-large is-primary is-outlined is-rounded is-inverted"
                     href={data.website}
                   >
@@ -57,7 +58,12 @@ export default function createHtml(data) {
           return (
             <div className="container" key={data.id}>
               <section className="section">
-                <a href={data.website} className="image" target="_blank">
+                <a
+                  href={data.website}
+                  className="image"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Img
                     fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
                   />

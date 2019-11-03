@@ -1,11 +1,11 @@
-import React, { useEffect } from "react"
-import moment from "moment"
-import { Wrapper, Events } from "./CalendarStyles"
+import React from "react"
+// import moment from "moment"
+import { Wrapper } from "./CalendarStyles"
 import CalendarEvent from "./CalendarEvent"
 import getRandomImage from "../../utility/getRandomImage"
 import formatCalendarDate from "../../utility/formatCalendarDate"
 import formatCalendarTime from "../../utility/formatCalendarTime"
-import { formatCalendarDate2 } from "../../utility/formatCalendarDate"
+// import { formatCalendarDate2 } from "../../utility/formatCalendarDate"
 
 const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
   const myEvents = events.map(event => (
