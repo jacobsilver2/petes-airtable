@@ -80,16 +80,16 @@ const mediaRequestForm = ({ id, date, time }) => {
     base("Acts").update(
       [
         {
-          id: actId,
-          fields: {
-            Name: act,
-            Blurb: blurb,
-            Email: email,
-            Soundcloud: soundcloud,
-            Website: website,
-            Instagram: instagram,
-            Twitter: twitter,
-            Image: [{ url: largeImage }],
+          "id": actId,
+          "fields": {
+            "Name": act,
+            "Blurb": blurb,
+            "Email": email,
+            "Soundcloud": soundcloud,
+            "Website": website,
+            "Instagram": instagram,
+            "Twitter": twitter,
+            "Image": [{ url: largeImage }],
           },
         },
       ],
