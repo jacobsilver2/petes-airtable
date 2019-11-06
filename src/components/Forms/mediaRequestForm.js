@@ -20,7 +20,6 @@ const mediaRequestForm = ({ id, date, time }) => {
   const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
   const [blurb, setBlurb] = useState("")
-  const [actId, setActId] = useState("")
   //image state
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
@@ -32,14 +31,14 @@ const mediaRequestForm = ({ id, date, time }) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    base("Events").find(id, function(err, record) {
+    base("Acts").find(id, function(err, record) {
       if (err) {
         console.error(err)
         return
       }
+      // console.log(record.fields)
       setAct(record.fields.Name)
-      setEmail(record.fields["Act Email"])
-      setActId(record.fields.ActId)
+      // setEmail(record.fields["Act Email"])
     })
   }, [])
 
@@ -78,22 +77,23 @@ const mediaRequestForm = ({ id, date, time }) => {
   function handleSubmit(e) {
     e.preventDefault()
     base("Acts").update([
-        {
-          "id": actId,
-          "fields": {
-            "Name": act,
-            "Blurb": blurb,
-            "Email": email,
-            "Soundcloud": soundcloud,
-            "Website": website,
-            "Instagram": instagram,
-            "Twitter": twitter,
-            "Image": [{ "url": largeImage }]
+      {
+        id: id,
+        fields: {
+          Name: act,
+          Blurb: blurb,
+          Email: email,
+          Soundcloud: soundcloud,
+            Website: website,
+            Instagram: instagram,
+            Twitter: twitter,
+            Image: [{ url: largeImage }]
           }
         }
       ],
       function(err, record) {
         if (err) {
+          console.log('in the error');
           console.error(err)
           return
         }
@@ -107,9 +107,9 @@ const mediaRequestForm = ({ id, date, time }) => {
     <div className="container">
       <fieldset>
         <form
-          name="media request form early event"
+          name="media request form"
           onSubmit={e => handleSubmit(e)}
-          method="POST"
+          // method="POST"
         >
           <div className="field">
             <label className="label is-small has-text-white">First Name</label>
@@ -168,7 +168,6 @@ const mediaRequestForm = ({ id, date, time }) => {
                 <input
                   className="input"
                   type="email"
-                  placeholder="Email"
                   name="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
