@@ -20,6 +20,7 @@ const mediaRequestForm = ({ id, date, time }) => {
   const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
   const [blurb, setBlurb] = useState("")
+  const [actId, setActId] = useState("")
   //image state
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
@@ -31,13 +32,14 @@ const mediaRequestForm = ({ id, date, time }) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    base("Acts").find(id, function(err, record) {
+    base("Events").find(id, function(err, record) {
       if (err) {
         console.error(err)
         return
       }
       setAct(record.fields.Name)
-      setEmail(record.fields.Email)
+      setEmail(record.fields["Act Email"])
+      setActId(record.fields.ActId)
     })
   }, [])
 
@@ -78,7 +80,7 @@ const mediaRequestForm = ({ id, date, time }) => {
     base("Acts").update(
       [
         {
-          id: id,
+          id: actId,
           fields: {
             Name: act,
             Blurb: blurb,
