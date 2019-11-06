@@ -9,7 +9,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "app4Eb0X39KtGToOS"
 )
 
-const mediaRequestForm = ({ id, date, time, actEmail }) => {
+const mediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
   //text state
   const [firstName, setfirstName] = useState("")
   const [lastName, setlastName] = useState("")
@@ -20,6 +20,7 @@ const mediaRequestForm = ({ id, date, time, actEmail }) => {
   const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
   const [blurb, setBlurb] = useState("")
+
   //image state
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
@@ -36,7 +37,6 @@ const mediaRequestForm = ({ id, date, time, actEmail }) => {
         console.error(err)
         return
       }
-      // console.log(record.fields)
       setAct(record.fields.Name)
       setEmail(actEmail)
     })
@@ -76,32 +76,51 @@ const mediaRequestForm = ({ id, date, time, actEmail }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    base("Acts").update([
-      {
-        id: id,
-        fields: {
-          Name: act,
-          "First Name": firstName,
-          "Last Name": lastName,
-          Blurb: blurb,
-          Email: email,
-          Soundcloud: soundcloud,
-            Website: website,
-            Instagram: instagram,
-            Twitter: twitter,
-            Image: [{ url: largeImage }]
-          }
-        }
+    setisDisabled(true)
+
+    base("Events").update(
+      [
+        {
+          id: eventId,
+          fields: {
+            Name: act,
+          },
+        },
       ],
       function(err, record) {
         if (err) {
-          console.log('in the error');
+          console.log(err)
+          return
+        }
+      }
+    )
+
+    base("Acts").update(
+      [
+        {
+          id: id,
+          fields: {
+            Name: act,
+            "First Name": firstName,
+            "Last Name": lastName,
+            Blurb: blurb,
+            Email: email,
+            Soundcloud: soundcloud,
+            Website: website,
+            Instagram: instagram,
+            Twitter: twitter,
+            Image: [{ url: largeImage }],
+          },
+        },
+      ],
+      function(err, record) {
+        if (err) {
           console.error(err)
           return
         }
       }
     )
-    setisDisabled(true)
+
     navigate("/thanks")
   }
 
