@@ -9,7 +9,7 @@ const mediaRequestForm = ({ search }) => {
   const { id, date, time, email } = search
   return (
     <Layout fluid={null} fullheight={false}>
-      <MediaRequestForm id={id} date={date} time={time} />
+      <MediaRequestForm id={id} date={date} time={time} actEmail={email}/>
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "app4Eb0X39KtGToOS"
 )
 
-const mediaRequestForm = ({ id, date, time }) => {
+const mediaRequestForm = ({ id, date, time, actEmail }) => {
   //text state
   const [firstName, setfirstName] = useState("")
   const [lastName, setlastName] = useState("")
@@ -38,7 +38,7 @@ const mediaRequestForm = ({ id, date, time }) => {
       }
       // console.log(record.fields)
       setAct(record.fields.Name)
-      // setEmail(record.fields["Act Email"])
+      setEmail(actEmail)
     })
   }, [])
 
@@ -81,6 +81,8 @@ const mediaRequestForm = ({ id, date, time }) => {
         id: id,
         fields: {
           Name: act,
+          "First Name": firstName,
+          "Last Name": lastName,
           Blurb: blurb,
           Email: email,
           Soundcloud: soundcloud,
