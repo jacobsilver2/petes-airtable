@@ -77,8 +77,7 @@ const mediaRequestForm = ({ id, date, time }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    base("Acts").update(
-      [
+    base("Acts").update([
         {
           "id": actId,
           "fields": {
@@ -89,9 +88,9 @@ const mediaRequestForm = ({ id, date, time }) => {
             "Website": website,
             "Instagram": instagram,
             "Twitter": twitter,
-            "Image": [{ "url": largeImage }],
-          },
-        },
+            "Image": [{ "url": largeImage }]
+          }
+        }
       ],
       function(err, record) {
         if (err) {
