@@ -89,7 +89,7 @@ const mediaRequestForm = ({ id, date, time }) => {
             "Website": website,
             "Instagram": instagram,
             "Twitter": twitter,
-            "Image": [{ url: largeImage }],
+            "Image": [{ "url": largeImage }],
           },
         },
       ],
