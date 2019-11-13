@@ -33,6 +33,7 @@ const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
       }
       id={event.id}
       key={event.id}
+      allDay={event.fields["All Day"] ? event.fields["All Day"] : null}
     />
   ))
 
