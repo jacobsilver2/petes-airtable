@@ -250,7 +250,7 @@ const mediaRequestFormEarlyEvent = () => {
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <textarea
-                    className="input"
+                    className="textarea"
                     placeholder="Short Blurb About Your Act (300 characters or less please)"
                     value={blurb}
                     onChange={e => {
