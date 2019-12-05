@@ -3,14 +3,15 @@ import React from "react"
 // import { getUser, isLoggedIn } from '../services/auth';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createHtml from '../utility/createHtml';
-import TodayAtPetes from '../components/TodayAtPetes';
-import Button from '../components/Button';
+import createHtml from "../utility/createHtml"
+import TodayAtPetes from "../components/TodayAtPetes"
+import Button from "../components/Button"
 
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "home" } }, sort: {fields: data___order}
+      filter: { table: { eq: "home" } }
+      sort: { fields: data___order }
     ) {
       nodes {
         data {
@@ -42,15 +43,14 @@ export const pageQuery = graphql`
   }
 `
 
-
 const IndexPage = ({ data }) => {
-  const { nodes } = data.allAirtable;
+  const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid} fullheight={true} >
+      <Layout fluid={data.file.childImageSharp.fluid} fullheight={true}>
         <div>
-          <Button title="FULL CALENDAR" link="/calendar"/>
+          <Button title="FULL CALENDAR" link="/calendar" />
           <TodayAtPetes />
           {myhtml}
         </div>
@@ -60,8 +60,7 @@ const IndexPage = ({ data }) => {
 }
 export const frontmatter = {
   title: "Welcome",
-  url: '/',
-  navOrder: 1
+  url: "/",
+  navOrder: 1,
 }
 export default IndexPage
-
