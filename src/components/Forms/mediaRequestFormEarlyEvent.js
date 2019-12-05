@@ -18,6 +18,7 @@ const mediaRequestFormEarlyEvent = () => {
   const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
   const [website, setWebsite] = useState("")
+  const [blurb, setBlurb] = useState("")
   const [isDisabled, setisDisabled] = useState(false)
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
@@ -68,6 +69,7 @@ const mediaRequestFormEarlyEvent = () => {
         Website: website,
         Instagram: instagram,
         Twitter: twitter,
+        Blurb: blurb,
         Image: [{ url: largeImage }],
       },
       function(err, record) {
@@ -229,6 +231,31 @@ const mediaRequestFormEarlyEvent = () => {
                     value={instagram}
                     onChange={e => setInstagram(e.target.value)}
                     name="instagram"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">
+              Short Blurb About Your Act (300 characters or less please)
+            </label>
+            <div className="field is-expanded">
+              <div className="field has-addons">
+                <p className="control is-expanded">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Short Blurb About Your Act (300 characters or less please)"
+                    value={blurb}
+                    onChange={e => {
+                      blurb.length >= 300
+                        ? console.log("over 300")
+                        : console.log("less than 300")
+                      setBlurb(e.target.value)
+                    }}
+                    name="blurb"
                   />
                 </p>
               </div>
