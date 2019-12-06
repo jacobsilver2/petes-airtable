@@ -70,7 +70,7 @@ const mediaRequestFormEarlyEvent = () => {
         Instagram: instagram,
         Twitter: twitter,
         Blurb: blurb,
-        Image: [{ url: largeImage }],
+        Image: largeImage ? [{ url: largeImage }] : null,
       },
       function(err, record) {
         if (err) {
@@ -241,18 +241,22 @@ const mediaRequestFormEarlyEvent = () => {
             <label className="label is-small has-text-white">
               Short Blurb About Your Act (300 characters or less please)
             </label>
+            {blurb.length > 300 && (
+              <label className="label is-small has-text-danger">
+                Please shorten your blurb to less than 300 characters
+              </label>
+            )}
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
-                  <input
-                    className="input"
-                    type="text"
+                  <textarea
+                    className="textarea"
                     placeholder="Short Blurb About Your Act (300 characters or less please)"
                     value={blurb}
                     onChange={e => {
-                      blurb.length >= 300
-                        ? console.log("over 300")
-                        : console.log("less than 300")
+                      blurb.length > 300
+                        ? setisDisabled(true)
+                        : setisDisabled(false)
                       setBlurb(e.target.value)
                     }}
                     name="blurb"

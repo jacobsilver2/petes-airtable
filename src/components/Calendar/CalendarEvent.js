@@ -22,6 +22,7 @@ export default function CalendarEvent({
   website,
   soundcloud,
   id,
+  allDay,
 }) {
   //! All this code is unused but will stay in, in case we decide to bring back blurbs
   // const [expanded, setExpanded] = useState(false)
@@ -62,6 +63,35 @@ export default function CalendarEvent({
   //   </StyledBlurb>
   // )
 
+  const renderHostedEvent = () => <StyledBlurb>{blurb}</StyledBlurb>
+
+  const renderRegularEvent = () => (
+    <StyledContent>
+      {soundcloud && (
+        <a target="_blank" rel="noopener noreferrer" href={soundcloud}>
+          soundcloud
+        </a>
+      )}
+      {soundcloud && website && " | "}
+      {website && !allDay ? (
+        <a target="_blank" href={website} rel="noopener noreferrer">
+          website
+        </a>
+      ) : null}
+    </StyledContent>
+  )
+
+  const renderAllDayEvent = () => (
+    <StyledContent>
+      {blurb && <StyledBlurb>{blurb}</StyledBlurb>}
+      {website && (
+        <a target="_blank" href={website} rel="noopener noreferrer">
+          website
+        </a>
+      )}
+    </StyledContent>
+  )
+
   return (
     <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
@@ -69,26 +99,11 @@ export default function CalendarEvent({
         {renderImage(image)}
         <StyledContentContainer>
           {website
-            ? renderTitleWithLink(title, website, time)
-            : renderTitleWithoutLink(title, time)}
-          <StyledContent>{`${time}`}</StyledContent>
-          {hosted ? (
-            <StyledBlurb>{blurb}</StyledBlurb>
-          ) : (
-            <StyledContent>
-              {soundcloud && (
-                <a target="_blank" rel="noopener noreferrer" href={soundcloud}>
-                  soundcloud
-                </a>
-              )}
-              {soundcloud && website && " | "}
-              {website && (
-                <a target="_blank" href={website} rel="noopener noreferrer">
-                  website
-                </a>
-              )}
-            </StyledContent>
-          )}
+            ? renderTitleWithLink(title, website)
+            : renderTitleWithoutLink(title)}
+          {!allDay && <StyledContent>{`${time}`}</StyledContent>}
+          {hosted && !allDay ? renderHostedEvent() : renderRegularEvent()}
+          {allDay && renderAllDayEvent()}
         </StyledContentContainer>
       </Event>
     </>
