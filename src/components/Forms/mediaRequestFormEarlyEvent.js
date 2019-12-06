@@ -70,7 +70,7 @@ const mediaRequestFormEarlyEvent = () => {
         Instagram: instagram,
         Twitter: twitter,
         Blurb: blurb,
-        Image: [{ url: largeImage }],
+        Image: largeImage ? [{ url: largeImage }] : null,
       },
       function(err, record) {
         if (err) {
