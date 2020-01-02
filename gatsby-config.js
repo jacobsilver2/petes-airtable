@@ -35,7 +35,7 @@ module.exports = {
 
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API,
-        concurrency: 5,
+        concurrency: 10,
         tables: [
           {
             baseId: `appNuB0fX4vQbOqdy`,
@@ -100,11 +100,6 @@ module.exports = {
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: "menu",
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `new years eve`,
-            mapping: { Attachments: `fileNode` },
           },
         ],
       },
