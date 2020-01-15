@@ -12,7 +12,8 @@ const PhotoshootForm = () => {
   const [castAndCrew, setCastAndCrew] = useState("")
   const [typeOfShoot, setTypeOfShoot] = useState("")
   const [desiredDate, setDesiredDate] = useState("")
-  const [desiredHours, setDesiredHours] = useState("")
+  const [numberOfHours, setNumberOfHours] = useState("")
+  const [startTime, setStartTime] = useState("")
   const [nameOfProduction, setNameOfProduction] = useState("")
   const [productionCompany, setProductionCompany] = useState("")
   const [location, setLocation] = useState("")
@@ -30,7 +31,8 @@ const PhotoshootForm = () => {
         "number-of-people": castAndCrew,
         "type-of-shoot": typeOfShoot,
         "desired date": desiredDate,
-        "desired time": desiredHours,
+        "number of hours": numberOfHours,
+        "start time": startTime,
         "production name": nameOfProduction,
         "production company": productionCompany,
         location,
@@ -158,16 +160,31 @@ const PhotoshootForm = () => {
 
           <div className="field">
             <label className="label is-small has-text-white">
-              Desired hours (total hours and which hours you desire)
+              Number of Hours
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
                   className="input"
                   type="text"
-                  name="desired-hours"
-                  value={desiredHours}
-                  onChange={e => setDesiredHours(e.target.value)}
+                  name="number-of-hours"
+                  value={numberOfHours}
+                  onChange={e => setNumberOfHours(e.target.value)}
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label is-small has-text-white">Start Time</label>
+            <div className="field">
+              <p className="control is-expanded">
+                <input
+                  className="input"
+                  type="text"
+                  name="start-time"
+                  value={startTime}
+                  onChange={e => setStartTime(e.target.value)}
                 />
               </p>
             </div>
