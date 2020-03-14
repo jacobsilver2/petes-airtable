@@ -3,8 +3,8 @@ import Layout from "../components/layout"
 import { Router } from "@reach/router"
 import { login, isAuthenticated, getProfile, logout } from "../services/auth"
 import Sound from "../components/Staff/Sound"
-import StaffHome from '../components/Staff/StaffHome'
-import BarReport from '../components/Staff/BarReport'
+import StaffHome from "../components/Staff/StaffHome"
+import BarReport from "../components/Staff/BarReport"
 
 //! There is a gatsby bug with the router compoment.  Notice how the paths in the router are from '/' and not '/staff'.
 
@@ -58,7 +58,9 @@ const StaffPage = () => {
           {" "}
           Log Out{" "}
         </a>
-        <div className="tabs is-centered is-large"><ul>{mappedListItems}</ul></div>
+        <div className="tabs is-centered is-large">
+          <ul>{mappedListItems}</ul>
+        </div>
         {renderStaffPage()}
       </Layout>
     </>
