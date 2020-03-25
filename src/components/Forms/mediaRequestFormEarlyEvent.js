@@ -9,7 +9,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "appNuB0fX4vQbOqdy"
 )
 
-const mediaRequestFormEarlyEvent = () => {
+const MediaRequestFormEarlyEvent = () => {
   const [name, setname] = useState("")
   const [email, setEmail] = useState("")
   const [date, setDate] = useState(new Date().toDateString())
@@ -317,4 +317,4 @@ const mediaRequestFormEarlyEvent = () => {
   )
 }
 
-export default mediaRequestFormEarlyEvent
+export default MediaRequestFormEarlyEvent

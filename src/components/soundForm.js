@@ -1,34 +1,34 @@
-import React from 'react';
-import Layout from './layout';
+import React from "react"
+import Layout from "./layout"
 import { StaticQuery, graphql } from "gatsby"
-import SoundCard from './SoundCard';
+// import SoundCard from "./SoundCard"
 import formatCalendarTime from "../utility/formatCalendarTime"
-import formatCalendarDate from '../utility/formatCalendarDate';
+import formatCalendarDate from "../utility/formatCalendarDate"
 
-export const soundQuery = graphql`
-  {
-    allAirtable(filter: { queryName: { eq: "TodayGrid" } }) {
-      edges {
-        node {
-          data {
-            Name
-            Date
-            id
-            Report
-            Draw
-          }
-        }
-      }
-    }
-  }
-`
+// export const soundQuery = graphql`
+//   {
+//     allAirtable(filter: { queryName: { eq: "TodayGrid" } }) {
+//       edges {
+//         node {
+//           data {
+//             Name
+//             Date
+//             id
+//             Report
+//             Draw
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 const SoundForm = props => {
-
   return (
     <>
       <Layout fluid={null} fullheight={false}>
-        <StaticQuery 
+        <div>yo</div>
+        {/* <StaticQuery 
           query={soundQuery}
           render={data => {
             const cards = data.allAirtable.edges.map(edge => (
@@ -47,10 +47,10 @@ const SoundForm = props => {
               </>
             )
           }}
-        />
+        /> */}
       </Layout>
     </>
   )
 }
 
-export default SoundForm;
+export default SoundForm

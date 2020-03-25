@@ -9,7 +9,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "app4Eb0X39KtGToOS"
 )
 
-const mediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
+const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
   //text state
   const [firstName, setfirstName] = useState("")
   const [lastName, setlastName] = useState("")
@@ -395,4 +395,4 @@ const mediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
   )
 }
 
-export default mediaRequestForm
+export default MediaRequestForm
