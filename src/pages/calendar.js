@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import CalendarFrame from "../components/Calendar/CalendarFrame"
@@ -22,7 +22,7 @@ export const pageQuery = graphql`
   }
 `
 
-function calendar(props) {
+function Calendar(props) {
   const [events, setEvents] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [firstEventIds, setFirstEventIds] = useState([])
@@ -73,4 +73,4 @@ export const frontmatter = {
   navOrder: 2,
 }
 
-export default calendar
+export default Calendar

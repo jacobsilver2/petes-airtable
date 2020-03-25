@@ -50,8 +50,9 @@ const IndexPage = ({ data }) => {
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={true}>
         <div>
-          <Button title="FULL CALENDAR" link="/calendar" />
-          <TodayAtPetes />
+          {/* <Button title="FULL CALENDAR" link="/calendar" /> */}
+
+          {/* <TodayAtPetes /> */}
           {myhtml}
         </div>
       </Layout>
