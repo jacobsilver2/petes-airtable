@@ -101,11 +101,17 @@ export default function createHtml(data) {
       return (
         <div className="container" key={data.id}>
           <section className="section">
-            <figure className="image">
-              <Img
-                fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
-              />
-            </figure>
+            {data &&
+              data.Attachments &&
+              data.Attachments.localFiles[0] &&
+              data.Attachments.localFiles[0].childImageSharp &&
+              data.Attachments.localFiles[0].childImageSharp.fluid && (
+                <figure className="image">
+                  <Img
+                    fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                  />
+                </figure>
+              )}
           </section>
         </div>
       )

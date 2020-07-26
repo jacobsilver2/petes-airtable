@@ -49,6 +49,10 @@ function Calendar(props) {
     <Layout fluid={null} fullheight={false}>
       <div className="container">
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+          All shows have been postoned due to covid-19.
+        </h1>
+        {/* All code below currently disabled during COVID */}
+        {/* <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES
         </h1>
         <p style={{ textAlign: "center" }}>
@@ -61,7 +65,7 @@ function Calendar(props) {
           type="TailSpin"
           color="#feff03"
         />
-        {renderedCalendar}
+        {renderedCalendar} */}
       </div>
     </Layout>
   )
