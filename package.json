@@ -10,6 +10,7 @@
     "airtable": "^0.6.0",
     "auth0-js": "^9.11.3",
     "axios": "^0.19.0",
+    "babel-plugin-styled-components": "^1.11.1",
     "bulma": "^0.7.5",
     "cloudinary-core": "^2.7.4",
     "cloudinary-react": "^1.2.1",
@@ -23,6 +24,7 @@
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-sass": "^2.1.0",
     "gatsby-plugin-sharp": "^2.2.3",
+    "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-remark-images": "^3.1.6",
     "gatsby-remark-images-zoom": "^1.1.0",
     "gatsby-source-airtable": "^2.0.8",
@@ -49,7 +51,7 @@
     "react-read-more-less": "^0.1.6",
     "react-soundplayer": "^1.0.4",
     "react-truncate": "^2.4.0",
-    "styled-components": "^4.3.2",
+    "styled-components": "^4.4.1",
     "styled-system": "^5.0.12"
   },
   "devDependencies": {
