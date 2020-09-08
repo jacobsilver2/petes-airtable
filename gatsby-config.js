@@ -101,6 +101,11 @@ module.exports = {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: "menu",
           },
+          {
+            baseId: `appNuB0fX4vQbOqdy`,
+            tableName: "menupdf",
+            mapping: { Attachments: `fileNode` },
+          },
         ],
       },
     },
