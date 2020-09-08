@@ -9,6 +9,11 @@ const StyledIFrame = styled.iframe`
   /* position: absolute; */
 `
 
+const StyledDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+`
+
 export const menuPdfQuery = graphql`
   query MyQuery {
     allAirtable(filter: { table: { eq: "menupdf" } }) {
@@ -30,9 +35,9 @@ const MenuQr = ({ data }) => {
 
   return (
     <Layout fluid={null} fullHeight={false}>
-      <div classname="section is-relative is-fullheight">
+      <StyledDiv classname="section is-relative is-fullheight">
         <StyledIFrame src={url} allowfullscreen></StyledIFrame>
-      </div>
+      </StyledDiv>
     </Layout>
   )
 }
