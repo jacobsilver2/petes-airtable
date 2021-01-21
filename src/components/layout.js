@@ -7,6 +7,7 @@ import "./myStyles.scss"
 import Helmet from "react-helmet"
 import BackgroundSection from "./BackgroundSection"
 import TitleBar from "./TitleBar"
+import { paddingRight } from "styled-system"
 
 const Layout = ({
   children,
@@ -46,7 +47,12 @@ const Layout = ({
       />
       <BackgroundSection fluid={fluid} />
       {text && <TitleBar text={text} subText={subText} />}
-      <section className="section">{children}</section>
+      <section
+        style={{ paddingLeft: "0", paddingRight: "0" }}
+        className="section"
+      >
+        {children}
+      </section>
       <Footer />
     </>
   )

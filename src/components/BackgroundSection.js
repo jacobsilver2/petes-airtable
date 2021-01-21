@@ -3,6 +3,7 @@ import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 
 const BackgroundImg = styled(BackgroundImage)`
+  margin-top: 2rem;
   height: 85vh;
   width: 100vw;
   background-color: transparent;

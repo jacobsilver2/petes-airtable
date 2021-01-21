@@ -31,7 +31,7 @@ const Navbar = ({ navItems }) => {
         </div>
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
-        <div className="navbar-start has-text-centered">
+        <div className="navbar-end has-text-centered">
           {filterNavItems(navItems)}
         </div>
       </div>
