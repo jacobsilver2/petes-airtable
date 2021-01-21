@@ -3,14 +3,15 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 
 const StyledImg = styled(Img)`
+  margin: auto;
+  max-width: 2048px;
   /* margin: 1rem; */
-
-  @media screen and (min-height: 751px) {
+  /* @media screen and (min-height: 751px) {
     max-height: 50vh;
   }
   @media screen and (max-height: 750px) {
     max-height: 70vh;
-  }
+  } */
 `
 
 export function renderHero(fluid, fullheight, regular) {
@@ -26,9 +27,10 @@ export function renderHero(fluid, fullheight, regular) {
       <section className="hero has-bg-img">
         <div className="hero-body">
           <StyledImg
-            // className="hero-body"
             fluid={fluid}
-            imgStyle={{ objectFit: "cover" }}
+            imgStyle={{
+              objectFit: "cover",
+            }}
           />
         </div>
       </section>

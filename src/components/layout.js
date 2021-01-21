@@ -5,9 +5,17 @@ import Navbar from "./navbar"
 import Footer from "./footer"
 import "./myStyles.scss"
 import Helmet from "react-helmet"
-import { renderHero } from "./renderHero"
+import BackgroundSection from "./BackgroundSection"
+import TitleBar from "./TitleBar"
 
-const Layout = ({ children, fluid, fullheight, regular = false }) => {
+const Layout = ({
+  children,
+  fluid,
+  text,
+  subText,
+  fullheight,
+  regular = false,
+}) => {
   const data = useStaticQuery(graphql`
     query siteQuery {
       site {
@@ -36,10 +44,9 @@ const Layout = ({ children, fluid, fullheight, regular = false }) => {
         siteTitle={data.site.siteMetadata.title}
         navItems={data.allJavascriptFrontmatter.edges}
       />
-      {fluid ? renderHero(fluid, fullheight, regular) : null}
-      <section style={{ paddingTop: "6rem" }} className="section">
-        {children}
-      </section>
+      <BackgroundSection fluid={fluid} />
+      {text && <TitleBar text={text} subText={subText} />}
+      <section className="section">{children}</section>
       <Footer />
     </>
   )

@@ -16,6 +16,7 @@
     "cloudinary-react": "^1.2.1",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.6",
+    "gatsby-background-image": "^1.4.0",
     "gatsby-cli": "^2.7.15",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-create-client-paths": "^2.1.3",

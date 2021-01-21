@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
 import TodayAtPetes from "../components/TodayAtPetes"
 import Button from "../components/Button"
+import BackgroundSection from "../components/BackgroundSection"
 
 export const pageQuery = graphql`
   {
@@ -17,6 +18,7 @@ export const pageQuery = graphql`
         data {
           Name
           Content
+          display
           type
           website
           email
@@ -25,7 +27,7 @@ export const pageQuery = graphql`
             localFiles {
               childImageSharp {
                 fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -33,10 +35,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "petes.jpg" }) {
+    file(relativePath: { eq: "WelcomeHeader.jpeg" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 1920, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -48,7 +50,11 @@ const IndexPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid} fullheight={true}>
+      <Layout
+        fluid={data.file.childImageSharp.fluid}
+        text="Pete's Candy Store"
+        subText="Serving and Performing in Williamsburg since 1999"
+      >
         <div>
           {/* <Button title="FULL CALENDAR" link="/calendar" /> */}
 

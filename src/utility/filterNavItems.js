@@ -10,7 +10,10 @@ export default function filteredAndMappedNavItems(navItems) {
         item.node.frontmatter.title !== "Host A Cool Event" &&
         item.node.frontmatter.title !== "Open Mic" &&
         item.node.frontmatter.title !== "Reading Series" &&
-        item.node.frontmatter.title !== "404"
+        item.node.frontmatter.title !== "404" &&
+        item.node.frontmatter.title !== "Photo Shoots" &&
+        item.node.frontmatter.title !== "Parties" &&
+        item.node.frontmatter.title !== "Booking"
     )
     .sort(function(a, b) {
       return a.node.frontmatter.navOrder - b.node.frontmatter.navOrder

@@ -22,6 +22,7 @@ export const StyledVideoContainer = styled.div`
 `
 
 export default function createHtml(data) {
+  if (!data.display) return
   switch (data.type) {
     case "button":
       return (
