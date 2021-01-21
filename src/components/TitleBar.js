@@ -6,16 +6,13 @@ const TitleBar = ({ text, subText }) => {
       <div className="box">
         <h1
           style={{ textAlign: "center" }}
-          className="has-text-white is-size-1"
+          className="has-text-white is-size-1-desktop is-size-1-tablet is-size-3-mobile"
         >
           {text}
         </h1>
-        <h2
-          style={{ textAlign: "center" }}
-          className="is-size-5 has-text-white"
-        >
+        <p style={{ textAlign: "center" }} className="has-text-white">
           {subText}
-        </h2>
+        </p>
       </div>
     </div>
   )
