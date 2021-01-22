@@ -28,7 +28,7 @@ export const pageQuery = graphql`
             localFiles {
               childImageSharp {
                 fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -38,21 +38,21 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "contact.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
   }
 `
 const ContactPage = ({ data }) => {
-  const [active, setActive] = useState("MEDIA INQUIRIES")
+  const [active, setActive] = useState("GENERAL INQUIRIES")
   const formNames = [
-    "PHOTO SHOOTS",
+    "GENERAL INQUIRIES",
     "MUSIC BOOKING",
+    "PHOTO SHOOTS",
     "PITCH A SHOW",
     "BOOK A PARTY",
-    "ALL OTHER INQUIRIES",
   ]
 
   const mappedListItems = formNames.map(name => (
@@ -82,7 +82,7 @@ const ContactPage = ({ data }) => {
       // navigate("/parties")
       return <PrivatePartyForm />
     }
-    if (active === "ALL OTHER INQUIRIES") {
+    if (active === "GENERAL INQUIRIES") {
       return (
         <>
           <p className="has-text-centered">

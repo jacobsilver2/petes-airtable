@@ -1,23 +1,22 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
-@import url('https://fonts.googleapis.com/css?family=PT+Serif:400, 700');
-@import url('https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css?family=PT+Serif:400, 700");
+@import url("https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Arimo&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #8a4d76;
+$pink: #fa7c91;
 $brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
 $red: #fd0f0e;
 
 // $family-sans-serif: 'Nunito',
-$family-sans-serif: 'Raleway',
-sans-serif;
+$family-sans-serif: "Raleway", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: black;
@@ -28,7 +27,6 @@ $fullhd-enabled: false;
 $body-background-color: black;
 $body-color: white;
 $link-hover: white;
-
 
 $control-border-width: 2px;
 $input-border-color: transparent;
@@ -58,11 +56,9 @@ $tabs-link-active-color: white;
 $tabs-link-active-border-bottom-color: white;
 
 $card-background-color: black;
-$card-shadow: 0 2px 3px rgba(white, 0.1),
-0 0 0 1px rgba(white, 0.1);
+$card-shadow: 0 2px 3px rgba(white, 0.1), 0 0 0 1px rgba(white, 0.1);
 $card-header-color: white;
 $card-color: white;
-
 
 .image-gallery-image img {
   max-height: 853px;

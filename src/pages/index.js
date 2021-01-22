@@ -50,11 +50,7 @@ const IndexPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout
-        fluid={data.file.childImageSharp.fluid}
-        text="Pete's Candy Store"
-        subText="Serving and Performing in Williamsburg since 1999"
-      >
+      <Layout fluid={data.file.childImageSharp.fluid}>
         <div>
           {/* <Button title="FULL CALENDAR" link="/calendar" /> */}
 

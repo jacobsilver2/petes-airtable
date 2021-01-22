@@ -15,6 +15,7 @@ export const pageQuery = graphql`
           Content
           type
           website
+          display
           id
           Attachments {
             localFiles {
@@ -28,10 +29,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "history.png" }) {
+    file(relativePath: { eq: "HistoryHeader.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 1920, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -41,6 +42,7 @@ export const pageQuery = graphql`
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
+  console.log(myhtml)
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
@@ -53,6 +55,6 @@ const HistoryPage = ({ data }) => {
 export const frontmatter = {
   title: "History",
   url: "/history",
-  navOrder: 8
+  navOrder: 8,
 }
 export default HistoryPage

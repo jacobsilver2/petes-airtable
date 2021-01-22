@@ -46,10 +46,14 @@ const Layout = ({
         navItems={data.allJavascriptFrontmatter.edges}
       />
       {/* <BackgroundSection fluid={fluid} /> */}
-      <Img style={{ marginTop: "2rem" }} fluid={fluid} />
+      <Img style={{ marginTop: "3rem" }} fluid={fluid} />
       {text && <TitleBar text={text} subText={subText} />}
       <section
-        style={{ paddingLeft: "0", paddingRight: "0" }}
+        style={{
+          marginTop: fluid ? "0" : "3rem",
+          paddingLeft: "0",
+          paddingRight: "0",
+        }}
         className="section"
       >
         {children}

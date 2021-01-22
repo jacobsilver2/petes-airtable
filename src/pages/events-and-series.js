@@ -1,7 +1,7 @@
-import React from 'react';
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createEventsAndSeriesHtml from '../utility/createEventsAndSeriesHtml';
+import createEventsAndSeriesHtml from "../utility/createEventsAndSeriesHtml"
 
 export const pageQuery = graphql`
   {
@@ -28,10 +28,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "events.png" }) {
+    file(relativePath: { eq: "EventsHeaderImage.jpeg" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 1920, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -44,9 +44,7 @@ const EventsAndSeriesPage = ({ data }) => {
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
-        <div>
-          {myhtml}
-        </div>
+        <div>{myhtml}</div>
       </Layout>
     </>
   )
@@ -54,7 +52,7 @@ const EventsAndSeriesPage = ({ data }) => {
 
 export const frontmatter = {
   title: "Events and Series",
-  url: '/events-and-series',
-  navOrder: 3
+  url: "/events-and-series",
+  navOrder: 3,
 }
-export default EventsAndSeriesPage;
+export default EventsAndSeriesPage

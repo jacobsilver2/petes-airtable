@@ -21,7 +21,7 @@ export default function filteredAndMappedNavItems(navItems) {
     .map(item => (
       <Link
         key={item.node.frontmatter.title}
-        className="navbar-item is-size-5"
+        className="navbar-item is-size-6"
         to={item.node.frontmatter.url}
         activeClassName="has-text-white"
       >
