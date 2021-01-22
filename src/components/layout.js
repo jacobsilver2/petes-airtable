@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
@@ -7,7 +8,6 @@ import "./myStyles.scss"
 import Helmet from "react-helmet"
 import BackgroundSection from "./BackgroundSection"
 import TitleBar from "./TitleBar"
-import { paddingRight } from "styled-system"
 
 const Layout = ({
   children,
@@ -45,7 +45,8 @@ const Layout = ({
         siteTitle={data.site.siteMetadata.title}
         navItems={data.allJavascriptFrontmatter.edges}
       />
-      <BackgroundSection fluid={fluid} />
+      {/* <BackgroundSection fluid={fluid} /> */}
+      <Img style={{ marginTop: "2rem" }} fluid={fluid} />
       {text && <TitleBar text={text} subText={subText} />}
       <section
         style={{ paddingLeft: "0", paddingRight: "0" }}
