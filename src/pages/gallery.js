@@ -1,42 +1,86 @@
-import React from "react"
+import React, { useState, useCallback } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import ImageGallery from 'react-image-gallery';
+import Gallery from "react-photo-gallery"
+import Carousel, { Modal, ModalGateway } from "react-images"
 
 export const pageQuery = graphql`
   {
-    allAirtable(filter: {table: {eq: "gallery"}}, sort: {fields: data___Name}) {
-    nodes {
-      data {
-        Name
-        title
-        subtitle
-        Attachments {
-          raw {
-            url
+    allAirtable(
+      filter: { table: { eq: "gallery" } }
+      sort: { fields: data___order }
+    ) {
+      nodes {
+        data {
+          Name
+          title
+          subtitle
+          display
+          order
+          width
+          height
+          Attachments {
+            raw {
+              url
+            }
           }
         }
       }
     }
   }
-}
 `
 
 const GalleryPage = ({ data }) => {
-  const hurrayForGallery = [];
-  data.allAirtable.nodes.forEach(node => {
-    hurrayForGallery.push({
-      original: node.data.Attachments.raw[0].url,
-      originalTitle: node.data.title,
-      description: node.data.subtitle
+  const [currentImage, setCurrentImage] = useState(0)
+  const [viewerIsOpen, setViewerIsOpen] = useState(false)
+
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index)
+    setViewerIsOpen(true)
+  }, [])
+
+  const closeLightbox = () => {
+    setCurrentImage(0)
+    setViewerIsOpen(false)
+  }
+
+  const photos = data.allAirtable.nodes
+    .filter(node => node.data.display)
+    .map(node => {
+      console.log(node)
+      const nodeObj = {
+        src: node.data.Attachments.raw[0].url,
+        width: parseInt(Math.ceil(node.data.width)),
+        height: parseInt(Math.ceil(node.data.height)),
+      }
+      return nodeObj
     })
-  })
 
   return (
     <>
       <Layout>
         <div className="container">
-          <ImageGallery items={hurrayForGallery}/>
+          <div>
+            <Gallery
+              direction="column"
+              photos={photos}
+              onClick={openLightbox}
+            />
+            <ModalGateway>
+              {viewerIsOpen ? (
+                <Modal onClose={closeLightbox}>
+                  <Carousel
+                    currentIndex={currentImage}
+                    views={photos.map(x => ({
+                      ...x,
+                      srcset: x.srcSet,
+                      caption: x.title,
+                    }))}
+                  />
+                </Modal>
+              ) : null}
+            </ModalGateway>
+          </div>
         </div>
       </Layout>
     </>
@@ -46,6 +90,6 @@ const GalleryPage = ({ data }) => {
 export const frontmatter = {
   title: "Gallery",
   url: "/gallery",
-  navOrder: 7
+  navOrder: 7,
 }
 export default GalleryPage
