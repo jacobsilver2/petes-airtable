@@ -2,6 +2,11 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import GeneralForm from "../components/Forms/GeneralForm"
+import BookingForm from "../components/Forms/BookingForm"
+import PhotoShootForm from "../components/Forms/PhotoshootForm"
+import EventBookingForm from "../components/Forms/EventBookingForm"
+import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
+
 import { navigate } from "gatsby"
 // adding a comment to test a git thingy
 
@@ -62,16 +67,20 @@ const ContactPage = ({ data }) => {
 
   function renderForm() {
     if (active === "MUSIC BOOKING") {
-      navigate("/booking")
+      // navigate("/booking")
+      return <BookingForm />
     }
     if (active === "PITCH A SHOW") {
-      navigate("/host-a-cool-event")
+      // navigate("/host-a-cool-event")
+      return <EventBookingForm />
     }
     if (active === "PHOTO SHOOTS") {
-      navigate("/photo-shoots")
+      // navigate("/photo-shoots")
+      return <PhotoShootForm />
     }
     if (active === "BOOK A PARTY") {
-      navigate("/parties")
+      // navigate("/parties")
+      return <PrivatePartyForm />
     }
     if (active === "ALL OTHER INQUIRIES") {
       return (
