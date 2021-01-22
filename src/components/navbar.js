@@ -8,10 +8,6 @@ const StyledBurger = styled.div`
   margin: auto 0;
 `
 
-const StyledNavMenu = styled.div`
-  /* height: 100vh; */
-`
-
 const Navbar = ({ navItems }) => {
   const [navBarActiveClass, setNavBarActiveClass] = useState("")
 
@@ -50,14 +46,11 @@ const Navbar = ({ navItems }) => {
           <span />
         </StyledBurger>
       </div>
-      <StyledNavMenu
-        id="navMenu"
-        className={`navbar-menu ${navBarActiveClass}`}
-      >
+      <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
         <div className="navbar-end has-text-centered">
           {filterNavItems(navItems)}
         </div>
-      </StyledNavMenu>
+      </div>
     </nav>
   )
 }
