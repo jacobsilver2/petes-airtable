@@ -42,7 +42,6 @@ export const pageQuery = graphql`
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const myhtml = nodes.map(node => createHtml(node.data))
-  console.log(myhtml)
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>

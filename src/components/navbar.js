@@ -36,7 +36,8 @@ const Navbar = ({ navItems }) => {
           </div>
         </div>
         {/* Hamburger Menu */}
-        <StyledBurger
+        <div
+          style={{ margin: "auto", marginRight: "0" }}
           className={`navbar-burger burger ${navBarActiveClass}`}
           data-target="navMenu"
           onClick={e => toggleHamburger(e)}
@@ -44,7 +45,7 @@ const Navbar = ({ navItems }) => {
           <span />
           <span />
           <span />
-        </StyledBurger>
+        </div>
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
         <div className="navbar-end has-text-centered">
