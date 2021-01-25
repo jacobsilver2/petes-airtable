@@ -111,6 +111,7 @@ export default function createHtml(data) {
                   <Img
                     fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
                   />
+                  {data.Content && <figcaption>{data.Content}</figcaption>}
                 </figure>
               )}
           </section>

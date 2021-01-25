@@ -4,9 +4,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
-import TodayAtPetes from "../components/TodayAtPetes"
-import Button from "../components/Button"
-import BackgroundSection from "../components/BackgroundSection"
+// import TodayAtPetes from "../components/TodayAtPetes"
+// import Button from "../components/Button"
+// import BackgroundSection from "../components/BackgroundSection"
 
 export const pageQuery = graphql`
   {

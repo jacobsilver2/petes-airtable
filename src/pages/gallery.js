@@ -47,7 +47,6 @@ const GalleryPage = ({ data }) => {
   const photos = data.allAirtable.nodes
     .filter(node => node.data.display)
     .map(node => {
-      console.log(node)
       const nodeObj = {
         src: node.data.Attachments.raw[0].url,
         width: parseInt(Math.ceil(node.data.width)),
@@ -66,21 +65,29 @@ const GalleryPage = ({ data }) => {
               photos={photos}
               onClick={openLightbox}
             />
-            <ModalGateway>
-              {viewerIsOpen ? (
-                <Modal onClose={closeLightbox}>
-                  <Carousel
-                    currentIndex={currentImage}
-                    views={photos.map(x => ({
-                      ...x,
-                      srcset: x.srcSet,
-                      caption: x.title,
-                    }))}
-                  />
-                </Modal>
-              ) : null}
-            </ModalGateway>
           </div>
+          <ModalGateway>
+            {viewerIsOpen ? (
+              <Modal onClose={closeLightbox}>
+                <Carousel
+                  styles={{
+                    view: (base, state) => ({
+                      ...base,
+                      "& > img": {
+                        maxWidth: "80%",
+                      },
+                    }),
+                  }}
+                  currentIndex={currentImage}
+                  views={photos.map(x => ({
+                    ...x,
+                    srcset: x.srcSet,
+                    caption: x.title,
+                  }))}
+                />
+              </Modal>
+            ) : null}
+          </ModalGateway>
         </div>
       </Layout>
     </>
