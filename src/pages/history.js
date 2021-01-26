@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
+import createHistoryHtml from "../utility/createHistoryHtml"
 
 export const pageQuery = graphql`
   {
@@ -29,6 +30,20 @@ export const pageQuery = graphql`
         }
       }
     }
+    pastPerformers: allAirtable(
+      filter: { table: { eq: "past performers" } }
+      sort: { order: ASC, fields: data___order }
+    ) {
+      nodes {
+        data {
+          Name
+          display
+          Content
+          type
+          id
+        }
+      }
+    }
     file(relativePath: { eq: "HistoryHeader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920, quality: 100) {
@@ -41,7 +56,12 @@ export const pageQuery = graphql`
 
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
+  const { nodes: past } = data.pastPerformers
   const myhtml = nodes.map(node => createHtml(node.data))
+  const pastBandsList = past
+    .map(node => node.data.Content)
+    .sort()
+    .join(", ")
   return (
     <>
       <Layout
@@ -50,6 +70,14 @@ const HistoryPage = ({ data }) => {
         fullheight={false}
       >
         <div>{myhtml}</div>
+        <div className="container">
+          <div className="content">
+            <p className="has-text-weight-bold" style={{ textAlign: "center" }}>
+              PAST PERFORMERS
+            </p>
+            <p style={{ textAlign: "center" }}>{pastBandsList}</p>
+          </div>
+        </div>
       </Layout>
     </>
   )
