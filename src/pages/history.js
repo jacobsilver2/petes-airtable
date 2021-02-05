@@ -58,12 +58,11 @@ const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const { nodes: past } = data.pastPerformers
   const myhtml = nodes.map(node => createHtml(node.data))
-  const pastBandsList = past
-    .map(node => node.data.Content)
-    .sort()
-    .join(", ")
+  const pastBandsList = past.map(node => (
+    <p key={node.data.id}>{node.data.Content}</p>
+  ))
   return (
-    <>
+    <p>
       <Layout
         fluid={data.file.childImageSharp.fluid}
         maxWidth="550px"
@@ -79,7 +78,7 @@ const HistoryPage = ({ data }) => {
           </div>
         </div>
       </Layout>
-    </>
+    </p>
   )
 }
 

@@ -27,7 +27,10 @@ const Navbar = ({ navItems }) => {
       <div className="navbar-brand">
         <div className="navbar-item">
           <div className="">
-            <Link to="/" className="has-text-red is-size-5">
+            <Link
+              to="/"
+              className="has-text-red is-size-3 is-size-5-mobile is-size4-tablet"
+            >
               Pete's Candy Store
             </Link>
             <p className="has-text-white is-size-7">
