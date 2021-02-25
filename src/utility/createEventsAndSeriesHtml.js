@@ -2,6 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 
 export default function createEventsAndSeriesHtml(data) {
+  if (!data.display) {
+    return
+  }
   switch (data.type) {
     case "heading1":
       return (

@@ -16,6 +16,7 @@ export const pageQuery = graphql`
           type
           website
           id
+          display
           Attachments {
             localFiles {
               childImageSharp {

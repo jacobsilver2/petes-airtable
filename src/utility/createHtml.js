@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import ImageGallery from "react-image-gallery"
 
 export const StyledVideoContainer = styled.div`
+  margin: 50px 25px;
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
