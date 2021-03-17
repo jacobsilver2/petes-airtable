@@ -34,7 +34,7 @@ const Navbar = ({ navItems }) => {
               Pete's Candy Store
             </Link>
             <p className="has-text-white is-size-7">
-              Serving and Performing in Williamsburg since 1999
+            The Biggest Little Venue in NYC
             </p>
           </div>
         </div>

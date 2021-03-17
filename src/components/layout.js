@@ -67,7 +67,7 @@ const Layout = ({
       >
         {children}
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
