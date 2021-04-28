@@ -34,6 +34,7 @@
     "gatsby-transformer-remark": "^2.6.7",
     "gatsby-transformer-sharp": "^2.2.1",
     "got": "^9.6.0",
+    "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "multer": "^1.4.2",
     "node-sass": "^4.12.0",

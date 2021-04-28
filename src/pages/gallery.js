@@ -97,6 +97,6 @@ const GalleryPage = ({ data }) => {
 export const frontmatter = {
   title: "Gallery",
   url: "/gallery",
-  navOrder: 7,
+  navOrder: 5,
 }
 export default GalleryPage

@@ -54,6 +54,6 @@ const EventsAndSeriesPage = ({ data }) => {
 export const frontmatter = {
   title: "Events and Series",
   url: "/events-and-series",
-  navOrder: 3,
+  navOrder: 4,
 }
 export default EventsAndSeriesPage
