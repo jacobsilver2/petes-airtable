@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import CalendarFrame from "../components/Calendar/CalendarFrame"
 import { getAllEvents } from "../services/getCalendarEvents"
@@ -48,11 +48,21 @@ function Calendar(props) {
   return (
     <Layout fluid={null} fullheight={false}>
       <div className="container">
-        <h1 className="has-text-danger" style={{ textAlign: "center" }}>
-          All shows have been postoned due to covid-19.
-        </h1>
-        {/* All code below currently disabled during COVID */}
+        <section className="section">
+          <div className="level-item">
+            <Link
+              to="/covid-info"
+              className="button is-large is-primary is-outlined is-rounded is-inverted"
+            >
+              Covid Info
+            </Link>
+          </div>
+        </section>
         {/* <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+          All shows have been postoned due to covid-19.
+        </h1> */}
+        {/* All code below currently disabled during COVID */}
+        <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES
         </h1>
         <p style={{ textAlign: "center" }}>
@@ -65,7 +75,7 @@ function Calendar(props) {
           type="TailSpin"
           color="#feff03"
         />
-        {renderedCalendar} */}
+        {renderedCalendar}
       </div>
     </Layout>
   )
@@ -74,7 +84,7 @@ function Calendar(props) {
 export const frontmatter = {
   title: "Calendar",
   url: "/calendar",
-  navOrder: 2,
+  navOrder: 3,
 }
 
 export default Calendar

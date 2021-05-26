@@ -23,6 +23,13 @@ export default function filteredAndMappedNavItems(navItems) {
     <Link
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
+      to="/covid-info"
+    >
+      Covid Info
+    </Link>,
+    <Link
+      activeClassName="has-text-white"
+      className="navbar-item is-size-6"
       to="/calendar"
     >
       Calendar
