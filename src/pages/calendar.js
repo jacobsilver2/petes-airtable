@@ -58,9 +58,6 @@ function Calendar(props) {
             </Link>
           </div>
         </section>
-        {/* <h1 className="has-text-danger" style={{ textAlign: "center" }}>
-          All shows have been postoned due to covid-19.
-        </h1> */}
         {/* All code below currently disabled during COVID */}
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES

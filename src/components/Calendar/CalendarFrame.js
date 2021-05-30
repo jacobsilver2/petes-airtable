@@ -18,7 +18,12 @@ const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
           ? event.fields["Act Image"][0].url
           : getRandomImage(allFile.nodes)
       }
-      title={event.fields.Name}
+      title={
+        // if event is ticketed
+        event.fields.Ticketed && event.fields["Ticket Price"]
+          ? `${event.fields.Name} - $${event.fields["Ticket Price"]}`
+          : event.fields.Name
+      }
       hosted={
         event.fields["Act Hosted"] ? event.fields["Act Hosted"][0] : false
       }
