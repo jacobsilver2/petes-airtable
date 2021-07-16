@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createEventsAndSeriesHtml from '../utility/createEventsAndSeriesHtml';
-import BookingForm from '../components/Forms/BookingForm';
+import createEventsAndSeriesHtml from "../utility/createEventsAndSeriesHtml"
+import BookingForm from "../components/Forms/BookingForm"
 
 export const pageQuery = graphql`
   {
@@ -16,6 +16,7 @@ export const pageQuery = graphql`
           Content
           type
           website
+          display
           id
           Attachments {
             localFiles {
@@ -55,6 +56,6 @@ const BookingPage = ({ data }) => {
 export const frontmatter = {
   title: "Booking",
   url: "/booking",
-  navOrder: 6
+  navOrder: 6,
 }
 export default BookingPage

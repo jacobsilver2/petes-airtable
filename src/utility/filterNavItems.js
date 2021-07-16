@@ -36,6 +36,7 @@ export default function filteredAndMappedNavItems(navItems) {
     </Link>,
     <a
       target="_blank"
+      rel="noreferrer"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       href="http://petes-candy-store.square.site/"
@@ -48,6 +49,13 @@ export default function filteredAndMappedNavItems(navItems) {
       to="/events-and-series"
     >
       Events and Series
+    </Link>,
+    <Link
+      activeClassName="has-text-white"
+      className="navbar-item is-size-6"
+      to="/booking"
+    >
+      Booking
     </Link>,
     <Link
       activeClassName="has-text-white"
