@@ -6,42 +6,48 @@ function CovidInfo() {
     <Layout fluid={null} fullheight={false}>
       <div className="container">
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
-          COVID-19 INFO & Guidelines
+          Covid Policy: Your Safety is our Priority
         </h1>
         <p style={{ textAlign: "center" }}>
-          Proof of Vaccination Not Required. Any unvaccinated customers are
-          asked to wear a mask when not seated.
+          <b>
+            We are open at full capacity to everyone who has been vaccinated
+            against Covid.
+          </b>{" "}
+          We will require proof of current vaccination status at entry, either
+          with a vaccination card (or photo of same) or the NYS Excelsior Pass
+          or similar electronic system. We will also accept proof of negative
+          COVID test results taken within 72 hours prior.
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
-          This important news means that we’ve hit a critical threshold in which
-          the state’s COVID-19 New York Forward guidelines for eating and
-          drinking establishments is now lifted, effective immediately,
-          including cleaning and disinfection requirements, temperature and
-          health screenings, collection of contact information for tracing,
-          posting of related signage, etc. This also means that social
-          distancing, table spacing and barriers are no longer required.
+          <b>
+            Current CDC guidelines recommend masks for all vaccinated patrons of
+            indoor events in our area. This is not mandatory.{" "}
+          </b>
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
-          Restaurants, bars, and clubs may still implement these protocols if
-          they want, but it is now optional.
+          <b>We do not have a non-vaccinated seating section.</b> Should this
+          guidance change by show day, we will adjust our policy accordingly.
+          NYS Excelsior Pass info & signup{" "}
+          <a
+            href="https://covid19vaccine.health.ny.gov/excelsior-pass"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            here
+          </a>
+          .
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
-          Businesses may ask for proof of vaccination from patrons through paper
-          form, digital application, or the State's{" "}
-          <a href="https://epass.ny.gov/home" target="_blank">
-            Excelsior Pass
-          </a>{" "}
-          Excelsior Pass. Alternatively, businesses may rely upon self-reporting
-          of vaccination status (e.g., honor system), or post a sign at the
-          front of the business asking unvaccinated individuals to inform the
-          business of their status, in which case unvaccinated people should
-          wear a mask if standing and not consuming food and beverage. But,
-          businesses are not required to request proof of vaccination. We
-          anticipate the State will release official details in the near future
-          at which time we will be sure to share them with you.
+          <b>Children under the age of 12</b> who are not currently eligible to
+          receive a vaccine must be accompanied by a vaccinated adult and must
+          wear a mask at all times.
+        </p>
+        <br />
+        <p style={{ textAlign: "center" }}>
+          All Pete’s Candy Store staff and performers are fully vaccinated.
         </p>
       </div>
     </Layout>
