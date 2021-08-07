@@ -10,6 +10,14 @@ function CovidInfo() {
         </h1>
         <p style={{ textAlign: "center" }}>
           <b>
+            UPDATE: Mayor de Blasio has announced that beginning August 16,
+            proof of COVID-19 vaccination will be required for indoor
+            entertainment in NYC.
+          </b>
+        </p>
+        <br />
+        <p style={{ textAlign: "center" }}>
+          <b>
             We are open at full capacity to everyone who has been vaccinated
             against Covid.
           </b>{" "}
