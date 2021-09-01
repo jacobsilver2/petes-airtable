@@ -23,8 +23,7 @@ function CovidInfo() {
           </b>{" "}
           We will require proof of current vaccination status at entry, either
           with a vaccination card (or photo of same) or the NYS Excelsior Pass
-          or similar electronic system. We will also accept proof of negative
-          COVID test results taken within 72 hours prior.
+          or similar electronic system.
         </p>
         <br />
         <p style={{ textAlign: "center" }}>

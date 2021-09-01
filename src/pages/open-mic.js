@@ -15,6 +15,7 @@ export const pageQuery = graphql`
           Content
           type
           website
+          display
           id
           order
           Attachments {
@@ -44,7 +45,11 @@ const OpenMicPage = ({ data }) => {
   const myhtml = nodes.map(node => createHtml(node.data))
   return (
     <>
-      <Layout fluid={data.file.childImageSharp.fluid} fixed={null} fullheight={false}>
+      <Layout
+        fluid={data.file.childImageSharp.fluid}
+        fixed={null}
+        fullheight={false}
+      >
         <div>{myhtml}</div>
       </Layout>
     </>
@@ -55,4 +60,4 @@ export const frontmatter = {
   title: "Open Mic",
   url: "/open-mic",
 }
-export default OpenMicPage;
+export default OpenMicPage
