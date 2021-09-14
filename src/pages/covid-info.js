@@ -10,9 +10,8 @@ function CovidInfo() {
         </h1>
         <p style={{ textAlign: "center" }}>
           <b>
-            UPDATE: Mayor de Blasio has announced that beginning August 16,
-            proof of COVID-19 vaccination will be required for indoor
-            entertainment in NYC.
+            In compliance with NYC guidance proof of vaccination is required for
+            entry.
           </b>
         </p>
         <br />
