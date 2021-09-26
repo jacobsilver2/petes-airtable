@@ -90,6 +90,12 @@ const ContactPage = ({ data }) => {
             typos.
           </p>
           <GeneralForm />
+          <div className="has-text-centered">
+            <p>Pete's Candy Store</p>
+            <p>709 Lorimer St</p>
+            <p>Brooklyn, NY 11211</p>
+            <p>(718) 302-3770</p>
+          </div>
         </>
       )
     }

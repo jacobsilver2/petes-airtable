@@ -63,7 +63,7 @@ function Calendar(props) {
           SHOWTIMES
         </h1>
         <p style={{ textAlign: "center" }}>
-          ALL SHOWS ARE FREE(unless otherwise listed)
+          All shows are free and 21+ to attend (unless otherwise listed)
         </p>
         <p style={{ textAlign: "center" }}>($5 suggested donation)</p>
         <Loader
