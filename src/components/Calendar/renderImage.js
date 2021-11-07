@@ -8,6 +8,7 @@ export function renderImage(image) {
       <ImageZoom
         image={{
           src: image,
+          alt: image,
           style: { maxHeight: "300px" },
         }}
         zoomImage={{ src: image }}

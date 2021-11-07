@@ -51,6 +51,7 @@ const GalleryPage = ({ data }) => {
         src: node.data.Attachments.raw[0].url,
         width: parseInt(Math.ceil(node.data.width)),
         height: parseInt(Math.ceil(node.data.height)),
+        alt: node.data.Name,
       }
       return nodeObj
     })

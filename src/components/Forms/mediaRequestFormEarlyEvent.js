@@ -86,18 +86,22 @@ const MediaRequestFormEarlyEvent = () => {
   return (
     <div className="container">
       <fieldset>
+        <legend>
+          <h2>Early Event Request Form</h2>
+        </legend>
         <form
           name="media request form early event"
           onSubmit={e => handleSubmit(e)}
           method="POST"
         >
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="showName" className="label is-small has-text-white">
               Name of Show
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="showName"
                   className="input"
                   type="text"
                   placeholder="Name of Show"
@@ -111,10 +115,13 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   type="email"
                   placeholder="Email"
@@ -128,11 +135,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Date</label>
+            <label htmlFor="date" className="label is-small has-text-white">
+              Date
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="date"
                     className="input"
                     type="date"
                     placeholder="date"
@@ -147,11 +157,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Time</label>
+            <label htmlFor="time" className="label is-small has-text-white">
+              Time
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="time"
                     className="input"
                     type="time"
                     placeholder="time"
@@ -166,11 +179,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Facebook</label>
+            <label htmlFor="facebook" className="label is-small has-text-white">
+              Facebook
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="facebook"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -184,11 +200,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Website</label>
+            <label htmlFor="website" className="label is-small has-text-white">
+              Website
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="website"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -202,11 +221,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Twitter</label>
+            <label htmlFor="twitter" className="label is-small has-text-white">
+              Twitter
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="twitter"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -220,11 +242,17 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Instagram</label>
+            <label
+              htmlFor="instagram"
+              className="label is-small has-text-white"
+            >
+              Instagram
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="instagram"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -238,11 +266,14 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="blurb" className="label is-small has-text-white">
               Short Blurb About Your Act (300 characters or less please)
             </label>
             {blurb.length > 300 && (
-              <label className="label is-small has-text-danger">
+              <label
+                htmlFor="blurbLength"
+                className="label is-small has-text-danger"
+              >
                 Please shorten your blurb to less than 300 characters
               </label>
             )}
@@ -250,6 +281,7 @@ const MediaRequestFormEarlyEvent = () => {
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <textarea
+                    id="blurb"
                     className="textarea"
                     placeholder="Short Blurb About Your Act (300 characters or less please)"
                     value={blurb}
@@ -267,17 +299,18 @@ const MediaRequestFormEarlyEvent = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="image" className="label is-small has-text-white">
               Show Image/Art (The file must be less than 5MB.)
             </label>
             {tooLarge && (
-              <label className="label is-small has-text-danger">
+              <label htmlFor="image" className="label is-small has-text-danger">
                 The image is too large.
               </label>
             )}
             <div className="file has-name is-fullwidth">
-              <label className="file-label">
+              <label htmlFor="image" className="file-label">
                 <input
+                  id="image"
                   disabled={loading}
                   className="file-input"
                   type="file"
@@ -304,7 +337,7 @@ const MediaRequestFormEarlyEvent = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
                 disabled={isDisabled || loading}
               >
                 Submit

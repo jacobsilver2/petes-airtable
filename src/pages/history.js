@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
-import createHistoryHtml from "../utility/createHistoryHtml"
 
 export const pageQuery = graphql`
   {
@@ -62,23 +61,21 @@ const HistoryPage = ({ data }) => {
     <p key={node.data.id}>{node.data.Content}</p>
   ))
   return (
-    <p>
-      <Layout
-        fluid={data.file.childImageSharp.fluid}
-        maxWidth="550px"
-        fullheight={false}
-      >
-        <div>{myhtml}</div>
-        <div className="container">
-          <div className="content">
-            <p className="has-text-weight-bold" style={{ textAlign: "center" }}>
-              PAST PERFORMERS
-            </p>
-            <p style={{ textAlign: "center" }}>{pastBandsList}</p>
-          </div>
+    <Layout
+      fluid={data.file.childImageSharp.fluid}
+      maxWidth="550px"
+      fullheight={false}
+    >
+      <div>{myhtml}</div>
+      <div className="container">
+        <div className="content">
+          <p className="has-text-weight-bold" style={{ textAlign: "center" }}>
+            PAST PERFORMERS
+          </p>
+          <p style={{ textAlign: "center" }}>{pastBandsList}</p>
         </div>
-      </Layout>
-    </p>
+      </div>
+    </Layout>
   )
 }
 

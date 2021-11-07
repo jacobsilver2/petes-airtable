@@ -110,7 +110,7 @@ const MediaInquiresForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

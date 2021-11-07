@@ -1,12 +1,7 @@
 import React, { useState } from "react"
-import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import filterNavItems from "../utility/filterNavItems"
-
-const StyledBurger = styled.div`
-  margin: auto 0;
-`
 
 const Navbar = ({ navItems }) => {
   const [navBarActiveClass, setNavBarActiveClass] = useState("")
@@ -34,13 +29,18 @@ const Navbar = ({ navItems }) => {
               Pete's Candy Store
             </Link>
             <p className="has-text-white is-size-7">
-            The Biggest Little Venue in NYC
+              The Biggest Little Venue in NYC
             </p>
           </div>
         </div>
         {/* Hamburger Menu */}
-        <div
-          style={{ margin: "auto", marginRight: "0" }}
+        <button
+          style={{
+            margin: "auto",
+            marginRight: "0",
+            backgroundColor: "transparent",
+            border: "none",
+          }}
           className={`navbar-burger burger ${navBarActiveClass}`}
           data-target="navMenu"
           onClick={e => toggleHamburger(e)}
@@ -48,7 +48,7 @@ const Navbar = ({ navItems }) => {
           <span />
           <span />
           <span />
-        </div>
+        </button>
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
         <div className="navbar-end has-text-centered">

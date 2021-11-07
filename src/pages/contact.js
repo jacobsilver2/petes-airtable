@@ -7,9 +7,6 @@ import PhotoShootForm from "../components/Forms/PhotoshootForm"
 import EventBookingForm from "../components/Forms/EventBookingForm"
 import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
 
-import { navigate } from "gatsby"
-// adding a comment to test a git thingy
-
 export const pageQuery = graphql`
   {
     allAirtable(
@@ -55,31 +52,38 @@ const ContactPage = ({ data }) => {
     "BOOK A PARTY",
   ]
 
-  const mappedListItems = formNames.map(name => (
-    <li
-      key={name}
-      className={`${active === name ? "is-active" : ""} has-text-white`}
-      onClick={() => setActive(name)}
-    >
-      <a>{name}</a>
-    </li>
-  ))
+  const mappedListItems = formNames.map(name => {
+    console.log("active", active)
+    console.log("name", name)
+    return (
+      <button
+        key={name}
+        onClick={() => setActive(name)}
+        style={{
+          fontSize: "1rem",
+          backgroundColor: "transparent",
+          border: "none",
+          color: active === name ? "red" : "white",
+          padding: "0 1em",
+          cursor: "pointer",
+        }}
+      >
+        {name}
+      </button>
+    )
+  })
 
   function renderForm() {
     if (active === "MUSIC BOOKING") {
-      // navigate("/booking")
       return <BookingForm />
     }
     if (active === "PITCH A SHOW") {
-      // navigate("/host-a-cool-event")
       return <EventBookingForm />
     }
     if (active === "PHOTO SHOOTS") {
-      // navigate("/photo-shoots")
       return <PhotoShootForm />
     }
     if (active === "BOOK A PARTY") {
-      // navigate("/parties")
       return <PrivatePartyForm />
     }
     if (active === "GENERAL INQUIRIES") {

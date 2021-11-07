@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
@@ -6,7 +6,6 @@ import styled from "styled-components"
 const StyledIFrame = styled.iframe`
   width: 100vw;
   height: 100vh;
-  /* position: absolute; */
 `
 
 const StyledDiv = styled.div`

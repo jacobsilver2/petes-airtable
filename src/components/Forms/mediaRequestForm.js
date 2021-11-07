@@ -40,7 +40,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       setAct(record.fields.Name)
       setEmail(actEmail)
     })
-  }, [])
+  }, [actEmail, id])
 
   async function addImage(e) {
     e.preventDefault()
@@ -127,16 +127,23 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
   return (
     <div className="container">
       <fieldset>
+        <legend>Media Request Form</legend>
         <form
           name="media request form"
           onSubmit={e => handleSubmit(e)}
           // method="POST"
         >
           <div className="field">
-            <label className="label is-small has-text-white">First Name</label>
+            <label
+              htmlFor="firstName"
+              className="label is-small has-text-white"
+            >
+              First Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="firstName"
                   className="input"
                   type="text"
                   placeholder="First Name"
@@ -150,10 +157,13 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Last Name</label>
+            <label htmlFor="lastName" className="label is-small has-text-white">
+              Last Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="lastName"
                   className="input"
                   type="text"
                   placeholder="Last Name"
@@ -166,10 +176,13 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
             </div>
           </div>
           <div className="field">
-            <label className="label is-small has-text-white">Name of Act</label>
+            <label htmlFor="actName" className="label is-small has-text-white">
+              Name of Act
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="actName"
                   className="input"
                   type="text"
                   placeholder="Name of Act"
@@ -183,10 +196,13 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   type="email"
                   name="email"
@@ -199,11 +215,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Date</label>
+            <label htmlFor="date" className="label is-small has-text-white">
+              Date
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="date"
                     className="input"
                     type="date"
                     placeholder="date"
@@ -218,11 +237,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Time</label>
+            <label htmlFor="time" className="label is-small has-text-white">
+              Time
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="time"
                     className="input"
                     type="time"
                     placeholder="time"
@@ -237,11 +259,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Website</label>
+            <label htmlFor="website" className="label is-small has-text-white">
+              Website
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="website"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -255,11 +280,17 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Soundcloud</label>
+            <label
+              htmlFor="soundCloud"
+              className="label is-small has-text-white"
+            >
+              Soundcloud
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="soundCloud"
                     className="input"
                     type="url"
                     placeholder="url"
@@ -273,13 +304,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="twitter" className="label is-small has-text-white">
               Twitter Handle
             </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="twitter"
                     className="input"
                     type="text"
                     placeholder="twitter"
@@ -293,13 +325,17 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="instagram"
+              className="label is-small has-text-white"
+            >
               Instagram Handle
             </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="instagram"
                     className="input"
                     type="text"
                     placeholder="instagram"
@@ -313,10 +349,13 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="blurb" className="label is-small has-text-white">
               Short blurb about your act (450 character limit)
               {blurb.length > 450 && (
-                <label className="label is-small has-text-danger">
+                <label
+                  htmlFor="blurbError"
+                  className="label is-small has-text-danger"
+                >
                   Must be 450 characters or less
                 </label>
               )}
@@ -326,6 +365,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <textarea
+                    id="blurb"
                     className="textarea"
                     placeholder="short blurb"
                     value={blurb}
@@ -345,17 +385,18 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="image" className="label is-small has-text-white">
               Show Image/Art (The file must be less than 5MB.)
             </label>
             {tooLarge && (
-              <label className="label is-small has-text-danger">
+              <label htmlFor="image" className="label is-small has-text-danger">
                 The image is too large.
               </label>
             )}
             <div className="file has-name is-fullwidth">
               <label className="file-label">
                 <input
+                  id="image"
                   disabled={loading}
                   className="file-input"
                   type="file"
@@ -383,7 +424,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
               <button
                 disabled={loading || isDisabled}
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

@@ -4,7 +4,6 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
-import Footer from "./footer"
 import "./myStyles.scss"
 import Helmet from "react-helmet"
 // import BackgroundSection from "./BackgroundSection"
@@ -46,11 +45,15 @@ const Layout = ({
       }
     }
   `)
-  
 
   return (
     <>
-      <Helmet title={data.site.siteMetadata.title} />
+      <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+        title={data.site.siteMetadata.title}
+      />
       <Navbar
         siteTitle={data.site.siteMetadata.title}
         navItems={data.allJavascriptFrontmatter.edges}

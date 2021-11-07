@@ -53,16 +53,20 @@ const PhotoshootForm = () => {
   return (
     <div className="container">
       <fieldset disabled={isDisabled}>
+        <legend>Photoshoot Form</legend>
         <form
           name="photo shoot form"
           method="POST"
           onSubmit={e => handleSubmit(e)}
         >
           <div className="field">
-            <label className="label is-small has-text-white">Name</label>
+            <label htmlFor="name" className="label is-small has-text-white">
+              Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="name"
                   className="input"
                   type="text"
                   placeholder="First and Last Name"
@@ -75,11 +79,14 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Phone</label>
+            <label htmlFor="phone" className="label is-small has-text-white">
+              Phone
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="phone"
                     className="input"
                     type="tel"
                     placeholder="Phone Number"
@@ -93,10 +100,13 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   type="email"
                   placeholder="Email"
@@ -109,12 +119,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="castAndCrew"
+              className="label is-small has-text-white"
+            >
               Total number of cast and crew
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="castAndCrew"
                   className="input"
                   type="text"
                   name="total-number-of-cast-and-crew"
@@ -126,12 +140,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="typeOfShoot"
+              className="label is-small has-text-white"
+            >
               Type of shoot (film/video/still) *
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="typeOfShoot"
                   className="textarea"
                   name="type-of-shoot"
                   value={typeOfShoot}
@@ -142,12 +160,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="desiredDate"
+              className="label is-small has-text-white"
+            >
               Desired date
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="desiredDate"
                   className="input"
                   type="text"
                   name="desired-date"
@@ -159,12 +181,13 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="hours" className="label is-small has-text-white">
               Number of Hours
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="hours"
                   className="input"
                   type="text"
                   name="number-of-hours"
@@ -176,10 +199,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Start Time</label>
+            <label
+              htmlFor="startTime"
+              className="label is-small has-text-white"
+            >
+              Start Time
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="startTime"
                   className="input"
                   type="text"
                   name="start-time"
@@ -191,12 +220,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="productionName"
+              className="label is-small has-text-white"
+            >
               Name of production
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="productionName"
                   className="input"
                   type="text"
                   name="name-of-production"
@@ -208,12 +241,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="productionCompany"
+              className="label is-small has-text-white"
+            >
               Production company
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="productionCompany"
                   className="input"
                   type="text"
                   name="production-company"
@@ -225,12 +262,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="shootLocation"
+              className="label is-small has-text-white"
+            >
               Where would you like to shoot (bar, live room, back yard)
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="shootLocation"
                   className="input"
                   type="text"
                   name="where-would-you-like-to-shoot"
@@ -242,12 +283,13 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="vehicles" className="label is-small has-text-white">
               How many vehicles associated with shoot
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="vehicles"
                   className="input"
                   type="text"
                   name="how-many-vehicles"
@@ -259,12 +301,16 @@ const PhotoshootForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="additionInfo"
+              className="label is-small has-text-white"
+            >
               Additional Info
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="additionInfo"
                   className="textarea"
                   name="type-of-shoot"
                   value={additionalInfo}
@@ -278,7 +324,7 @@ const PhotoshootForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

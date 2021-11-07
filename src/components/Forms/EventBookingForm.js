@@ -43,16 +43,20 @@ const EventBookingForm = () => {
   return (
     <div className="container">
       <fieldset disabled={isDisabled}>
+        <legend>Show Form</legend>
         <form
           name="photo shoot form"
           method="POST"
           onSubmit={e => handleSubmit(e)}
         >
           <div className="field">
-            <label className="label is-small has-text-white">Name</label>
+            <label htmlFor="name" className="label is-small has-text-white">
+              Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="name"
                   className="input"
                   type="text"
                   placeholder="First and Last Name"
@@ -65,10 +69,13 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   type="email"
                   placeholder="Email"
@@ -81,11 +88,14 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Phone</label>
+            <label htmlFor="phone" className="label is-small has-text-white">
+              Phone
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="phone"
                     className="input"
                     type="tel"
                     placeholder="Phone Number"
@@ -99,12 +109,16 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="eventName"
+              className="label is-small has-text-white"
+            >
               Event Name (if you have one)
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="eventName"
                   className="input"
                   type="text"
                   name="total-number-of-cast-and-crew"
@@ -117,12 +131,16 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="description"
+              className="label is-small has-text-white"
+            >
               Event Description
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="description"
                   className="textarea"
                   name="type-of-shoot"
                   value={description}
@@ -134,12 +152,18 @@ const EventBookingForm = () => {
           </div>
 
           <div className="control">
-            <label className="label is-small has-text-white">Frequency</label>
+            <label
+              htmlFor="frequency"
+              className="label is-small has-text-white"
+            >
+              Frequency
+            </label>
             <div className="select">
               <select
+                id="frequency"
                 name="number-of-band-members"
                 value={frequency}
-                onChange={e => setFrequency(e.target.value)}
+                onBlur={e => setFrequency(e.target.value)}
               >
                 <option>One Time Only</option>
                 <option>Weekly</option>
@@ -150,12 +174,16 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="startDate"
+              className="label is-small has-text-white"
+            >
               Approximate Start Date
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="startDate"
                   className="input"
                   type="text"
                   name="name-of-production"
@@ -167,12 +195,16 @@ const EventBookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="experience"
+              className="label is-small has-text-white"
+            >
               Your Experience In This Field
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="experience"
                   className="input"
                   type="text"
                   name="production-company"
@@ -187,7 +219,7 @@ const EventBookingForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

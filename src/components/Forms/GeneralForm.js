@@ -35,16 +35,20 @@ const GeneralForm = () => {
   return (
     <div className="container">
       <fieldset disabled={isDisabled}>
+        <legend>General Inquiries Form</legend>
         <form
           name="private party form"
           onSubmit={e => handleSubmit(e)}
           method="POST"
         >
           <div className="field">
-            <label className="label is-small has-text-white">Name</label>
+            <label htmlFor="name" className="label is-small has-text-white">
+              Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="name"
                   className="input"
                   type="text"
                   placeholder="First and Last Name"
@@ -58,10 +62,13 @@ const GeneralForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   type="email"
                   placeholder="Email"
@@ -75,11 +82,14 @@ const GeneralForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Phone</label>
+            <label htmlFor="phone" className="label is-small has-text-white">
+              Phone
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="phone"
                     className="input"
                     type="tel"
                     placeholder="Phone Number"
@@ -93,10 +103,13 @@ const GeneralForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Message</label>
+            <label htmlFor="message" className="label is-small has-text-white">
+              Message
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="message"
                   className="textarea"
                   name="message"
                   value={message}
@@ -110,7 +123,7 @@ const GeneralForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

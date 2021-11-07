@@ -43,12 +43,16 @@ const BookingForm = () => {
   return (
     <div className="container">
       <fieldset disabled={isDisabled}>
+        <legend>Music Booking Submission Form</legend>
         <form name="booking form" method="POST" onSubmit={e => handleSubmit(e)}>
           <div className="field">
-            <label className="label is-small has-text-white">Name</label>
+            <label htmlFor="name" className="label is-small has-text-white">
+              Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="name"
                   className="input"
                   type="text"
                   name="name"
@@ -62,10 +66,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   name="email"
                   type="email"
@@ -79,10 +86,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Name of Act</label>
+            <label htmlFor="actName" className="label is-small has-text-white">
+              Name of Act
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="actName"
                   className="input"
                   type="text"
                   name="name-of-act"
@@ -95,14 +105,18 @@ const BookingForm = () => {
           </div>
 
           <div className="control">
-            <label className="label is-small has-text-white">
-              Number of Band Members*
+            <label
+              htmlFor="bandMembers"
+              className="label is-small has-text-white"
+            >
+              Number of Band Members
             </label>
             <div className="select">
               <select
+                id="bandMembers"
                 name="number-of-band-members"
                 value={numberOfBandMembers}
-                onChange={e => setNumberOfBandMembers(e.target.value)}
+                onBlur={e => setNumberOfBandMembers(e.target.value)}
                 required
               >
                 <option>Solo</option>
@@ -115,10 +129,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Website</label>
+            <label htmlFor="website" className="label is-small has-text-white">
+              Website
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="website"
                   className="input"
                   name="website"
                   type="url"
@@ -131,10 +148,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Link 1</label>
+            <label htmlFor="link1" className="label is-small has-text-white">
+              Link 1
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="link1"
                   className="input"
                   name="link1"
                   type="url"
@@ -147,10 +167,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Link 2</label>
+            <label htmlFor="link2" className="label is-small has-text-white">
+              Link 2
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="link2"
                   className="input"
                   name="link2"
                   type="url"
@@ -163,10 +186,13 @@ const BookingForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Message</label>
+            <label htmlFor="message" className="label is-small has-text-white">
+              Message
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="message"
                   className="textarea"
                   name="message"
                   value={message}
@@ -180,7 +206,7 @@ const BookingForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>

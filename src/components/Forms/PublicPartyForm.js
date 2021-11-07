@@ -47,16 +47,20 @@ const PublicPartyForm = () => {
   return (
     <div className="container">
       <fieldset disabled={isDisabled}>
+        <legend>Party Form</legend>
         <form
           name="public party form"
           onSubmit={e => handleSubmit(e)}
           method="POST"
         >
           <div className="field">
-            <label className="label is-small has-text-white">Name</label>
+            <label htmlFor="name" className="label is-small has-text-white">
+              Name
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="name"
                   className="input"
                   name="name"
                   type="text"
@@ -70,10 +74,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Email</label>
+            <label htmlFor="email" className="label is-small has-text-white">
+              Email
+            </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="email"
                   className="input"
                   name="email"
                   type="email"
@@ -87,11 +94,14 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">Phone</label>
+            <label htmlFor="phone" className="label is-small has-text-white">
+              Phone
+            </label>
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control is-expanded">
                   <input
+                    id="phone"
                     className="input"
                     name="phone"
                     type="tel"
@@ -105,12 +115,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="people" className="label is-small has-text-white">
               How many people?*
             </label>
             <div className="field is-expanded">
               <p className="control is-expanded">
                 <input
+                  id="people"
                   className="input"
                   name="how-many-people"
                   type="text"
@@ -123,12 +134,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="date" className="label is-small has-text-white">
               Desired date
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="date"
                   className="input"
                   name="desired-date"
                   type="text"
@@ -140,10 +152,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">What time?</label>
+            <label htmlFor="time" className="label is-small has-text-white">
+              What time?
+            </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="time"
                   className="input"
                   name="what-time"
                   type="text"
@@ -155,12 +170,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="duration" className="label is-small has-text-white">
               How many hours?*
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <input
+                  id="duration"
                   className="input"
                   name="how-many-hours"
                   type="text"
@@ -173,14 +189,15 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="control">
-            <label className="label is-small has-text-white">
+            <label htmlFor="inOrOut" className="label is-small has-text-white">
               Inside or outside?*
             </label>
             <div className="select">
               <select
+                id="inOrOut"
                 name="inside-or-outside"
                 value={location}
-                onChange={e => setLocation(e.target.value)}
+                onBlur={e => setLocation(e.target.value)}
                 required
               >
                 <option>Inside</option>
@@ -190,12 +207,13 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label htmlFor="occasion" className="label is-small has-text-white">
               What's the occasion?
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="occasion"
                   className="textarea"
                   name="whats-the-occasion"
                   value={occasion}
@@ -206,12 +224,16 @@ const PublicPartyForm = () => {
           </div>
 
           <div className="field">
-            <label className="label is-small has-text-white">
+            <label
+              htmlFor="additionalInfo"
+              className="label is-small has-text-white"
+            >
               Anything else we should know?
             </label>
             <div className="field">
               <p className="control is-expanded">
                 <textarea
+                  id="additionalInfo"
                   className="textarea"
                   name="anything-else-we-should-know"
                   value={info}
@@ -225,7 +247,7 @@ const PublicPartyForm = () => {
             <div className="control">
               <button
                 type="submit"
-                className="button is-link has-background-danger"
+                className="button is-link has-background-white has-text-black"
               >
                 Submit
               </button>
