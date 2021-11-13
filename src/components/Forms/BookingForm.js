@@ -115,8 +115,11 @@ const BookingForm = () => {
               <select
                 id="bandMembers"
                 name="number-of-band-members"
-                value={numberOfBandMembers}
-                onBlur={e => setNumberOfBandMembers(e.target.value)}
+                defaultValue={numberOfBandMembers}
+                onBlur={e => {
+                  console.log(e)
+                  return setNumberOfBandMembers(e.target.value)
+                }}
                 required
               >
                 <option>Solo</option>
