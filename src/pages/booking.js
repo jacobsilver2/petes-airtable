@@ -30,7 +30,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "booking.png" }) {
+    file(relativePath: { eq: "music_room_low_angle.jpeg" }) {
       childImageSharp {
         fluid(maxWidth: 2048) {
           ...GatsbyImageSharpFluid
