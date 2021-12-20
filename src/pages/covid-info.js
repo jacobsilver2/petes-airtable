@@ -17,18 +17,31 @@ function CovidInfo() {
         <br />
         <p style={{ textAlign: "center" }}>
           <b>
+            We are asking patrons who have not yet had their booster shot to
+            wait until 1 week after their booster shot before entering this
+            establishment. We are asking performers to test before their
+            performances, and attest to their negative status.
+          </b>
+        </p>
+        <br />
+        <p style={{ textAlign: "center" }}>
+          <b>
             We are open at full capacity to everyone who has been vaccinated
             against Covid.
           </b>{" "}
-          We will require proof of current vaccination status at entry, either
-          with a vaccination card (or photo of same) or the NYS Excelsior Pass
-          or similar electronic system.
+          We will require proof of current vaccination status (2 doses) at
+          entry, either with a vaccination card (or photo of same) or the NYS
+          Excelsior Pass or similar electronic system. For certain events we
+          will be exercising some social distancing protocols.
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
           <b>
             Current CDC guidelines recommend masks for all vaccinated patrons of
-            indoor events in our area. This is not mandatory.{" "}
+            indoor events in our area. We are making masks MANDATORY for both
+            attendees and performers of events in our PERFORMANCE SPACE.
+            Singers, readers, speakers are permitted to remove masks for their
+            performances.
           </b>
         </p>
         <br />
@@ -47,13 +60,15 @@ function CovidInfo() {
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
-          <b>Children under the age of 12</b> who are not currently eligible to
-          receive a vaccine must be accompanied by a vaccinated adult and must
-          wear a mask at all times.
+          Children under the age of 12 who are not currently eligible to receive
+          a vaccine must be accompanied by a vaccinated adult and must wear a
+          mask at all times.
         </p>
         <br />
         <p style={{ textAlign: "center" }}>
-          All Pete’s Candy Store staff and performers are fully vaccinated.
+          All Pete’s Candy Store staff and performers are fully vaccinated,
+          masked, and have received their booster shots. Staff also test prior
+          to any shift.
         </p>
       </div>
     </Layout>
