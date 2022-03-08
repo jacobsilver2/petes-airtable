@@ -2,16 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 
 export default function filteredAndMappedNavItems(navItems) {
-  // const constructedShopLink = {
-  //   node: {
-  //     frontmatter: {
-  //       title: "Merch",
-  //       navOrder: 3,
-  //       url: "http://petes-candy-store.square.site/",
-  //     },
-  //   },
-  // }
-  // navItems.push(constructedShopLink)
   return [
     <Link
       activeClassName="has-text-white"
@@ -19,13 +9,6 @@ export default function filteredAndMappedNavItems(navItems) {
       to="/"
     >
       Welcome
-    </Link>,
-    <Link
-      activeClassName="has-text-white"
-      className="navbar-item is-size-6"
-      to="/covid-info"
-    >
-      Covid Info
     </Link>,
     <Link
       activeClassName="has-text-white"
