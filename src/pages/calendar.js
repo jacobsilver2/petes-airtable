@@ -48,16 +48,6 @@ function Calendar(props) {
   return (
     <Layout fluid={null} fullheight={false}>
       <div className="container">
-        <section className="section">
-          <div className="level-item">
-            <Link
-              to="/covid-info"
-              className="button is-large is-primary is-outlined is-rounded is-inverted"
-            >
-              Covid Info
-            </Link>
-          </div>
-        </section>
         {/* All code below currently disabled during COVID */}
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES
