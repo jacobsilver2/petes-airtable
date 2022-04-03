@@ -200,7 +200,7 @@ const PrivatePartyForm = () => {
                 name="inside-or-outside"
                 required
                 value={insideOrOutside}
-                onBlur={e => setInsideOrOutside(e.target.value)}
+                onChange={e => setInsideOrOutside(e.target.value)}
               >
                 <option>Inside</option>
                 <option>Outside</option>
@@ -221,7 +221,7 @@ const PrivatePartyForm = () => {
                 name="open-bar-or-cash-bar"
                 required
                 value={openOrCash}
-                onBlur={e => setOpenOrCash(e.target.value)}
+                onChange={e => setOpenOrCash(e.target.value)}
               >
                 <option>Open Bar</option>
                 <option>Cash Bar</option>

@@ -163,7 +163,7 @@ const EventBookingForm = () => {
                 id="frequency"
                 name="number-of-band-members"
                 value={frequency}
-                onBlur={e => setFrequency(e.target.value)}
+                onChange={e => setFrequency(e.target.value)}
               >
                 <option>One Time Only</option>
                 <option>Weekly</option>
