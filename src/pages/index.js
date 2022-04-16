@@ -35,7 +35,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(relativePath: { eq: "halloween.jpeg" }) {
+    file(relativePath: { eq: "outside.jpeg" }) {
       childImageSharp {
         fluid(maxWidth: 1920, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp
