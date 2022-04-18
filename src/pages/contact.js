@@ -43,18 +43,16 @@ export const pageQuery = graphql`
   }
 `
 const ContactPage = ({ data }) => {
-  const [active, setActive] = useState("GENERAL INQUIRIES")
+  const [active, setActive] = useState("BOOK A PARTY")
   const formNames = [
+    "BOOK A PARTY",
     "GENERAL INQUIRIES",
     "MUSIC BOOKING",
     "PHOTO SHOOTS",
     "PITCH A SHOW",
-    "BOOK A PARTY",
   ]
 
   const mappedListItems = formNames.map(name => {
-    console.log("active", active)
-    console.log("name", name)
     return (
       <button
         key={name}

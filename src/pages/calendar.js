@@ -48,14 +48,13 @@ function Calendar(props) {
   return (
     <Layout fluid={null} fullheight={false}>
       <div className="container">
-        {/* All code below currently disabled during COVID */}
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES
         </h1>
         <p style={{ textAlign: "center" }}>
           All shows are free and 21+ to attend (unless otherwise listed)
         </p>
-        <p style={{ textAlign: "center" }}>($5 suggested donation)</p>
+        <p style={{ textAlign: "center" }}>($10 suggested donation)</p>
         <Loader
           visible={isLoading}
           style={{ textAlign: "center" }}
