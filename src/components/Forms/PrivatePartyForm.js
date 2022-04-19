@@ -14,7 +14,7 @@ const PrivatePartyForm = () => {
   const [desiredTime, setDesiredTime] = useState("")
   const [hours, setHours] = useState("")
   const [insideOrOutside, setInsideOrOutside] = useState("Inside")
-  const [openOrCash, setOpenOrCash] = useState("Open Bar")
+  const [openOrCash, setOpenOrCash] = useState("Cash Bar")
   const [occassion, setOccassion] = useState("")
   const [additionalInfo, setAdditionalInfo] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
@@ -223,8 +223,10 @@ const PrivatePartyForm = () => {
                 value={openOrCash}
                 onChange={e => setOpenOrCash(e.target.value)}
               >
-                <option>Open Bar</option>
                 <option>Cash Bar</option>
+                <option>Beer/Wine Open Bar $10/hr per person</option>
+                <option>Full Open Bar $14/hr per person</option>
+                <option>Deluxe Open Bar $16/hr per person</option>
               </select>
             </div>
           </div>
