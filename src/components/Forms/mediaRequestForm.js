@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react"
 import Airtable from "airtable"
 import { navigate } from "gatsby"
-import Loader from "react-loader-spinner"
-// import moment from "moment"
+import { Circles } from "react-loader-spinner"
 
-// initialize Airtable
 const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "app4Eb0X39KtGToOS"
 )
 
 const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
-  //text state
-  const [firstName, setfirstName] = useState("")
-  const [lastName, setlastName] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [act, setAct] = useState("")
   const [email, setEmail] = useState("")
   const [website, setWebsite] = useState("")
@@ -21,14 +18,12 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
   const [instagram, setInstagram] = useState("")
   const [blurb, setBlurb] = useState("")
 
-  //image state
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
-  const [largeImage, setlargeImage] = useState(null)
+  const [largeImage, setLargeImage] = useState(null)
 
-  //ui state
   const [tooLarge, setTooLarge] = useState(false)
-  const [isDisabled, setisDisabled] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -46,7 +41,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
     e.preventDefault()
     if (e.target.files[0].size > 5000000) {
       setTooLarge(true)
-      setisDisabled(true)
+      setIsDisabled(true)
       return
     }
     setFilename(e.target.files[0].name)
@@ -65,18 +60,18 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       )
       const file = await res.json()
       setImageUrl(file.secure_url)
-      setlargeImage(file.eager[0].secure_url)
+      setLargeImage(file.eager[0].secure_url)
     } catch (err) {
       throw new Error("Something went wrong.  I promise it's not your fault")
     }
     setTooLarge(false)
     setLoading(false)
-    setisDisabled(false)
+    setIsDisabled(false)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    setisDisabled(true)
+    setIsDisabled(true)
 
     base("Events").update(
       [
@@ -148,7 +143,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="text"
                   placeholder="First Name"
                   name="firstName"
-                  onChange={e => setfirstName(e.target.value)}
+                  onChange={e => setFirstName(e.target.value)}
                   value={firstName}
                   required
                 />
@@ -168,7 +163,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="text"
                   placeholder="Last Name"
                   name="lastName"
-                  onChange={e => setlastName(e.target.value)}
+                  onChange={e => setLastName(e.target.value)}
                   value={lastName}
                   required
                 />
@@ -372,9 +367,9 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     onChange={e => {
                       setBlurb(e.target.value)
                       if (blurb.length > 450) {
-                        setisDisabled(true)
+                        setIsDisabled(true)
                       } else {
-                        setisDisabled(false)
+                        setIsDisabled(false)
                       }
                     }}
                     name="blurb"
@@ -416,7 +411,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
             {imageUrl && (
               <img src={imageUrl} alt="Upload Preview" width="200" />
             )}
-            <Loader visible={loading} type="TailSpin" color="#feff03" />
+            <Circles visible={loading} color="#feff03" />
           </div>
 
           <div className="field">

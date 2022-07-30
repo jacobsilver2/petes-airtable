@@ -1,18 +1,10 @@
 import React from "react"
 import { StyledImage } from "./CalendarStyles"
-import ImageZoom from "react-medium-image-zoom"
 
 export function renderImage(image) {
   return (
     <StyledImage>
-      <ImageZoom
-        image={{
-          src: image,
-          alt: image,
-          style: { maxHeight: "300px" },
-        }}
-        zoomImage={{ src: image }}
-      />
+      <img src={image} alt={image} style={{ maxHeight: "300px" }} />
     </StyledImage>
   )
 }

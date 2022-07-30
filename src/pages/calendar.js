@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import CalendarFrame from "../components/Calendar/CalendarFrame"
 import { getAllEvents } from "../services/getCalendarEvents"
 import { airtableEventsUrl } from "../utility/airtableUrls"
 import getFirstEventIds from "../utility/returnFirstEventOfDate"
-import Loader from "react-loader-spinner"
+import { Circles } from "react-loader-spinner"
 
 export const pageQuery = graphql`
   {
@@ -55,22 +55,15 @@ function Calendar(props) {
           All shows are free and 21+ to attend (unless otherwise listed)
         </p>
         <p style={{ textAlign: "center" }}>($10 suggested donation)</p>
-        <Loader
+        <Circles
           visible={isLoading}
           style={{ textAlign: "center" }}
-          type="TailSpin"
           color="#feff03"
         />
         {renderedCalendar}
       </div>
     </Layout>
   )
-}
-
-export const frontmatter = {
-  title: "Calendar",
-  url: "/calendar",
-  navOrder: 3,
 }
 
 export default Calendar

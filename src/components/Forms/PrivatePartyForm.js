@@ -224,9 +224,9 @@ const PrivatePartyForm = () => {
                 onChange={e => setOpenOrCash(e.target.value)}
               >
                 <option>Cash Bar</option>
-                <option>Beer/Wine Open Bar $10/hr per person</option>
-                <option>Full Open Bar $14/hr per person</option>
-                <option>Deluxe Open Bar $16/hr per person</option>
+                <option>Beer/Wine Open Bar $12/hr per person</option>
+                <option>Full Open Bar $16/hr per person</option>
+                <option>Deluxe Open Bar $18/hr per person</option>
               </select>
             </div>
           </div>

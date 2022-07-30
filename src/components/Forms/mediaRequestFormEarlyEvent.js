@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Airtable from "airtable"
 import { navigate } from "gatsby"
-import Loader from "react-loader-spinner"
+import { Circles } from "react-loader-spinner"
 import moment from "moment"
 
 // initialize Airtable
@@ -330,7 +330,7 @@ const MediaRequestFormEarlyEvent = () => {
             {imageUrl && (
               <img src={imageUrl} alt="Upload Preview" width="200" />
             )}
-            <Loader visible={loading} type="TailSpin" color="#feff03" />
+            <Circles visible={loading} color="#feff03" />
           </div>
 
           <div className="field">

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import filterNavItems from "../utility/filterNavItems"
 
-const Navbar = ({ navItems }) => {
+const Navbar = () => {
   const [navBarActiveClass, setNavBarActiveClass] = useState("")
 
   function toggleHamburger(e) {
@@ -51,9 +51,7 @@ const Navbar = ({ navItems }) => {
         </button>
       </div>
       <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
-        <div className="navbar-end has-text-centered">
-          {filterNavItems(navItems)}
-        </div>
+        <div className="navbar-end has-text-centered">{filterNavItems()}</div>
       </div>
     </nav>
   )
@@ -61,7 +59,6 @@ const Navbar = ({ navItems }) => {
 
 Navbar.propTypes = {
   siteTitle: PropTypes.string,
-  navItems: PropTypes.array,
 }
 
 Navbar.defaultProps = {

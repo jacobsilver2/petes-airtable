@@ -6,7 +6,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
 import "./myStyles.scss"
 import Helmet from "react-helmet"
-// import BackgroundSection from "./BackgroundSection"
 import TitleBar from "./TitleBar"
 
 const StyledImg = styled(Img)`
@@ -32,17 +31,6 @@ const Layout = ({
           title
         }
       }
-      allJavascriptFrontmatter {
-        edges {
-          node {
-            frontmatter {
-              title
-              url
-              navOrder
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -54,11 +42,7 @@ const Layout = ({
         }}
         title={data.site.siteMetadata.title}
       />
-      <Navbar
-        siteTitle={data.site.siteMetadata.title}
-        navItems={data.allJavascriptFrontmatter.edges}
-      />
-      {/* <BackgroundSection fluid={fluid} /> */}
+      <Navbar siteTitle={data.site.siteMetadata.title} />
       <StyledImg maxWidth={maxWidth} fluid={fluid} />
       {text && <TitleBar text={text} subText={subText} />}
       <section
@@ -71,7 +55,6 @@ const Layout = ({
       >
         {children}
       </section>
-      {/* <Footer /> */}
     </>
   )
 }

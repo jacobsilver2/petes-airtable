@@ -1,9 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default function filteredAndMappedNavItems(navItems) {
+export default function filteredAndMappedNavItems() {
   return [
     <Link
+      key="1"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/"
@@ -11,6 +12,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Welcome
     </Link>,
     <Link
+      key="2"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/calendar"
@@ -18,6 +20,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Calendar
     </Link>,
     <a
+      key="3"
       target="_blank"
       rel="noreferrer"
       activeClassName="has-text-white"
@@ -27,6 +30,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Merch
     </a>,
     <Link
+      key="4"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/events-and-series"
@@ -34,6 +38,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Events and Series
     </Link>,
     <Link
+      key="5"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/booking"
@@ -41,6 +46,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Booking
     </Link>,
     <Link
+      key="6"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/gallery"
@@ -48,6 +54,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Gallery
     </Link>,
     <Link
+      key="7"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/history"
@@ -55,6 +62,7 @@ export default function filteredAndMappedNavItems(navItems) {
       History
     </Link>,
     <Link
+      key="8"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/menu"
@@ -62,6 +70,7 @@ export default function filteredAndMappedNavItems(navItems) {
       Menu
     </Link>,
     <Link
+      key="9"
       activeClassName="has-text-white"
       className="navbar-item is-size-6"
       to="/contact"
@@ -69,44 +78,4 @@ export default function filteredAndMappedNavItems(navItems) {
       Contact
     </Link>,
   ]
-  // return navItems
-  //   .filter(
-  //     item =>
-  //       item.node.frontmatter.title !== "Private Party" &&
-  //       item.node.frontmatter.title !== "Public Party" &&
-  //       item.node.frontmatter.title !== "Host A Cool Event" &&
-  //       item.node.frontmatter.title !== "Open Mic" &&
-  //       item.node.frontmatter.title !== "Reading Series" &&
-  //       item.node.frontmatter.title !== "404" &&
-  //       item.node.frontmatter.title !== "Photo Shoots" &&
-  //       item.node.frontmatter.title !== "Parties" &&
-  //       item.node.frontmatter.title !== "Booking"
-  //   )
-  //   .sort(function(a, b) {
-  //     return a.node.frontmatter.navOrder - b.node.frontmatter.navOrder
-  //   })
-  //   .map(item => {
-  //     if (item.node.frontmatter.title === "Merch") {
-  //       return (
-  //         <a
-  //           key={item.node.frontmatter.title}
-  //           activeClassName="has-text-white"
-  //           className="navbar-item is-size-6"
-  //           href={item.node.frontmatter.url}
-  //         >
-  //           {item.node.frontmatter.title}
-  //         </a>
-  //       )
-  //     }
-  //     return (
-  //       <Link
-  //         key={item.node.frontmatter.title}
-  //         className="navbar-item is-size-6"
-  //         to={item.node.frontmatter.url}
-  //         activeClassName="has-text-white"
-  //       >
-  //         {item.node.frontmatter.title}
-  //       </Link>
-  //     )
-  //   })
 }
