@@ -30,7 +30,7 @@
     "gatsby-source-airtable": "^2.0.8",
     "gatsby-source-filesystem": "^4.19.0",
     "gatsby-transformer-javascript-frontmatter": "^4.19.0",
-    "gatsby-transformer-remark": "^5.19.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.19.0",
     "got": "^12.3.0",
     "lodash": "^4.17.11",
