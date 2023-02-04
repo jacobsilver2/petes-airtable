@@ -45,16 +45,16 @@ module.exports = {
             tableName: `events and series`,
             mapping: { Attachments: `fileNode` },
           },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `photo shoots`,
-            mapping: { Attachments: `fileNode` },
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `parties`,
-            mapping: { Attachments: `fileNode` },
-          },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `photo shoots`,
+          //   mapping: { Attachments: `fileNode` },
+          // },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `parties`,
+          //   mapping: { Attachments: `fileNode` },
+          // },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `booking`,
@@ -80,35 +80,35 @@ module.exports = {
             tableName: `contact`,
             mapping: { Attachments: `fileNode` },
           },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `private party`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `public party`,
-          },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `host a cool event`,
-          },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `private party`,
+          // },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `public party`,
+          // },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `host a cool event`,
+          // },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: `open mic`,
           },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: `reading series`,
-          },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: `reading series`,
+          // },
           {
             baseId: `appNuB0fX4vQbOqdy`,
             tableName: "menu",
           },
-          {
-            baseId: `appNuB0fX4vQbOqdy`,
-            tableName: "menupdf",
-            mapping: { Attachments: `fileNode` },
-          },
+          // {
+          //   baseId: `appNuB0fX4vQbOqdy`,
+          //   tableName: "menupdf",
+          //   mapping: { Attachments: `fileNode` },
+          // },
         ],
       },
     },
