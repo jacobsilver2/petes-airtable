@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-//? In order to use environment variables with netflify, you must prefix them with GATSBY_ . We do it here and everywhere within the codebase for consistency.
+//? In order to use environment variables with netlify, you must prefix them with GATSBY_ . We do it here and everywhere within the codebase for consistency.
 
 module.exports = {
   siteMetadata: {
@@ -131,14 +131,6 @@ module.exports = {
             defaultValues: {
               Report: "",
               Draw: 0,
-            },
-          },
-          {
-            baseId: `app4Eb0X39KtGToOS`,
-            tableName: `Logbook`,
-            tableView: `LogbookGrid`,
-            defaultValues: {
-              Notes: "",
             },
           },
         ],

@@ -3,51 +3,52 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
 
-export const pageQuery = graphql`{
-  allAirtable(filter: {table: {eq: "history"}}, sort: {data: {order: ASC}}) {
-    nodes {
-      data {
-        Name
-        Content
-        type
-        website
-        display
-        id
-        Attachments {
-          localFiles {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
+export const pageQuery = graphql`
+  {
+    allAirtable(
+      filter: { table: { eq: "history" }, data: { display: { eq: true } } }
+      sort: { data: { order: ASC } }
+    ) {
+      nodes {
+        data {
+          Name
+          Content
+          type
+          website
+          display
+          id
         }
       }
     }
-  }
-  pastPerformers: allAirtable(
-    filter: {table: {eq: "past performers"}}
-    sort: {data: {order: ASC}}
-  ) {
-    nodes {
-      data {
-        Name
-        display
-        Content
-        type
-        id
+    pastPerformers: allAirtable(
+      filter: {
+        table: { eq: "past performers" }
+        data: { display: { eq: true } }
+      }
+      sort: { data: { order: ASC } }
+    ) {
+      nodes {
+        data {
+          Name
+          display
+          Content
+          type
+          id
+        }
+      }
+    }
+    file(relativePath: { eq: "HistoryHeader.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
       }
     }
   }
-  file(relativePath: {eq: "HistoryHeader.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-    }
-  }
-}`
+`
 
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const { nodes: past } = data.pastPerformers
-  const myhtml = nodes.map((node) => createHtml(node.data))
+  const myhtml = nodes.map((node) => createHtml(node))
   const pastBandsList = past.map((node) => (
     <p key={node.data.id}>{node.data.Content}</p>
   ))
@@ -67,7 +68,7 @@ const HistoryPage = ({ data }) => {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
 export default HistoryPage

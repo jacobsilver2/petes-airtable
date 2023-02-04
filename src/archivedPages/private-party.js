@@ -4,23 +4,23 @@ import { graphql } from "gatsby"
 import createHtml from "../utility/createHtml"
 import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
 
-export const pageQuery = graphql`
-  {
-    allAirtable(
-      filter: { table: { eq: "private party" } }
-      sort: { data: { order: ASC } }
-    ) {
-      nodes {
-        data {
-          Name
-          Content
-          type
-          id
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   {
+//     allAirtable(
+//       filter: { table: { eq: "private party" } }
+//       sort: { data: { order: ASC } }
+//     ) {
+//       nodes {
+//         data {
+//           Name
+//           Content
+//           type
+//           id
+//         }
+//       }
+//     }
+//   }
+// `
 
 const PrivateParty = ({ data }) => {
   const { nodes } = data.allAirtable

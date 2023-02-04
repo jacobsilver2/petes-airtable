@@ -8,23 +8,19 @@ import "yet-another-react-lightbox/styles.css"
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "gallery" } }
+      filter: { table: { eq: "gallery" }, data: { display: { eq: true } } }
       sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
           Name
-          title
-          subtitle
           display
           order
           width
           height
-          Attachments {
-            raw {
-              url
-            }
-          }
+        }
+        cloudinaryImg {
+          url
         }
       }
     }
@@ -35,43 +31,39 @@ const GalleryPage = ({ data }) => {
   const [index, setIndex] = useState(-1)
   const handleClick = (index, item) => setIndex(index)
 
-  const photos = data.allAirtable.nodes
-    .filter((node) => node.data.display)
-    .map((node) => {
-      const nodeObj = {
-        src: node.data.Attachments.raw[0].url,
-        width: parseInt(Math.ceil(node.data.width)),
-        height: parseInt(Math.ceil(node.data.height)),
-        alt: node.data.Name,
-      }
-      return nodeObj
-    })
+  const photos = data.allAirtable.nodes.map((node) => {
+    const nodeObj = {
+      src: node.cloudinaryImg.url,
+      width: parseInt(Math.ceil(node.data.width)),
+      height: parseInt(Math.ceil(node.data.height)),
+      alt: node.data.Name,
+    }
+    return nodeObj
+  })
 
   return (
-    <>
-      <Layout>
-        <div className="container">
-          <div>
-            <Gallery
-              direction="column"
-              images={photos}
-              enableImageSelection={false}
-              margin={8}
-              rowHeight={200}
-              onClick={handleClick}
-            />
-          </div>
-          <Lightbox
-            slides={photos.map((photo) => ({
-              src: photo.src,
-            }))}
-            open={index >= 0}
-            index={index}
-            close={() => setIndex(-1)}
+    <Layout>
+      <div className="container">
+        <div>
+          <Gallery
+            direction="column"
+            images={photos}
+            enableImageSelection={false}
+            margin={8}
+            rowHeight={200}
+            onClick={handleClick}
           />
         </div>
-      </Layout>
-    </>
+        <Lightbox
+          slides={photos.map((photo) => ({
+            src: photo.src,
+          }))}
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
+        />
+      </div>
+    </Layout>
   )
 }
 

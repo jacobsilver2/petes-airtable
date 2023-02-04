@@ -7,14 +7,15 @@ import formatCalendarTime from "../../utility/formatCalendarTime"
 
 const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
   const myEvents = events.map((event) => {
+    console.log(event)
     return (
       <CalendarEvent
         isFirstEvent={firstEvents.includes(event.id)}
         date={formatCalendarDate(event.fields.Date)}
         time={formatCalendarTime(event.fields.Date)}
         image={
-          event.fields["Act Image"]
-            ? event.fields["Act Image"][0].url
+          Boolean(event.fields.Image_URL)
+            ? event.fields.Image_URL[0]
             : getRandomImage(allFile.nodes)
         }
         title={

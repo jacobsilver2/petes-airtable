@@ -21,31 +21,31 @@ export const StyledVideoContainer = styled.div`
   }
 `
 
-export default function createHtml(data) {
-  if (!data.display) return
-  switch (data.type) {
+export default function createHtml(node) {
+  if (!node.data.display) return
+  switch (node.data.type) {
     case "button":
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <section className="section">
-            <div key={data.id} className="level">
+            <div key={node.data.id} className="level">
               <div className="level-item">
                 {/* If the website is external we use a regular <a> tag, but if it's internal, we use the Link tag. */}
-                {data.website.startsWith("http") ? (
+                {node.data.website.startsWith("http") ? (
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button is-large is-primary is-outlined is-rounded is-inverted"
-                    href={data.website}
+                    href={node.data.website}
                   >
-                    {data.Content}
+                    {node.data.Content}
                   </a>
                 ) : (
                   <Link
-                    to={data.website}
+                    to={node.data.website}
                     className="button is-large is-primary is-outlined is-rounded is-inverted"
                   >
-                    {data.Content}
+                    {node.data.Content}
                   </Link>
                 )}
               </div>
@@ -54,22 +54,19 @@ export default function createHtml(data) {
         </div>
       )
     case "image":
-      if (data.website) {
-        if (data.website.includes("http")) {
+      if (node.data.website) {
+        if (node.data.website.includes("http")) {
           return (
-            <div className="container" key={data.id}>
+            <div className="container" key={node.data.id}>
               <section className="section">
                 <a
-                  href={data.website}
+                  href={node.data.website}
                   className="image"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <GatsbyImage
-                    image={
-                      data.Attachments.localFiles[0].childImageSharp
-                        .gatsbyImageData
-                    }
+                    image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
                   />
                 </a>
               </section>
@@ -77,31 +74,25 @@ export default function createHtml(data) {
           )
         }
         return (
-          <div className="container" key={data.id}>
+          <div className="container" key={node.data.id}>
             <section className="section">
-              <Link to={data.website} className="image">
+              <Link to={node.data.website} className="image">
                 <GatsbyImage
-                  image={
-                    data.Attachments.localFiles[0].childImageSharp
-                      .gatsbyImageData
-                  }
+                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
                 />
               </Link>
             </section>
           </div>
         )
       }
-      if (data.email) {
-        const emailWithMailto = `mailto:${data.email}`
+      if (node.data.email) {
+        const emailWithMailto = `mailto:${node.data.email}`
         return (
-          <div className="container" key={data.id}>
+          <div className="container" key={node.data.id}>
             <section className="section">
               <a href={emailWithMailto} className="image">
                 <GatsbyImage
-                  image={
-                    data.Attachments.localFiles[0].childImageSharp
-                      .gatsbyImageData
-                  }
+                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
                 />
               </a>
             </section>
@@ -109,95 +100,89 @@ export default function createHtml(data) {
         )
       }
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <section className="section">
-            {data &&
-              data.Attachments &&
-              data.Attachments.localFiles[0] &&
-              data.Attachments.localFiles[0].childImageSharp &&
-              data.Attachments.localFiles[0].childImageSharp
-                .gatsbyImageData && (
-                <figure className="image">
-                  <GatsbyImage
-                    image={
-                      data.Attachments.localFiles[0].childImageSharp
-                        .gatsbyImageData
-                    }
-                  />
-                  {data.Content && <figcaption>{data.Content}</figcaption>}
-                </figure>
-              )}
+            {node.cloudinaryImg.childImageSharp.gatsbyImageData && (
+              <figure className="image">
+                <GatsbyImage
+                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
+                />
+                {node.data.Content && (
+                  <figcaption>{node.data.Content}</figcaption>
+                )}
+              </figure>
+            )}
           </section>
         </div>
       )
     case "text":
-      if (data.website) {
+      if (node.data.website) {
         return (
-          <div className="container" key={data.id}>
+          <div className="container" key={node.data.id}>
             <div className="box">
-              <a href={data.website}>
+              <a href={node.data.website}>
                 {" "}
-                <p style={{ textAlign: "center" }}>{data.Content}</p>{" "}
+                <p style={{ textAlign: "center" }}>{node.data.Content}</p>{" "}
               </a>
             </div>
           </div>
         )
       }
-      if (data.email) {
-        const emailWithMailto = `mailto:${data.email}`
+      if (node.data.email) {
+        const emailWithMailto = `mailto:${node.data.email}`
         return (
-          <div className="container" key={data.id}>
+          <div className="container" key={node.data.id}>
             <div className="box">
               <a href={emailWithMailto}>
                 {" "}
-                <p style={{ textAlign: "center" }}>{data.Content}</p>{" "}
+                <p style={{ textAlign: "center" }}>{node.data.Content}</p>{" "}
               </a>
             </div>
           </div>
         )
       }
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <div className="box">
-            <p style={{ textAlign: "center" }}>{data.Content}</p>
+            <p style={{ textAlign: "center" }}>{node.data.Content}</p>
           </div>
         </div>
       )
     case "heading1":
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <div className="content">
             <h1 className="has-text-danger" style={{ textAlign: "center" }}>
-              {data.Content}
+              {node.data.Content}
             </h1>
           </div>
         </div>
       )
     case "heading2":
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <div className="content">
             <h2 className="has-text-danger" style={{ textAlign: "center" }}>
-              {data.Content}
+              {node.data.Content}
             </h2>
           </div>
         </div>
       )
     case "heading3":
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <div className="content">
-            <h3 style={{ textAlign: "center" }}>{data.Content}</h3>
+            <h3 style={{ textAlign: "center" }}>{node.data.Content}</h3>
           </div>
         </div>
       )
     case "video":
       return (
-        <div className="container" key={data.id}>
+        <div className="container" key={node.data.id}>
           <StyledVideoContainer>
             <iframe
-              title={data.Name}
-              src={data.website}
+              title={node.data.Name}
+              src={node.data.website}
               width="853"
               height="480"
             />
@@ -206,7 +191,7 @@ export default function createHtml(data) {
       )
     default:
       return (
-        <div key={data.id} className="container">
+        <div key={node.data.id} className="container">
           <p className="content">I guess I'm the default...</p>
         </div>
       )

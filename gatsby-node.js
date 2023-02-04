@@ -1,21 +1,36 @@
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === "build-html") {
-    /*
-     * During the build step, `auth0-js` will break because it relies on
-     * browser-specific APIs. Fortunately, we don’t need it during the build.
-     * Using Webpack’s null loader, we’re able to effectively ignore `auth0-js`
-     * during the build. (See `src/utils/auth.js` to see how we prevent this
-     * from breaking the app.)
-     */
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /auth0-js/,
-            use: loaders.null(),
-          },
-        ],
-      },
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type Airtable implements Node {
+      data: AirtableData
+      cloudinaryImg: File @link(from: "fields.localFile")
+    }
+    type AirtableData {
+      Name: String
+    }
+  `
+  createTypes(typeDefs)
+}
+
+exports.onCreateNode = async ({
+  node,
+  actions: { createNode, createNodeField },
+  createNodeId,
+  getCache,
+}) => {
+  if (Boolean(node?.data?.Image_URL)) {
+    const fileNode = await createRemoteFileNode({
+      url: node.data.Image_URL,
+      parentNodeId: node.id,
+      createNode,
+      createNodeId,
+      getCache,
     })
+
+    if (fileNode) {
+      createNodeField({ node, name: "localFile", value: fileNode.id })
+    }
   }
 }

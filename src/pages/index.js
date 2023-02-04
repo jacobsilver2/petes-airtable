@@ -8,7 +8,7 @@ import Button from "../components/Button"
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "home" } }
+      filter: { table: { eq: "home" }, data: { display: { eq: true } } }
       sort: { data: { order: ASC } }
     ) {
       nodes {
@@ -20,12 +20,10 @@ export const pageQuery = graphql`
           website
           email
           id
-          Attachments {
-            localFiles {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
-            }
+        }
+        cloudinaryImg {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
@@ -40,12 +38,11 @@ export const pageQuery = graphql`
 
 const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const html = nodes.map((node) => createHtml(node.data))
+  const html = nodes.map((node) => createHtml(node))
   return (
     <Layout fluid={data.file.childImageSharp.gatsbyImageData}>
       <div>
         <Button title="FULL CALENDAR" link="/calendar" />
-
         <TodayAtPetes />
         {html}
       </div>
