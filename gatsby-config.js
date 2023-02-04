@@ -11,10 +11,6 @@ module.exports = {
     author: `Jacob Silver`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/staff/*`] },
-    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -157,7 +153,6 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
-          `gatsby-remark-images-zoom`,
         ],
       },
     },

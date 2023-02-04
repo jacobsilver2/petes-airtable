@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Gallery from "react-photo-gallery"
-import Carousel, { Modal, ModalGateway } from "react-images"
+import { Gallery } from "react-grid-gallery"
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
 
 export const pageQuery = graphql`
   {
@@ -31,18 +32,8 @@ export const pageQuery = graphql`
 `
 
 const GalleryPage = ({ data }) => {
-  const [currentImage, setCurrentImage] = useState(0)
-  const [viewerIsOpen, setViewerIsOpen] = useState(false)
-
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index)
-    setViewerIsOpen(true)
-  }, [])
-
-  const closeLightbox = () => {
-    setCurrentImage(0)
-    setViewerIsOpen(false)
-  }
+  const [index, setIndex] = useState(-1)
+  const handleClick = (index, item) => setIndex(index)
 
   const photos = data.allAirtable.nodes
     .filter((node) => node.data.display)
@@ -63,32 +54,21 @@ const GalleryPage = ({ data }) => {
           <div>
             <Gallery
               direction="column"
-              photos={photos}
-              onClick={openLightbox}
+              images={photos}
+              enableImageSelection={false}
+              margin={8}
+              rowHeight={200}
+              onClick={handleClick}
             />
           </div>
-          <ModalGateway>
-            {viewerIsOpen ? (
-              <Modal onClose={closeLightbox}>
-                <Carousel
-                  styles={{
-                    view: (base, state) => ({
-                      ...base,
-                      "& > img": {
-                        maxWidth: "80%",
-                      },
-                    }),
-                  }}
-                  currentIndex={currentImage}
-                  views={photos.map((x) => ({
-                    ...x,
-                    srcset: x.srcSet,
-                    caption: x.title,
-                  }))}
-                />
-              </Modal>
-            ) : null}
-          </ModalGateway>
+          <Lightbox
+            slides={photos.map((photo) => ({
+              src: photo.src,
+            }))}
+            open={index >= 0}
+            index={index}
+            close={() => setIndex(-1)}
+          />
         </div>
       </Layout>
     </>

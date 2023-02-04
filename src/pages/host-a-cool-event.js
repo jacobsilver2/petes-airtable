@@ -36,9 +36,4 @@ const HostACoolEventComponent = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Host A Cool Event",
-  url: "/host-a-cool-event",
-}
-
 export default HostACoolEventComponent
