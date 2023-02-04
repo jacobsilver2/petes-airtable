@@ -1,12 +1,12 @@
 import React from "react"
 import { Wrapper } from "./CalendarStyles"
 import CalendarEvent from "./CalendarEvent"
-import getRandomImage from "../../utility/getRandomImage"
+import { getRandomImage } from "../../utility/getRandomImage"
 import formatCalendarDate from "../../utility/formatCalendarDate"
 import formatCalendarTime from "../../utility/formatCalendarTime"
 
 const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
-  const myEvents = events.map(event => {
+  const myEvents = events.map((event) => {
     return (
       <CalendarEvent
         isFirstEvent={firstEvents.includes(event.id)}

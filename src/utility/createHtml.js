@@ -1,8 +1,7 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import ImageGallery from "react-image-gallery"
 
 export const StyledVideoContainer = styled.div`
   margin: 50px 25px;
@@ -66,8 +65,11 @@ export default function createHtml(data) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Img
-                    fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                  <GatsbyImage
+                    image={
+                      data.Attachments.localFiles[0].childImageSharp
+                        .gatsbyImageData
+                    }
                   />
                 </a>
               </section>
@@ -78,8 +80,11 @@ export default function createHtml(data) {
           <div className="container" key={data.id}>
             <section className="section">
               <Link to={data.website} className="image">
-                <Img
-                  fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                <GatsbyImage
+                  image={
+                    data.Attachments.localFiles[0].childImageSharp
+                      .gatsbyImageData
+                  }
                 />
               </Link>
             </section>
@@ -92,8 +97,11 @@ export default function createHtml(data) {
           <div className="container" key={data.id}>
             <section className="section">
               <a href={emailWithMailto} className="image">
-                <Img
-                  fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                <GatsbyImage
+                  image={
+                    data.Attachments.localFiles[0].childImageSharp
+                      .gatsbyImageData
+                  }
                 />
               </a>
             </section>
@@ -107,10 +115,14 @@ export default function createHtml(data) {
               data.Attachments &&
               data.Attachments.localFiles[0] &&
               data.Attachments.localFiles[0].childImageSharp &&
-              data.Attachments.localFiles[0].childImageSharp.fluid && (
+              data.Attachments.localFiles[0].childImageSharp
+                .gatsbyImageData && (
                 <figure className="image">
-                  <Img
-                    fluid={data.Attachments.localFiles[0].childImageSharp.fluid}
+                  <GatsbyImage
+                    image={
+                      data.Attachments.localFiles[0].childImageSharp
+                        .gatsbyImageData
+                    }
                   />
                   {data.Content && <figcaption>{data.Content}</figcaption>}
                 </figure>
@@ -190,16 +202,6 @@ export default function createHtml(data) {
               height="480"
             />
           </StyledVideoContainer>
-        </div>
-      )
-    case "gallery":
-      const arrayforGallery = []
-      data.Attachments.localFiles.forEach(file => {
-        arrayforGallery.push({ original: file.childImageSharp.fluid.src })
-      })
-      return (
-        <div className="container" key={data.id}>
-          <ImageGallery items={arrayforGallery} />
         </div>
       )
     default:

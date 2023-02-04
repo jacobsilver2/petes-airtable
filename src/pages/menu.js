@@ -3,31 +3,24 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createMenuHtml from "../utility/createMenuHtml"
 
-export const pageQuery = graphql`
-  {
-    allAirtable(
-      filter: { table: { eq: "menu" } }
-      sort: { data: { order: ASC } }
-    ) {
-      nodes {
-        data {
-          Name
-          Description
-          Price
-          type
-          id
-        }
-      }
-    }
-    file(relativePath: { eq: "menu.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
-        }
+export const pageQuery = graphql`{
+  allAirtable(filter: {table: {eq: "menu"}}, sort: {data: {order: ASC}}) {
+    nodes {
+      data {
+        Name
+        Description
+        Price
+        type
+        id
       }
     }
   }
-`
+  file(relativePath: {eq: "menu.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+}`
 
 const MenuPage = ({ data }) => {
   const { nodes } = data.allAirtable

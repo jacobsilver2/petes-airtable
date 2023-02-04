@@ -23,9 +23,7 @@ export const pageQuery = graphql`
           Attachments {
             localFiles {
               childImageSharp {
-                fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }
@@ -34,9 +32,7 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "outside.jpeg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
       }
     }
   }
@@ -46,7 +42,7 @@ const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const html = nodes.map((node) => createHtml(node.data))
   return (
-    <Layout fluid={data.file.childImageSharp.fluid}>
+    <Layout fluid={data.file.childImageSharp.gatsbyImageData}>
       <div>
         <Button title="FULL CALENDAR" link="/calendar" />
 

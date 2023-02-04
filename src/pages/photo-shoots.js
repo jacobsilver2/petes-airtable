@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
-import PhotoshootForm from "../components/Forms/PhotoshootForm"
+import PhotoShootForm from "../components/Forms/PhotoshootForm"
 
 export const pageQuery = graphql`
   {
@@ -20,9 +20,7 @@ export const pageQuery = graphql`
           Attachments {
             localFiles {
               childImageSharp {
-                fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }
@@ -31,9 +29,7 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "music_room.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2048) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
@@ -43,9 +39,12 @@ const PhotoShootsPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const html = nodes.map((node) => createHtml(node.data))
   return (
-    <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
+    <Layout
+      fluid={data.file.childImageSharp.gatsbyImageData}
+      fullheight={false}
+    >
       <div>{html}</div>
-      <PhotoshootForm />
+      <PhotoShootForm />
     </Layout>
   )
 }

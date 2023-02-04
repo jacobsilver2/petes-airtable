@@ -1,29 +1,20 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
 import "./myStyles.scss"
 import Helmet from "react-helmet"
 import TitleBar from "./TitleBar"
 
-const StyledImg = styled(Img)`
+const StyledImg = styled(GatsbyImage)`
   margin-top: 3rem;
-  max-width: ${props => (props.maxWidth ? props.maxWidth : "")};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "")};
   margin-left: auto;
   margin-right: auto;
 `
 
-const Layout = ({
-  children,
-  fluid,
-  text,
-  subText,
-  maxWidth,
-  fullheight,
-  regular = false,
-}) => {
+const Layout = ({ children, fluid, text, subText, maxWidth }) => {
   const data = useStaticQuery(graphql`
     query siteQuery {
       site {
@@ -33,7 +24,6 @@ const Layout = ({
       }
     }
   `)
-
   return (
     <>
       <Helmet
@@ -43,7 +33,7 @@ const Layout = ({
         title={data.site.siteMetadata.title}
       />
       <Navbar siteTitle={data.site.siteMetadata.title} />
-      <StyledImg maxWidth={maxWidth} fluid={fluid} />
+      <StyledImg maxWidth={maxWidth} image={fluid} />
       {text && <TitleBar text={text} subText={subText} />}
       <section
         style={{
@@ -57,10 +47,6 @@ const Layout = ({
       </section>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

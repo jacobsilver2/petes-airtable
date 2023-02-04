@@ -7,20 +7,15 @@ import { airtableEventsUrl } from "../utility/airtableUrls"
 import getFirstEventIds from "../utility/returnFirstEventOfDate"
 import { Circles } from "react-loader-spinner"
 
-export const pageQuery = graphql`
-  {
-    allFile(filter: { name: { regex: "/rand/" } }) {
-      nodes {
-        childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 300) {
-            ...GatsbyImageSharpFluid
-            originalImg
-          }
-        }
+export const pageQuery = graphql`{
+  allFile(filter: {name: {regex: "/rand/"}}) {
+    nodes {
+      childImageSharp {
+        gatsbyImageData(width: 300, height: 300, layout: CONSTRAINED)
       }
     }
   }
-`
+}`
 
 function Calendar(props) {
   const [events, setEvents] = useState([])

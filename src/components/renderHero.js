@@ -1,8 +1,8 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 
-const StyledImg = styled(Img)`
+const StyledImg = styled(GatsbyImage)`
   margin: auto;
   max-width: 2048px;
   /* margin: 1rem; */
@@ -15,34 +15,36 @@ const StyledImg = styled(Img)`
 `
 
 export function renderHero(fluid, fullheight, regular) {
-  if (fluid && fullheight) {
-    return (
-      <section className="hero is-fullheight-with-navbar">
-        <Img className="hero-body" fluid={fluid} />
-      </section>
-    )
-  }
-  if (fluid && !regular) {
-    return (
-      <section className="hero has-bg-img">
-        <div className="hero-body">
-          <StyledImg
-            fluid={fluid}
-            imgStyle={{
-              objectFit: "cover",
-            }}
-          />
-        </div>
-      </section>
-    )
-  }
-  if (fluid && regular) {
-    return (
-      <section className="hero has-bg-img">
-        <div className="hero-body">
-          <Img fluid={fluid} imgStyle={{ objectFit: "cover" }} />
-        </div>
-      </section>
-    )
-  }
+  console.log({ fluid, fullheight, regular })
+  // if (fluid && fullheight) {
+  //   return (
+  //     <section className="hero is-fullheight-with-navbar">
+  //       <GatsbyImage image={fluid} className="hero-body" />
+  //     </section>
+  //   )
+  // }
+  // if (fluid && !regular) {
+  //   return (
+  //     <section className="hero has-bg-img">
+  //       <div className="hero-body">
+  //         <StyledImg
+  //           fluid={fluid}
+  //           imgStyle={{
+  //             objectFit: "cover",
+  //           }}
+  //         />
+  //       </div>
+  //     </section>
+  //   )
+  // }
+  // if (fluid && regular) {
+  //   return (
+  //     <section className="hero has-bg-img">
+  //       <div className="hero-body">
+  //         <GatsbyImage image={fluid} imgStyle={{ objectFit: "cover" }} />
+  //       </div>
+  //     </section>
+  //   )
+  // }
+  return <div>YO</div>
 }

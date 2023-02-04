@@ -3,55 +3,46 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
 
-export const pageQuery = graphql`
-  {
-    allAirtable(
-      filter: { table: { eq: "history" } }
-      sort: { data: { order: ASC } }
-    ) {
-      nodes {
-        data {
-          Name
-          Content
-          type
-          website
-          display
-          id
-          Attachments {
-            localFiles {
-              childImageSharp {
-                fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+export const pageQuery = graphql`{
+  allAirtable(filter: {table: {eq: "history"}}, sort: {data: {order: ASC}}) {
+    nodes {
+      data {
+        Name
+        Content
+        type
+        website
+        display
+        id
+        Attachments {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
       }
     }
-    pastPerformers: allAirtable(
-      filter: { table: { eq: "past performers" } }
-      sort: { data: { order: ASC } }
-    ) {
-      nodes {
-        data {
-          Name
-          display
-          Content
-          type
-          id
-        }
-      }
-    }
-    file(relativePath: { eq: "HistoryHeader.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+  }
+  pastPerformers: allAirtable(
+    filter: {table: {eq: "past performers"}}
+    sort: {data: {order: ASC}}
+  ) {
+    nodes {
+      data {
+        Name
+        display
+        Content
+        type
+        id
       }
     }
   }
-`
+  file(relativePath: {eq: "HistoryHeader.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}`
 
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
@@ -62,7 +53,7 @@ const HistoryPage = ({ data }) => {
   ))
   return (
     <Layout
-      fluid={data.file.childImageSharp.fluid}
+      fluid={data.file.childImageSharp.gatsbyImageData}
       maxWidth="550px"
       fullheight={false}
     >
@@ -76,7 +67,7 @@ const HistoryPage = ({ data }) => {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export default HistoryPage
