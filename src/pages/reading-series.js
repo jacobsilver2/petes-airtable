@@ -7,7 +7,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "reading series" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -34,7 +34,7 @@ export const pageQuery = graphql`
 
 const OpenMicPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createHtml(node.data))
+  const myhtml = nodes.map((node) => createHtml(node.data))
   return (
     <>
       <Layout fluid={null} fullheight={false}>
@@ -44,8 +44,4 @@ const OpenMicPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Reading Series",
-  url: "/reading-series",
-}
-export default OpenMicPage;
+export default OpenMicPage

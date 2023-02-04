@@ -1,13 +1,13 @@
-import React from 'react';
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import createMenuHtml from '../utility/createMenuHtml';
-
+import createMenuHtml from "../utility/createMenuHtml"
 
 export const pageQuery = graphql`
   {
     allAirtable(
-      filter: { table: { eq: "menu" } }, sort: {fields: data___order}
+      filter: { table: { eq: "menu" } }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -30,22 +30,15 @@ export const pageQuery = graphql`
 `
 
 const MenuPage = ({ data }) => {
-  const { nodes } = data.allAirtable;
-  const myhtml = nodes.map(node => createMenuHtml(node.data))
+  const { nodes } = data.allAirtable
+  const html = nodes.map((node) => createMenuHtml(node.data))
   return (
     <>
       <Layout fluid={null} fullheight={false}>
-        <div>
-          {myhtml}
-        </div>
+        <div>{html}</div>
       </Layout>
     </>
   )
 }
 
-export const frontmatter = {
-  title: "Menu",
-  url: '/menu',
-  navOrder: 7
-}
-export default MenuPage;
+export default MenuPage

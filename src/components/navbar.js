@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import filterNavItems from "../utility/filterNavItems"
 
 const Navbar = () => {
@@ -43,7 +42,7 @@ const Navbar = () => {
           }}
           className={`navbar-burger burger ${navBarActiveClass}`}
           data-target="navMenu"
-          onClick={e => toggleHamburger(e)}
+          onClick={(e) => toggleHamburger(e)}
         >
           <span />
           <span />
@@ -55,14 +54,6 @@ const Navbar = () => {
       </div>
     </nav>
   )
-}
-
-Navbar.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Navbar.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Navbar

@@ -7,7 +7,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "history" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -31,7 +31,7 @@ export const pageQuery = graphql`
     }
     pastPerformers: allAirtable(
       filter: { table: { eq: "past performers" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -56,8 +56,8 @@ export const pageQuery = graphql`
 const HistoryPage = ({ data }) => {
   const { nodes } = data.allAirtable
   const { nodes: past } = data.pastPerformers
-  const myhtml = nodes.map(node => createHtml(node.data))
-  const pastBandsList = past.map(node => (
+  const myhtml = nodes.map((node) => createHtml(node.data))
+  const pastBandsList = past.map((node) => (
     <p key={node.data.id}>{node.data.Content}</p>
   ))
   return (
@@ -79,9 +79,4 @@ const HistoryPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "History",
-  url: "/history",
-  navOrder: 6,
-}
 export default HistoryPage

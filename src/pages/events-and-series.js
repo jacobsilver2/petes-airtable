@@ -7,7 +7,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "events and series" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
 
 const EventsAndSeriesPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createEventsAndSeriesHtml(node.data))
+  const myhtml = nodes.map((node) => createEventsAndSeriesHtml(node.data))
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
@@ -51,9 +51,4 @@ const EventsAndSeriesPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Events and Series",
-  url: "/events-and-series",
-  navOrder: 4,
-}
 export default EventsAndSeriesPage

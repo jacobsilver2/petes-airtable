@@ -11,7 +11,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "contact" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -52,7 +52,7 @@ const ContactPage = ({ data }) => {
     "PITCH A SHOW",
   ]
 
-  const mappedListItems = formNames.map(name => {
+  const mappedListItems = formNames.map((name) => {
     return (
       <button
         key={name}
@@ -114,9 +114,4 @@ const ContactPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Contact",
-  url: "/contact",
-  navOrder: 8,
-}
 export default ContactPage

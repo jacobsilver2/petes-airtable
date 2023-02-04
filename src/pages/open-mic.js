@@ -7,7 +7,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "open mic" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -42,7 +42,7 @@ export const pageQuery = graphql`
 
 const OpenMicPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createHtml(node.data))
+  const html = nodes.map((node) => createHtml(node.data))
   return (
     <>
       <Layout
@@ -50,14 +50,10 @@ const OpenMicPage = ({ data }) => {
         fixed={null}
         fullheight={false}
       >
-        <div>{myhtml}</div>
+        <div>{html}</div>
       </Layout>
     </>
   )
 }
 
-export const frontmatter = {
-  title: "Open Mic",
-  url: "/open-mic",
-}
 export default OpenMicPage

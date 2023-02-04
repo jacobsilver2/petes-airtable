@@ -20,14 +20,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
 
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
-  const [largeImage, setLargeImage] = useState(null)
+  // const [largeImage, setLargeImage] = useState(null)
 
   const [tooLarge, setTooLarge] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    base("Acts").find(id, function(err, record) {
+    base("Acts").find(id, function (err, record) {
       if (err) {
         console.error(err)
         return
@@ -60,7 +60,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       )
       const file = await res.json()
       setImageUrl(file.secure_url)
-      setLargeImage(file.eager[0].secure_url)
+      // setLargeImage(file.eager[0].secure_url)
     } catch (err) {
       throw new Error("Something went wrong.  I promise it's not your fault")
     }
@@ -82,7 +82,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
           },
         },
       ],
-      function(err, record) {
+      function (err, record) {
         if (err) {
           console.log(err)
           return
@@ -104,11 +104,12 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
             Website: website,
             Instagram: instagram,
             Twitter: twitter,
-            Image: [{ url: largeImage }],
+            // Image: [{ url: largeImage }],
+            Image_URL: imageUrl,
           },
         },
       ],
-      function(err, record) {
+      function (err, record) {
         if (err) {
           console.error(err)
           return
@@ -125,7 +126,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
         <legend>Media Request Form</legend>
         <form
           name="media request form"
-          onSubmit={e => handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
           // method="POST"
         >
           <div className="field">
@@ -143,7 +144,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="text"
                   placeholder="First Name"
                   name="firstName"
-                  onChange={e => setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                   required
                 />
@@ -163,7 +164,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="text"
                   placeholder="Last Name"
                   name="lastName"
-                  onChange={e => setLastName(e.target.value)}
+                  onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
                   required
                 />
@@ -182,7 +183,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="text"
                   placeholder="Name of Act"
                   name="act"
-                  onChange={e => setAct(e.target.value)}
+                  onChange={(e) => setAct(e.target.value)}
                   value={act}
                   required
                 />
@@ -202,7 +203,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="email"
                   name="email"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </p>
@@ -266,7 +267,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     type="url"
                     placeholder="url"
                     value={website}
-                    onChange={e => setWebsite(e.target.value)}
+                    onChange={(e) => setWebsite(e.target.value)}
                     name="website"
                   />
                 </p>
@@ -290,7 +291,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     type="url"
                     placeholder="url"
                     value={soundcloud}
-                    onChange={e => setSoundCloud(e.target.value)}
+                    onChange={(e) => setSoundCloud(e.target.value)}
                     name="soundcloud"
                   />
                 </p>
@@ -311,7 +312,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     type="text"
                     placeholder="twitter"
                     value={twitter}
-                    onChange={e => setTwitter(e.target.value)}
+                    onChange={(e) => setTwitter(e.target.value)}
                     name="twitter"
                   />
                 </p>
@@ -335,7 +336,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     type="text"
                     placeholder="instagram"
                     value={instagram}
-                    onChange={e => setInstagram(e.target.value)}
+                    onChange={(e) => setInstagram(e.target.value)}
                     name="instagram"
                   />
                 </p>
@@ -364,7 +365,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                     className="textarea"
                     placeholder="short blurb"
                     value={blurb}
-                    onChange={e => {
+                    onChange={(e) => {
                       setBlurb(e.target.value)
                       if (blurb.length > 450) {
                         setIsDisabled(true)
@@ -397,7 +398,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
                   type="file"
                   name="picture"
                   accept="image/gif, image/jpeg, image/png"
-                  onChange={e => addImage(e)}
+                  onChange={(e) => addImage(e)}
                 />
                 <span className="file-cta">
                   <span className="file-icon">

@@ -8,7 +8,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "booking" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -42,7 +42,7 @@ export const pageQuery = graphql`
 
 const BookingPage = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createEventsAndSeriesHtml(node.data))
+  const myhtml = nodes.map((node) => createEventsAndSeriesHtml(node.data))
   return (
     <>
       <Layout fluid={data.file.childImageSharp.fluid} fullheight={false}>
@@ -53,9 +53,4 @@ const BookingPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Booking",
-  url: "/booking",
-  navOrder: 6,
-}
 export default BookingPage

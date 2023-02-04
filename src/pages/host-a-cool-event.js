@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react"
 import { graphql } from "gatsby"
-import Layout from '../components/layout';
+import Layout from "../components/layout"
 import createHtml from "../utility/createHtml"
-import EventBookingForm from '../components/Forms/EventBookingForm'
+import EventBookingForm from "../components/Forms/EventBookingForm"
 
 export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "host a cool event" } }
-      sort: { order: ASC, fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -19,11 +19,11 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
 const HostACoolEventComponent = ({ data }) => {
   const { nodes } = data.allAirtable
-  const myhtml = nodes.map(node => createHtml(node.data))
+  const myhtml = nodes.map((node) => createHtml(node.data))
   return (
     <>
       <Layout fullheight={false} fluid={null}>
@@ -38,7 +38,7 @@ const HostACoolEventComponent = ({ data }) => {
 
 export const frontmatter = {
   title: "Host A Cool Event",
-  url: "/host-a-cool-event"
+  url: "/host-a-cool-event",
 }
 
-export default HostACoolEventComponent;
+export default HostACoolEventComponent

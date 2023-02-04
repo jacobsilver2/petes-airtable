@@ -8,7 +8,7 @@ export const pageQuery = graphql`
   {
     allAirtable(
       filter: { table: { eq: "gallery" } }
-      sort: { fields: data___order }
+      sort: { data: { order: ASC } }
     ) {
       nodes {
         data {
@@ -45,8 +45,8 @@ const GalleryPage = ({ data }) => {
   }
 
   const photos = data.allAirtable.nodes
-    .filter(node => node.data.display)
-    .map(node => {
+    .filter((node) => node.data.display)
+    .map((node) => {
       const nodeObj = {
         src: node.data.Attachments.raw[0].url,
         width: parseInt(Math.ceil(node.data.width)),
@@ -80,7 +80,7 @@ const GalleryPage = ({ data }) => {
                     }),
                   }}
                   currentIndex={currentImage}
-                  views={photos.map(x => ({
+                  views={photos.map((x) => ({
                     ...x,
                     srcset: x.srcSet,
                     caption: x.title,
@@ -95,9 +95,4 @@ const GalleryPage = ({ data }) => {
   )
 }
 
-export const frontmatter = {
-  title: "Gallery",
-  url: "/gallery",
-  navOrder: 5,
-}
 export default GalleryPage
