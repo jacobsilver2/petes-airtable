@@ -15,36 +15,34 @@ const StyledImg = styled(GatsbyImage)`
 `
 
 export function renderHero(fluid, fullheight, regular) {
-  console.log({ fluid, fullheight, regular })
-  // if (fluid && fullheight) {
-  //   return (
-  //     <section className="hero is-fullheight-with-navbar">
-  //       <GatsbyImage image={fluid} className="hero-body" />
-  //     </section>
-  //   )
-  // }
-  // if (fluid && !regular) {
-  //   return (
-  //     <section className="hero has-bg-img">
-  //       <div className="hero-body">
-  //         <StyledImg
-  //           fluid={fluid}
-  //           imgStyle={{
-  //             objectFit: "cover",
-  //           }}
-  //         />
-  //       </div>
-  //     </section>
-  //   )
-  // }
-  // if (fluid && regular) {
-  //   return (
-  //     <section className="hero has-bg-img">
-  //       <div className="hero-body">
-  //         <GatsbyImage image={fluid} imgStyle={{ objectFit: "cover" }} />
-  //       </div>
-  //     </section>
-  //   )
-  // }
-  return <div>YO</div>
+  if (fluid && fullheight) {
+    return (
+      <section className="hero is-fullheight-with-navbar">
+        <GatsbyImage image={fluid} className="hero-body" />
+      </section>
+    )
+  }
+  if (fluid && !regular) {
+    return (
+      <section className="hero has-bg-img">
+        <div className="hero-body">
+          <StyledImg
+            fluid={fluid}
+            imgStyle={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      </section>
+    )
+  }
+  if (fluid && regular) {
+    return (
+      <section className="hero has-bg-img">
+        <div className="hero-body">
+          <GatsbyImage image={fluid} imgStyle={{ objectFit: "cover" }} />
+        </div>
+      </section>
+    )
+  }
 }

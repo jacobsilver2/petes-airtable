@@ -7,32 +7,37 @@ import PhotoShootForm from "../components/Forms/PhotoshootForm"
 import EventBookingForm from "../components/Forms/EventBookingForm"
 import PrivatePartyForm from "../components/Forms/PrivatePartyForm"
 
-export const pageQuery = graphql`{
-  allAirtable(filter: {table: {eq: "contact"}}, sort: {data: {order: ASC}}) {
-    nodes {
-      data {
-        Name
-        Content
-        type
-        email
-        website
-        id
-        Attachments {
-          localFiles {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+export const pageQuery = graphql`
+  {
+    allAirtable(
+      filter: { table: { eq: "contact" } }
+      sort: { data: { order: ASC } }
+    ) {
+      nodes {
+        data {
+          Name
+          Content
+          type
+          email
+          website
+          id
+          Attachments {
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH)
+              }
             }
           }
         }
       }
     }
-  }
-  file(relativePath: {eq: "contact.png"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH)
+    file(relativePath: { eq: "contact.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
     }
   }
-}`
+`
 const ContactPage = ({ data }) => {
   const [active, setActive] = useState("BOOK A PARTY")
   const formNames = [
@@ -93,14 +98,19 @@ const ContactPage = ({ data }) => {
       )
     }
   }
-  return <>
-    <Layout fluid={data.file.childImageSharp.gatsbyImageData} fullheight={false}>
-      <div className="tabs is-centered">
-        <ul className="">{mappedListItems}</ul>
-      </div>
-      {renderForm()}
-    </Layout>
-  </>;
+  return (
+    <>
+      <Layout
+        fluid={data.file.childImageSharp.gatsbyImageData}
+        fullheight={false}
+      >
+        <div className="tabs is-centered">
+          <ul className="">{mappedListItems}</ul>
+        </div>
+        {renderForm()}
+      </Layout>
+    </>
+  )
 }
 
 export default ContactPage

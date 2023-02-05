@@ -7,7 +7,6 @@ import formatCalendarTime from "../../utility/formatCalendarTime"
 
 const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
   const myEvents = events.map((event) => {
-    console.log(event)
     return (
       <CalendarEvent
         isFirstEvent={firstEvents.includes(event.id)}
