@@ -56,7 +56,7 @@ export default function CalendarEvent({
     <>
       {isFirstEvent && <StyledDate>{date}</StyledDate>}
       <Event key={id}>
-        {renderImage(image)}
+        {/* {renderImage(image)} */}
         <StyledContentContainer>
           {website
             ? renderTitleWithLink(title, website)
