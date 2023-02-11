@@ -1,40 +1,37 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
-  /* display: grid; */
   width: 100%;
   margin: 0 auto;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  /* overflow: none; */
   border-radius: 4px;
 `
 
 export const Events = styled.ul`
-  /* border: 1px solid white; */
+  border: 1px solid white;
 `
 
 export const Event = styled.div`
   display: grid;
-  /* good for testing purposes */
-  /* border: 10px solid yellow; */
   grid-template-columns: repeat(1, 300px 2fr);
   grid-template-areas: "image content";
+  grid-template-columns: 1fr;
   grid-gap: 2rem;
   margin-bottom: 3rem;
   @media screen and (max-width: 980px) {
     grid-template-columns: 1fr;
   }
 `
-
+//! REMOVE THE TEXT ALIGN CENTER ONCE WE PUT BACK IMAGES
 export const StyledDate = styled.div`
-  /* border-top: 1px solid white; */
   font-size: 3rem;
   font-style: italic;
   color: white;
   text-align: left;
+  text-align: center;
   padding-bottom: 0.5rem;
   @media screen and (max-width: 980px) {
     text-align: center;
@@ -75,8 +72,10 @@ export const StyledLink = styled.a`
     color: white;
   }
 `
-
+//! REMOVE THE JUStIFY-SELF AND TEXT ALIGN AFTER WE PUT BACK IMAGES
 export const StyledContentContainer = styled.div`
+  justify-self: center;
+  text-align: center;
   @media screen and (max-width: 980px) {
     justify-self: center;
     text-align: center;

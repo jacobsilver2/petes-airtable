@@ -44,6 +44,7 @@
     "yet-another-react-lightbox": "^2.2.7"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^7.0.1",
     "prettier": "^2.8.3"
   },
   "keywords": [
