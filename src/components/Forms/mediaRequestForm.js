@@ -52,7 +52,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
     setLoading(true)
     try {
       const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dlskxwzm6/image/upload",
+        "https://api.cloudinary.com/v1_1/dlskxwzm6/image/upload/w_300,h_300,c_scale,q_auto:eco",
         {
           method: "POST",
           body: data,
