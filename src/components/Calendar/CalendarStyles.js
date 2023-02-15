@@ -18,7 +18,7 @@ export const Event = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 300px 2fr);
   grid-template-areas: "image content";
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; */
   grid-gap: 2rem;
   margin-bottom: 3rem;
   @media screen and (max-width: 980px) {
@@ -31,7 +31,7 @@ export const StyledDate = styled.div`
   font-style: italic;
   color: white;
   text-align: left;
-  text-align: center;
+  /* text-align: center; */
   padding-bottom: 0.5rem;
   @media screen and (max-width: 980px) {
     text-align: center;
@@ -74,8 +74,8 @@ export const StyledLink = styled.a`
 `
 //! REMOVE THE JUStIFY-SELF AND TEXT ALIGN AFTER WE PUT BACK IMAGES
 export const StyledContentContainer = styled.div`
-  justify-self: center;
-  text-align: center;
+  /* justify-self: center;
+  text-align: center; */
   @media screen and (max-width: 980px) {
     justify-self: center;
     text-align: center;

@@ -12,9 +12,14 @@ const CalendarFrame = ({ events, data: { allFile }, firstEvents }) => {
         isFirstEvent={firstEvents.includes(event.id)}
         date={formatCalendarDate(event.fields.Date)}
         time={formatCalendarTime(event.fields.Date)}
+        // image={
+        //   Boolean(event.fields.Image_URL)
+        //     ? event.fields.Image_URL[0]
+        //     : getRandomImage(allFile.nodes)
+        // }
         image={
-          Boolean(event.fields.Image_URL)
-            ? event.fields.Image_URL[0]
+          event.fields["Act Image"]
+            ? event.fields["Act Image"][0].url
             : getRandomImage(allFile.nodes)
         }
         title={
