@@ -20,7 +20,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
 
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
-  // const [largeImage, setLargeImage] = useState(null)
+  const [largeImage, setLargeImage] = useState(null)
 
   const [tooLarge, setTooLarge] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
@@ -60,7 +60,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       )
       const file = await res.json()
       setImageUrl(file.secure_url)
-      // setLargeImage(file.eager[0].secure_url)
+      setLargeImage(file.eager[0].secure_url)
     } catch (err) {
       throw new Error("Something went wrong.  I promise it's not your fault")
     }
@@ -104,7 +104,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
             Website: website,
             Instagram: instagram,
             Twitter: twitter,
-            // Image: [{ url: largeImage }],
+            Image: [{ url: largeImage }],
             Image_URL: imageUrl,
           },
         },
