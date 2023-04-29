@@ -39,9 +39,9 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
 
   async function addImage(e) {
     e.preventDefault()
-    if (e.target.files[0].size > 5000000) {
+    if (!e?.target?.files[0]) return
+    if (e?.target?.files[0]?.size > 5000000) {
       setTooLarge(true)
-      setIsDisabled(true)
       return
     }
     setFilename(e.target.files[0].name)
@@ -60,13 +60,14 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       )
       const file = await res.json()
       setImageUrl(file.secure_url)
-      setLargeImage(file.eager[0].secure_url)
     } catch (err) {
-      throw new Error("Something went wrong.  I promise it's not your fault")
+      console.error(err)
+    } finally {
+      setLoading(false)
+      setTooLarge(false)
+      setLoading(false)
+      setIsDisabled(false)
     }
-    setTooLarge(false)
-    setLoading(false)
-    setIsDisabled(false)
   }
 
   function handleSubmit(e) {
@@ -104,7 +105,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
             Website: website,
             Instagram: instagram,
             Twitter: twitter,
-            Image: [{ url: largeImage }],
+            Image: [{ url: imageUrl }],
             Image_URL: imageUrl,
           },
         },
