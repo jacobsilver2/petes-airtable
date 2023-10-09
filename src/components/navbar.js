@@ -30,6 +30,9 @@ const Navbar = () => {
             <p className="has-text-white is-size-7">
               The Biggest Little Venue in NYC
             </p>
+            <p className="has-text-white is-size-7">
+              709 Lorimer St, Brooklyn, NY, 11211
+            </p>
           </div>
         </div>
         {/* Hamburger Menu */}
