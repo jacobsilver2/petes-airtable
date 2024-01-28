@@ -3,19 +3,20 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import CalendarFrame from "../components/Calendar/CalendarFrame"
 import { getAllEvents } from "../services/getCalendarEvents"
-import { airtableEventsUrl } from "../utility/airtableUrls"
 import getFirstEventIds from "../utility/returnFirstEventOfDate"
 import { Circles } from "react-loader-spinner"
 
-export const pageQuery = graphql`{
-  allFile(filter: {name: {regex: "/rand/"}}) {
-    nodes {
-      childImageSharp {
-        gatsbyImageData(width: 300, height: 300, layout: CONSTRAINED)
+export const pageQuery = graphql`
+  {
+    allFile(filter: { name: { regex: "/rand/" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(width: 300, height: 300, layout: CONSTRAINED)
+        }
       }
     }
   }
-}`
+`
 
 function Calendar(props) {
   const [events, setEvents] = useState([])
@@ -23,13 +24,13 @@ function Calendar(props) {
   const [firstEventIds, setFirstEventIds] = useState([])
 
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      getAllEvents(`${airtableEventsUrl}&view=Future`, [], resolve, reject)
-    }).then(response => {
-      setEvents(response)
+    const getEvents = async () => {
+      const eventsFromServer = await getAllEvents()
+      setEvents(eventsFromServer)
       setIsLoading(false)
-      setFirstEventIds(getFirstEventIds(response))
-    })
+      setFirstEventIds(getFirstEventIds(eventsFromServer))
+    }
+    getEvents()
   }, [])
 
   const renderedCalendar = (

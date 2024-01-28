@@ -1,34 +1,50 @@
-import axios from "axios"
-import { airtableEventsUrl } from "../utility/airtableUrls"
+import Airtable from "airtable"
 
-export const getAllEvents = (url, events, resolve, reject) => {
-  axios
-    .get(url)
-    .then(response => {
-      const retrievedEvents = events.concat(response.data.records)
-      if (response.data.offset) {
-        getAllEvents(
-          `${airtableEventsUrl}&view=Future&offset=${response.data.offset}`,
-          retrievedEvents,
-          resolve,
-          reject
-        )
-      } else {
-        resolve(retrievedEvents)
-      }
-    })
-    .catch(error => {
-      reject("something wrong")
-    })
+export const getAllEvents = async () => {
+  const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
+    "app4Eb0X39KtGToOS"
+  )
+
+  return new Promise((resolve, reject) => {
+    let allRecords = []
+    base("Events")
+      .select({
+        view: "Future",
+      })
+      .eachPage(
+        (records, fetchNextPage) => {
+          records.forEach((record) => {
+            allRecords.push(record)
+          })
+          fetchNextPage()
+        },
+        (err) => {
+          if (err) {
+            reject(err)
+            return
+          }
+          resolve(allRecords)
+        }
+      )
+  })
 }
 
-export const getTodaysEvents = (url, resolve, reject) => {
-  axios
-    .get(url)
-    .then(response => {
-      resolve(response)
-    })
-    .catch(error => {
-      reject("something wrong")
-    })
+export const getTodaysEvents = async () => {
+  const base = new Airtable({
+    apiKey: process.env.GATSBY_AIRTABLE_API,
+  }).base("app4Eb0X39KtGToOS")
+
+  return new Promise((resolve, reject) => {
+    base("Events")
+      .select({
+        view: "Today",
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          reject(err)
+          return
+        }
+        resolve(records.map((record) => record.fields))
+      })
+  })
 }
