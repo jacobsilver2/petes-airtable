@@ -35,7 +35,7 @@ const PrivatePartyForm = () => {
         occasion: occassion,
         "additional info": additionalInfo,
       },
-      function(err, record) {
+      function (err, record) {
         if (err) {
           console.error(err)
           return
@@ -53,7 +53,7 @@ const PrivatePartyForm = () => {
         <form
           name="private party form"
           method="POST"
-          onSubmit={e => handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
         >
           <div className="field">
             <label htmlFor="name" className="label is-small has-text-white">
@@ -67,7 +67,7 @@ const PrivatePartyForm = () => {
                   type="text"
                   placeholder="First and Last Name"
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   name="name"
                   required
                 />
@@ -88,7 +88,7 @@ const PrivatePartyForm = () => {
                   placeholder="Email"
                   name="email"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </p>
@@ -108,7 +108,7 @@ const PrivatePartyForm = () => {
                     type="tel"
                     placeholder="Phone Number"
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(e.target.value)}
                     name="phone"
                   />
                 </p>
@@ -128,7 +128,7 @@ const PrivatePartyForm = () => {
                   type="text"
                   name="how-many-people"
                   value={numberOfPeople}
-                  onChange={e => setNumberOfPeople(e.target.value)}
+                  onChange={(e) => setNumberOfPeople(e.target.value)}
                   required
                 />
               </p>
@@ -147,7 +147,7 @@ const PrivatePartyForm = () => {
                   type="text"
                   name="desired-date"
                   value={desireDate}
-                  onChange={e => setDesiredDate(e.target.value)}
+                  onChange={(e) => setDesiredDate(e.target.value)}
                 />
               </p>
             </div>
@@ -164,7 +164,7 @@ const PrivatePartyForm = () => {
                   className="input"
                   type="text"
                   value={desiredTime}
-                  onChange={e => setDesiredTime(e.target.value)}
+                  onChange={(e) => setDesiredTime(e.target.value)}
                   name="what time"
                 />
               </p>
@@ -183,7 +183,7 @@ const PrivatePartyForm = () => {
                   type="text"
                   name="how-many-hours"
                   value={hours}
-                  onChange={e => setHours(e.target.value)}
+                  onChange={(e) => setHours(e.target.value)}
                   required
                 />
               </p>
@@ -200,7 +200,7 @@ const PrivatePartyForm = () => {
                 name="inside-or-outside"
                 required
                 value={insideOrOutside}
-                onChange={e => setInsideOrOutside(e.target.value)}
+                onChange={(e) => setInsideOrOutside(e.target.value)}
               >
                 <option>Inside</option>
                 <option>Outside</option>
@@ -221,12 +221,12 @@ const PrivatePartyForm = () => {
                 name="open-bar-or-cash-bar"
                 required
                 value={openOrCash}
-                onChange={e => setOpenOrCash(e.target.value)}
+                onChange={(e) => setOpenOrCash(e.target.value)}
               >
                 <option>Cash Bar</option>
-                <option>Beer/Wine Open Bar $12/hr per person</option>
-                <option>Full Open Bar $16/hr per person</option>
-                <option>Deluxe Open Bar $18/hr per person</option>
+                <option>Beer/Wine Open Bar $14/hr per person</option>
+                <option>Full Open Bar $18/hr per person</option>
+                <option>Deluxe Open Bar $20/hr per person</option>
               </select>
             </div>
           </div>
@@ -242,7 +242,7 @@ const PrivatePartyForm = () => {
                   className="textarea"
                   name="whats-the-occasion"
                   value={occassion}
-                  onChange={e => setOccassion(e.target.value)}
+                  onChange={(e) => setOccassion(e.target.value)}
                 />
               </p>
             </div>
@@ -259,7 +259,7 @@ const PrivatePartyForm = () => {
                   className="textarea"
                   name="anything-else-we-should-know"
                   value={additionalInfo}
-                  onChange={e => setAdditionalInfo(e.target.value)}
+                  onChange={(e) => setAdditionalInfo(e.target.value)}
                 />
               </p>
             </div>
