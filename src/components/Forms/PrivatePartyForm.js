@@ -35,7 +35,7 @@ const PrivatePartyForm = () => {
         occasion: occassion,
         "additional info": additionalInfo,
       },
-      function (err, record) {
+      function (err) {
         if (err) {
           console.error(err)
           return
@@ -224,9 +224,9 @@ const PrivatePartyForm = () => {
                 onChange={(e) => setOpenOrCash(e.target.value)}
               >
                 <option>Cash Bar</option>
-                <option>Beer/Wine Open Bar $14/hr per person</option>
-                <option>Full Open Bar $18/hr per person</option>
-                <option>Deluxe Open Bar $20/hr per person</option>
+                <option>Beer/Wine Open Bar $18/hr per person</option>
+                <option>Full Open Bar $22/hr per person</option>
+                <option>Deluxe Open Bar $28/hr per person</option>
               </select>
             </div>
           </div>
