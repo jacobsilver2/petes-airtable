@@ -1,7 +1,7 @@
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image"
+import Image from "next/image"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 export const StyledVideoContainer = styled.div`
   margin: 50px 25px;
@@ -42,7 +42,7 @@ export default function createHtml(node) {
                   </a>
                 ) : (
                   <Link
-                    to={node.data.website}
+                    href={node.data.website}
                     className="button is-large is-primary is-outlined is-rounded is-inverted"
                   >
                     {node.data.Content}
@@ -65,9 +65,15 @@ export default function createHtml(node) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <GatsbyImage
-                    image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
-                  />
+                  {node.data.Attachments && node.data.Attachments[0] && (
+                    <Image
+                      src={node.data.Attachments[0].url}
+                      alt={node.data.Name || "Image"}
+                      width={600}
+                      height={400}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  )}
                 </a>
               </section>
             </div>
@@ -76,10 +82,16 @@ export default function createHtml(node) {
         return (
           <div className="container" key={node.data.id}>
             <section className="section">
-              <Link to={node.data.website} className="image">
-                <GatsbyImage
-                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
-                />
+              <Link href={node.data.website} className="image">
+                {node.data.Attachments && node.data.Attachments[0] && (
+                  <Image
+                    src={node.data.Attachments[0].url}
+                    alt={node.data.Name || "Image"}
+                    width={600}
+                    height={400}
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                )}
               </Link>
             </section>
           </div>
@@ -91,9 +103,15 @@ export default function createHtml(node) {
           <div className="container" key={node.data.id}>
             <section className="section">
               <a href={emailWithMailto} className="image">
-                <GatsbyImage
-                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
-                />
+                {node.data.Attachments && node.data.Attachments[0] && (
+                  <Image
+                    src={node.data.Attachments[0].url}
+                    alt={node.data.Name || "Image"}
+                    width={600}
+                    height={400}
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                )}
               </a>
             </section>
           </div>
@@ -102,10 +120,14 @@ export default function createHtml(node) {
       return (
         <div className="container" key={node.data.id}>
           <section className="section">
-            {node.cloudinaryImg.childImageSharp.gatsbyImageData && (
+            {node.data.Attachments && node.data.Attachments[0] && (
               <figure className="image">
-                <GatsbyImage
-                  image={node.cloudinaryImg.childImageSharp.gatsbyImageData}
+                <Image
+                  src={node.data.Attachments[0].url}
+                  alt={node.data.Name || "Image"}
+                  width={600}
+                  height={400}
+                  style={{ width: '100%', height: 'auto' }}
                 />
                 {node.data.Content && (
                   <figcaption>{node.data.Content}</figcaption>

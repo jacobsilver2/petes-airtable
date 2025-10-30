@@ -1,21 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 export default function filteredAndMappedNavItems() {
   return [
     <Link
       key="1"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/"
+      href="/"
     >
       Welcome
     </Link>,
     <Link
       key="2"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/calendar"
+      href="/calendar"
     >
       Calendar
     </Link>,
@@ -23,7 +21,6 @@ export default function filteredAndMappedNavItems() {
       key="3"
       target="_blank"
       rel="noreferrer"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
       href="http://petes-candy-store.square.site/"
     >
@@ -31,49 +28,43 @@ export default function filteredAndMappedNavItems() {
     </a>,
     <Link
       key="4"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/events-and-series"
+      href="/events-and-series"
     >
       Events and Series
     </Link>,
     <Link
       key="5"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/booking"
+      href="/booking"
     >
       Booking
     </Link>,
     <Link
       key="6"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/gallery"
+      href="/gallery"
     >
       Gallery
     </Link>,
     <Link
       key="7"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/history"
+      href="/history"
     >
       History
     </Link>,
     <Link
       key="8"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/menu"
+      href="/menu"
     >
       Menu
     </Link>,
     <Link
       key="9"
-      activeClassName="has-text-white"
       className="navbar-item is-size-6"
-      to="/contact"
+      href="/contact"
     >
       Contact
     </Link>,

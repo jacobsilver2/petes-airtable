@@ -1,39 +1,39 @@
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image"
+import Image from "next/image"
 import styled from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
+import Head from "next/head"
 import Navbar from "./navbar"
-import "./myStyles.scss"
-import Helmet from "react-helmet"
 import TitleBar from "./TitleBar"
 
-const StyledImg = styled(GatsbyImage)`
+const StyledImgContainer = styled.div`
   margin-top: 3rem;
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : "")};
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 `
 
 const Layout = ({ children, fluid, text, subText, maxWidth }) => {
-  const data = useStaticQuery(graphql`
-    query siteQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const siteTitle = "Pete's Candy Store"
+  
   return (
     <>
-      <Helmet
-        htmlAttributes={{
-          lang: "en",
-        }}
-        title={data.site.siteMetadata.title}
-      />
-      <Navbar siteTitle={data.site.siteMetadata.title} />
-      <StyledImg maxWidth={maxWidth} image={fluid} />
+      <Head>
+        <html lang="en" />
+        <title>{siteTitle}</title>
+      </Head>
+      <Navbar siteTitle={siteTitle} />
+      {fluid && (
+        <StyledImgContainer maxWidth={maxWidth}>
+          <Image
+            src={fluid}
+            alt="Pete's Candy Store"
+            width={1200}
+            height={600}
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </StyledImgContainer>
+      )}
       {text && <TitleBar text={text} subText={subText} />}
       <section
         style={{

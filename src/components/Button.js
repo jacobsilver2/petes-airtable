@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 export default function Button({title, link}) {
 
@@ -9,7 +9,7 @@ export default function Button({title, link}) {
           <div className="level">
             <div className="level-item">
               <Link
-                to={link}
+                href={link}
                 className="button is-large is-primary is-outlined is-rounded is-inverted"
               >
                 {title}

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 import filterNavItems from "../utility/filterNavItems"
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="navbar-item">
           <div className="">
             <Link
-              to="/"
+              href="/"
               className="has-text-red is-size-3 is-size-5-mobile is-size4-tablet"
             >
               Pete's Candy Store

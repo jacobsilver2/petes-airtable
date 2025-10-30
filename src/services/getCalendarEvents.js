@@ -1,9 +1,18 @@
 import Airtable from "airtable"
 
+// Get API key from environment (supports both Gatsby and Next.js conventions)
+const getApiKey = () => {
+  return process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API
+}
+
 export const getAllEvents = async () => {
-  const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
-    "app4Eb0X39KtGToOS"
-  )
+  const apiKey = getApiKey()
+  if (!apiKey) {
+    console.warn('Airtable API key not available')
+    return []
+  }
+  
+  const base = new Airtable({ apiKey }).base("app4Eb0X39KtGToOS")
 
   return new Promise((resolve, reject) => {
     let allRecords = []
@@ -30,9 +39,13 @@ export const getAllEvents = async () => {
 }
 
 export const getTodaysEvents = async () => {
-  const base = new Airtable({
-    apiKey: process.env.GATSBY_AIRTABLE_API,
-  }).base("app4Eb0X39KtGToOS")
+  const apiKey = getApiKey()
+  if (!apiKey) {
+    console.warn('Airtable API key not available')
+    return []
+  }
+  
+  const base = new Airtable({ apiKey }).base("app4Eb0X39KtGToOS")
 
   return new Promise((resolve, reject) => {
     base("Events")

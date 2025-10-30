@@ -1,6 +1,6 @@
-import { getSrc } from "gatsby-plugin-image"
-
+// Simple random image utility for Next.js
 export const getRandomImage = (randomImages) => {
+  if (!randomImages || randomImages.length === 0) return null
   const randomImageIndex = Math.floor(Math.random() * randomImages.length)
-  return getSrc(randomImages[randomImageIndex])
+  return randomImages[randomImageIndex]
 }
