@@ -6,10 +6,15 @@ import getFirstEventIds from "../src/utility/returnFirstEventOfDate"
 import { Circles } from "react-loader-spinner"
 
 export async function getStaticProps() {
-  // Get random images - we'll need to handle this differently in Next.js
+  // Create a list of random images (similar to what Gatsby provided)
+  const randomImages = []
+  for (let i = 1; i <= 29; i++) {
+    randomImages.push(`/images/random/rand${i}.png`)
+  }
+  
   return {
     props: {
-      randomImages: [], // TODO: Implement random image loading
+      randomImages,
     },
   }
 }
@@ -32,7 +37,7 @@ function Calendar(props) {
   const renderedCalendar = (
     <CalendarFrame
       events={events}
-      data={props}
+      data={{ allFile: { nodes: props.randomImages } }}
       firstEvents={firstEventIds}
     />
   )

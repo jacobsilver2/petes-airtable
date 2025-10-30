@@ -1,9 +1,20 @@
 import React, { useState } from "react"
 import Airtable from "airtable"
 import { useRouter } from "next/router"
-const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
-  "appNuB0fX4vQbOqdy"
-)
+
+// Get API key from environment (supports both Gatsby and Next.js conventions)
+const getApiKey = () => {
+  return process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API
+}
+
+const getAirtableBase = () => {
+  const apiKey = getApiKey()
+  if (!apiKey) {
+    console.error('Airtable API key not found')
+    return null
+  }
+  return new Airtable({ apiKey }).base("appNuB0fX4vQbOqdy")
+}
 
 const GeneralForm = () => {
   const router = useRouter()
@@ -15,6 +26,14 @@ const GeneralForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const base = getAirtableBase()
+    
+    if (!base) {
+      console.error('Cannot submit form: Airtable not available')
+      alert('Form submission failed. Please try again later.')
+      return
+    }
+    
     base("general inquiry form").create(
       {
         name,

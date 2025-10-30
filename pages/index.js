@@ -32,7 +32,7 @@ const IndexPage = ({ homeData }) => {
   const html = homeData.map((node) => createHtml(node))
   
   return (
-    <Layout fluid="/src/images/outside.jpeg">
+    <Layout fluid="/images/outside.jpeg">
       <div>
         <Button title="FULL CALENDAR" link="/calendar" />
         <TodayAtPetes />
