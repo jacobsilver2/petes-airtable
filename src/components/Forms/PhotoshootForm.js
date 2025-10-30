@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import Airtable from "airtable"
-import { navigate } from "gatsby"
+import { useRouter } from "next/router"
 const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
   "appNuB0fX4vQbOqdy"
 )
 
 const PhotoshootForm = () => {
+  const router = useRouter()
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
@@ -47,7 +48,7 @@ const PhotoshootForm = () => {
       }
     )
     setIsDisabled(true)
-    navigate("/thanks")
+    router.push("/thanks")
   }
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Airtable from "airtable"
-import { navigate } from "gatsby"
+import { useRouter } from "next/router"
 import { Circles } from "react-loader-spinner"
 import moment from "moment"
 
@@ -10,6 +10,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
 )
 
 const MediaRequestFormEarlyEvent = () => {
+  const router = useRouter()
   const [name, setname] = useState("")
   const [email, setEmail] = useState("")
   const [date, setDate] = useState(new Date().toDateString())
@@ -80,7 +81,7 @@ const MediaRequestFormEarlyEvent = () => {
       }
     )
     setisDisabled(true)
-    navigate("/thanks")
+    router.push("/thanks")
   }
 
   return (

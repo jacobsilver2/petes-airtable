@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 export default function createEventsAndSeriesHtml(data) {
   if (!data.display) {
@@ -92,7 +92,7 @@ export default function createEventsAndSeriesHtml(data) {
                   marginBottom: "-2rem",
                 }}
               >
-                <Link to={data.website}>{data.Content}</Link>
+                <Link href={data.website}>{data.Content}</Link>
               </p>
             </div>
           </div>

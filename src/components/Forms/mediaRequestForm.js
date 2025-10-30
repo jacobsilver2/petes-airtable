@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Airtable from "airtable"
-import { navigate } from "gatsby"
+import { useRouter } from "next/router"
 import { Circles } from "react-loader-spinner"
 
 const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
@@ -8,6 +8,7 @@ const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API }).base(
 )
 
 const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
+  const router = useRouter()
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [act, setAct] = useState("")
@@ -118,7 +119,7 @@ const MediaRequestForm = ({ id, date, time, actEmail, eventId }) => {
       }
     )
 
-    navigate("/thanks")
+    router.push("/thanks")
   }
 
   return (
