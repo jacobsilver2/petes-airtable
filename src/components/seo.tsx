@@ -13,7 +13,7 @@ interface SEOProps {
 const siteMetadata = {
   title: "Pete's Candy Store",
   description: "Live music venue and bar in Williamsburg, Brooklyn",
-  author: "Pete's Candy Store"
+  author: "Pete's Candy Store",
 }
 
 const SEO: React.FC<SEOProps> = ({ description = "", title }) => {
@@ -21,7 +21,9 @@ const SEO: React.FC<SEOProps> = ({ description = "", title }) => {
 
   return (
     <Head>
-      <title>{title} | {siteMetadata.title}</title>
+      <title>
+        {title} | {siteMetadata.title}
+      </title>
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />

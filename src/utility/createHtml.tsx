@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 import styled from "styled-components"
 import Link from "next/link"
-import type { AirtableRecord } from '../../types'
+import type { AirtableRecord } from "../../types"
 
 export const StyledVideoContainer = styled.div`
   margin: 50px 25px;
@@ -22,7 +22,9 @@ export const StyledVideoContainer = styled.div`
   }
 `
 
-export default function createHtml(node: AirtableRecord): React.JSX.Element | undefined {
+export default function createHtml(
+  node: AirtableRecord
+): React.JSX.Element | undefined {
   if (!node.data.display) return
   switch (node.data.type) {
     case "button":
@@ -43,7 +45,7 @@ export default function createHtml(node: AirtableRecord): React.JSX.Element | un
                   </a>
                 ) : (
                   <Link
-                    href={node.data.website || '#'}
+                    href={node.data.website || "#"}
                     className="button is-large is-primary is-outlined is-rounded is-inverted"
                   >
                     {node.data.Content}
@@ -72,7 +74,7 @@ export default function createHtml(node: AirtableRecord): React.JSX.Element | un
                       alt={node.data.Name || "Image"}
                       width={600}
                       height={400}
-                      style={{ width: '100%', height: 'auto' }}
+                      style={{ width: "100%", height: "auto" }}
                     />
                   )}
                 </a>
@@ -90,7 +92,7 @@ export default function createHtml(node: AirtableRecord): React.JSX.Element | un
                     alt={node.data.Name || "Image"}
                     width={600}
                     height={400}
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: "100%", height: "auto" }}
                   />
                 )}
               </Link>
@@ -110,7 +112,7 @@ export default function createHtml(node: AirtableRecord): React.JSX.Element | un
                     alt={node.data.Name || "Image"}
                     width={600}
                     height={400}
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: "100%", height: "auto" }}
                   />
                 )}
               </a>
@@ -128,7 +130,7 @@ export default function createHtml(node: AirtableRecord): React.JSX.Element | un
                   alt={node.data.Name || "Image"}
                   width={600}
                   height={400}
-                  style={{ width: '100%', height: 'auto' }}
+                  style={{ width: "100%", height: "auto" }}
                 />
                 {node.data.Content && (
                   <figcaption>{node.data.Content}</figcaption>

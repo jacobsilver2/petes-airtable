@@ -6,8 +6,8 @@ interface User {
 
 // Mock user for now - in a real app this would come from authentication
 const mockUser: User = {
-  name: 'Guest User',
-  email: 'guest@example.com'
+  name: "Guest User",
+  email: "guest@example.com",
 }
 
 export const getUser = (): User => {

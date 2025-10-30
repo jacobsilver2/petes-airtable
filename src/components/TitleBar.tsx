@@ -1,7 +1,10 @@
 import React from "react"
 import { TitleBarProps } from "../types"
 
-const TitleBar: React.FC<{ text: string; subText?: string }> = ({ text, subText }) => {
+const TitleBar: React.FC<{ text: string; subText?: string }> = ({
+  text,
+  subText,
+}) => {
   return (
     <div className="container">
       <div className="box">

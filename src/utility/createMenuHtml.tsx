@@ -21,7 +21,7 @@ export default function createMenuHtml(data: MenuData): React.JSX.Element {
       return (
         <div
           className="container"
-          key={data.id || 'default-key'}
+          key={data.id || "default-key"}
           style={{ paddingBottom: "2rem", paddingTop: "2rem" }}
         >
           <div className="content">
@@ -33,7 +33,7 @@ export default function createMenuHtml(data: MenuData): React.JSX.Element {
       )
     case "text":
       return (
-        <div className="container" key={data.id || 'default-key'}>
+        <div className="container" key={data.id || "default-key"}>
           <StyledTable className="table is-narrow">
             <tbody>
               <tr>

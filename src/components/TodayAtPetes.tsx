@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { getTodaysEvents } from "../services/getCalendarEvents"
 import formatCalendarTime from "../utility/formatCalendarTime"
-import type { CalendarEvent } from '../../types'
+import type { CalendarEvent } from "../../types"
 
 const TodayAtPetes: React.FC = () => {
-  const [events, setEvents] = useState<CalendarEvent['fields'][]>([])
+  const [events, setEvents] = useState<CalendarEvent["fields"][]>([])
 
   useEffect(() => {
     const getEvents = async () => {

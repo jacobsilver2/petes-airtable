@@ -14,8 +14,8 @@ function randomBlurb(): string {
     "There are many threads in the fabric of NYC's live music theme. Here we have the bold color that brings the pattern to life. Amplified plaid! These notes reach out and grab you. Not only does each song reverberate as a necessary story, but the telling is so enjoyable, so real, so unpretending.",
     "Never mind the raw talent and expression, impressive on their own; it's the effortless musicianship built around haunting themes that really fills the room. A rare treat to experience this up close!",
   ]
-  const randomBlurbIndex = Math.floor(Math.random() * randomBlurbs.length - 1);
-  return randomBlurbs[randomBlurbIndex];
+  const randomBlurbIndex = Math.floor(Math.random() * randomBlurbs.length - 1)
+  return randomBlurbs[randomBlurbIndex]
 }
 
-export default randomBlurb;
+export default randomBlurb

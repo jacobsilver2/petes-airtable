@@ -14,16 +14,19 @@ interface WithLocationProps {
   search: queryString.ParsedQuery<string>
 }
 
-const withLocation = <P extends object>(ComponentToWrap: React.ComponentType<P & WithLocationProps>) => 
+const withLocation =
+  <P extends object>(
+    ComponentToWrap: React.ComponentType<P & WithLocationProps>
+  ) =>
   (props: P): React.JSX.Element => {
     const router = useRouter()
-    
+
     const location: NextLocation = {
       pathname: router.pathname,
-      search: router.asPath.includes('?') ? router.asPath.split('?')[1] : '',
-      hash: ''
+      search: router.asPath.includes("?") ? router.asPath.split("?")[1] : "",
+      hash: "",
     }
-    
+
     return (
       <ComponentToWrap
         {...props}

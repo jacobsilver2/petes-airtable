@@ -1,5 +1,5 @@
 import Airtable from "airtable"
-import type { CalendarEvent } from '../../types'
+import type { CalendarEvent } from "../../types"
 
 // Get API key from environment
 const getApiKey = (): string | undefined => {
@@ -9,10 +9,10 @@ const getApiKey = (): string | undefined => {
 export const getAllEvents = async (): Promise<Airtable.Record<any>[]> => {
   const apiKey = getApiKey()
   if (!apiKey) {
-    console.warn('Airtable API key not available')
+    console.warn("Airtable API key not available")
     return []
   }
-  
+
   const base = new Airtable({ apiKey }).base("app4Eb0X39KtGToOS")
 
   return new Promise((resolve, reject) => {
@@ -39,13 +39,13 @@ export const getAllEvents = async (): Promise<Airtable.Record<any>[]> => {
   })
 }
 
-export const getTodaysEvents = async (): Promise<CalendarEvent['fields'][]> => {
+export const getTodaysEvents = async (): Promise<CalendarEvent["fields"][]> => {
   const apiKey = getApiKey()
   if (!apiKey) {
-    console.warn('Airtable API key not available')
+    console.warn("Airtable API key not available")
     return []
   }
-  
+
   const base = new Airtable({ apiKey }).base("app4Eb0X39KtGToOS")
 
   return new Promise((resolve, reject) => {
@@ -58,7 +58,11 @@ export const getTodaysEvents = async (): Promise<CalendarEvent['fields'][]> => {
           reject(err)
           return
         }
-        resolve(records?.map((record) => record.fields as unknown as CalendarEvent['fields']) || [])
+        resolve(
+          records?.map(
+            (record) => record.fields as unknown as CalendarEvent["fields"]
+          ) || []
+        )
       })
   })
 }

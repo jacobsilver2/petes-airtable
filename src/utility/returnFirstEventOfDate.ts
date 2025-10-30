@@ -1,5 +1,5 @@
 import moment from "moment"
-import type { AirtableRecord } from '../types'
+import type { AirtableRecord } from "../types"
 
 interface EventWithDate {
   id: string
@@ -9,10 +9,12 @@ interface EventWithDate {
   }
 }
 
-export default function returnArrayOfFirstEventOfTheDay(events: EventWithDate[]): string[] {
+export default function returnArrayOfFirstEventOfTheDay(
+  events: EventWithDate[]
+): string[] {
   let prevDate = ""
   const firstEventsOfTheDay: string[] = []
-  events.forEach(event => {
+  events.forEach((event) => {
     if (!moment(event.fields.Date).isSame(prevDate, "day")) {
       firstEventsOfTheDay.push(event.id)
     }

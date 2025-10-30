@@ -9,7 +9,9 @@ interface EventsAndSeriesData {
   website?: string
 }
 
-export default function createEventsAndSeriesHtml(data: EventsAndSeriesData): React.JSX.Element | undefined {
+export default function createEventsAndSeriesHtml(
+  data: EventsAndSeriesData
+): React.JSX.Element | undefined {
   if (!data.display) {
     return
   }

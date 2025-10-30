@@ -47,7 +47,7 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{ts,tsx}",
     "lint": "next lint",
     "test": "echo \"Write tests! -> https://nextjs.org/docs/testing\""
   },

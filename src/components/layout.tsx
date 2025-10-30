@@ -14,9 +14,15 @@ const StyledImgContainer = styled.div<{ maxWidth?: string }>`
   position: relative;
 `
 
-const Layout: React.FC<LayoutProps> = ({ children, fluid, text, subText, maxWidth }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  fluid,
+  text,
+  subText,
+  maxWidth,
+}) => {
   const siteTitle = "Pete's Candy Store"
-  
+
   return (
     <>
       <Head>
@@ -31,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children, fluid, text, subText, maxWidt
             alt="Pete's Candy Store"
             width={1200}
             height={600}
-            style={{ width: '100%', height: 'auto' }}
+            style={{ width: "100%", height: "auto" }}
           />
         </StyledImgContainer>
       )}
