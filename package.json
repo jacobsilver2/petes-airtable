@@ -12,10 +12,10 @@
     "cloudinary-core": "^2.7.4",
     "cloudinary-react": "^1.2.1",
     "dotenv": "^16.0.3",
-    "next": "^16.0.1",
     "got": "^12.5.3",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
+    "next": "^16.0.1",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -30,8 +30,14 @@
     "yet-another-react-lightbox": "^2.2.7"
   },
   "devDependencies": {
+    "@types/node": "^24.9.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/react-helmet": "^6.1.11",
+    "@types/styled-components": "^5.1.35",
     "eslint-config-react-app": "^7.0.1",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.3",
+    "typescript": "^5.9.3"
   },
   "keywords": [
     "gatsby"
