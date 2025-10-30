@@ -15,8 +15,7 @@
 
 3. **Edit `.env.local`:**
    ```bash
-   # Replace with your actual API key (set both for compatibility)
-   GATSBY_AIRTABLE_API=keyYourActualApiKeyHere
+   # Replace with your actual API key
    NEXT_PUBLIC_AIRTABLE_API=keyYourActualApiKeyHere
    ```
 
@@ -27,12 +26,11 @@
 
 ## Environment Variables Explained
 
-- **`GATSBY_AIRTABLE_API`**: Your Airtable API key (server-side, for backward compatibility)
-- **`NEXT_PUBLIC_AIRTABLE_API`**: Your Airtable API key (client-side, Next.js standard)
+- **`NEXT_PUBLIC_AIRTABLE_API`**: Your Airtable API key (client-side accessible)
 - **`.env.local`**: Local development environment variables (not committed to git)
 - **`.env.example`**: Template file showing required variables (committed to git)
 
-**Important:** In Next.js, only variables prefixed with `NEXT_PUBLIC_` are available in the browser. The `next.config.js` file exposes `GATSBY_AIRTABLE_API` to maintain compatibility.
+**Important:** In Next.js, only variables prefixed with `NEXT_PUBLIC_` are available in the browser.
 
 ## Testing Your Setup
 
@@ -54,5 +52,5 @@ If you see "Airtable API key not available" warnings:
 ## Production Deployment
 
 When deploying to production (Vercel, Netlify, etc.), add the environment variable:
-- Variable name: `GATSBY_AIRTABLE_API`
+- Variable name: `NEXT_PUBLIC_AIRTABLE_API`
 - Variable value: Your actual Airtable API key

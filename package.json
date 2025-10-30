@@ -1,7 +1,7 @@
 {
   "name": "PetesCandyStore",
   "private": true,
-  "description": "Pete's Candy Store Website - built with Gatsby and Airtable",
+  "description": "Pete's Candy Store Website - built with Next.js and Airtable",
   "version": "0.1.0",
   "author": "Jacob Silver <jacobsilver2@mac.com>",
   "dependencies": {
@@ -40,7 +40,7 @@
     "typescript": "^5.9.3"
   },
   "keywords": [
-    "gatsby"
+    "nextjs"
   ],
   "license": "MIT",
   "scripts": {
@@ -53,9 +53,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/jacobsilver2/petes-airtable"
   }
 }

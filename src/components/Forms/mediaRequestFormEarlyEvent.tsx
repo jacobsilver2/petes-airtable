@@ -5,9 +5,9 @@ import { useRouter } from "next/router"
 import { Circles } from "react-loader-spinner"
 import moment from "moment"
 
-// Get API key from environment (supports both Gatsby and Next.js conventions)
+// Get API key from environment
 const getApiKey = () => {
-  return process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API
+  return process.env.NEXT_PUBLIC_AIRTABLE_API
 }
 
 const getAirtableBase = () => {

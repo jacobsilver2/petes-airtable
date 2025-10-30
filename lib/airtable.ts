@@ -1,9 +1,9 @@
 import Airtable from 'airtable'
 import type { AirtableRecord } from '../types'
 
-// Get API key from environment (supports both Gatsby and Next.js conventions)
+// Get API key from environment
 const getApiKey = (): string | undefined => {
-  return process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API
+  return process.env.NEXT_PUBLIC_AIRTABLE_API
 }
 
 const initializeAirtable = (): Airtable | null => {

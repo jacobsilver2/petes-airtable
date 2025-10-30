@@ -17,7 +17,7 @@ export const checkEnvironment = (): boolean => {
 
 // Get the active API key
 export const getActiveApiKey = (): string | undefined => {
-  return process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API
+  return process.env.NEXT_PUBLIC_AIRTABLE_API
 }
 
 // Check if we're in development mode
