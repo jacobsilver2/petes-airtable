@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from "react"
 import { getTodaysEvents } from "../services/getCalendarEvents"
 import formatCalendarTime from "../utility/formatCalendarTime"

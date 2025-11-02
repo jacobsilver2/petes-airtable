@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState, FormEvent, ChangeEvent } from "react"
 import Airtable from "airtable"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 // Get API key from environment
 const getApiKey = () => {

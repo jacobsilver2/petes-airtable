@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState, useEffect } from "react"
 import Airtable from "airtable"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import { MediaRequestFormProps } from "../../types"
 

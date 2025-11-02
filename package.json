@@ -20,14 +20,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-emotion": "^10.0.0",
-    "react-grid-gallery": "^1.0.0",
     "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.2.11",
     "react-loader-spinner": "^5.3.4",
     "sass": "^1.58.0",
     "styled-components": "^5.3.6",
-    "styled-system": "^5.0.12",
-    "yet-another-react-lightbox": "^2.2.7"
+    "styled-system": "^5.0.12"
   },
   "devDependencies": {
     "@types/node": "^24.9.2",

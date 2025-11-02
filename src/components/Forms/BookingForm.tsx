@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState, FormEvent, ChangeEvent } from "react"
 import Airtable from "airtable"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { BookingFormState } from "../../types"
 
 // Get API key from environment
@@ -32,13 +34,13 @@ const BookingForm: React.FC = () => {
   function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault()
     const base = getAirtableBase()
-    
+
     if (!base) {
       console.error('Cannot submit form: Airtable not available')
       alert('Form submission failed. Please try again later.')
       return
     }
-    
+
     base("booking submission form").create(
       {
         name,

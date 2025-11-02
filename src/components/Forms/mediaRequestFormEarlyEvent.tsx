@@ -1,7 +1,9 @@
+"use client"
+
 import React, { useState, ChangeEvent, FormEvent } from "react"
 import { AirtableAttachment } from "../../../types"
 import Airtable from "airtable"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import moment from "moment"
 

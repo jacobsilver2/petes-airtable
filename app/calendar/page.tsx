@@ -1,34 +1,23 @@
+"use client"
+
 import React, { useState, useEffect } from "react"
-import { GetStaticProps } from "next"
-import Layout from "../src/components/layout"
-import CalendarFrame from "../src/components/Calendar/CalendarFrame"
-import { getAllEvents } from "../src/services/getCalendarEvents"
-import getFirstEventIds from "../src/utility/returnFirstEventOfDate"
+import PageLayout from "../../src/components/PageLayout"
+import CalendarFrame from "../../src/components/Calendar/CalendarFrame"
+import { getAllEvents } from "../../src/services/getCalendarEvents"
+import getFirstEventIds from "../../src/utility/returnFirstEventOfDate"
 import { Circles } from "react-loader-spinner"
-import { CalendarEvent } from "../types"
+import { CalendarEvent } from "../../types"
 
-interface CalendarPageProps {
-  randomImages: string[]
-}
+export default function CalendarPage() {
+  const [events, setEvents] = useState<CalendarEvent[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [firstEventIds, setFirstEventIds] = useState<string[]>([])
 
-export const getStaticProps: GetStaticProps<CalendarPageProps> = async () => {
-  // Create a list of random images (similar to what Gatsby provided)
+  // Create a list of random images
   const randomImages: string[] = []
   for (let i = 1; i <= 29; i++) {
     randomImages.push(`/images/random/rand${i}.png`)
   }
-  
-  return {
-    props: {
-      randomImages,
-    },
-  }
-}
-
-const Calendar: React.FC<CalendarPageProps> = (props) => {
-  const [events, setEvents] = useState<CalendarEvent[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [firstEventIds, setFirstEventIds] = useState<string[]>([])
 
   useEffect(() => {
     const getEvents = async () => {
@@ -43,13 +32,13 @@ const Calendar: React.FC<CalendarPageProps> = (props) => {
   const renderedCalendar = (
     <CalendarFrame
       events={events}
-      data={{ allFile: { nodes: props.randomImages } }}
+      data={{ allFile: { nodes: randomImages } }}
       firstEvents={firstEventIds}
     />
   )
 
   return (
-    <Layout fluid={null}>
+    <PageLayout fluid={null}>
       <div className="container">
         <h1 className="has-text-danger" style={{ textAlign: "center" }}>
           SHOWTIMES
@@ -66,8 +55,6 @@ const Calendar: React.FC<CalendarPageProps> = (props) => {
         </div>
         {renderedCalendar}
       </div>
-    </Layout>
+    </PageLayout>
   )
 }
-
-export default Calendar

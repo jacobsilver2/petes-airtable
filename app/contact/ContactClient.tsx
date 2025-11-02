@@ -1,38 +1,21 @@
+"use client"
+
 import React, { useState } from "react"
-import { GetServerSideProps } from "next"
-import Layout from "../src/components/layout"
-import GeneralForm from "../src/components/Forms/GeneralForm"
-import BookingForm from "../src/components/Forms/BookingForm"
-import PhotoShootForm from "../src/components/Forms/PhotoshootForm"
-import EventBookingForm from "../src/components/Forms/EventBookingForm"
-import PrivatePartyForm from "../src/components/Forms/PrivatePartyForm"
-import { getContactData } from "../lib/airtable"
-import { AirtableRecord } from "../types"
+import PageLayout from "../../src/components/PageLayout"
+import GeneralForm from "../../src/components/Forms/GeneralForm"
+import BookingForm from "../../src/components/Forms/BookingForm"
+import PhotoShootForm from "../../src/components/Forms/PhotoshootForm"
+import EventBookingForm from "../../src/components/Forms/EventBookingForm"
+import PrivatePartyForm from "../../src/components/Forms/PrivatePartyForm"
+import { AirtableRecord } from "../../types"
 
 interface ContactPageProps {
   contactData: AirtableRecord[]
 }
 
-export const getServerSideProps: GetServerSideProps<ContactPageProps> = async () => {
-  const contactData = await getContactData()
-  
-  // Sort by order field if it exists
-  const sortedData = contactData.sort((a: AirtableRecord, b: AirtableRecord) => {
-    const orderA = a.data.order || 0
-    const orderB = b.data.order || 0
-    return orderA - orderB
-  })
-
-  return {
-    props: {
-      contactData: sortedData,
-    },
-  }
-}
-
 type FormName = "BOOK A PARTY" | "GENERAL INQUIRIES" | "MUSIC BOOKING" | "PHOTO SHOOTS" | "PITCH A SHOW"
 
-const ContactPage: React.FC<ContactPageProps> = ({ contactData }) => {
+export default function ContactClient({ contactData }: ContactPageProps) {
   const [active, setActive] = useState<FormName>("BOOK A PARTY")
   const formNames: FormName[] = [
     "BOOK A PARTY",
@@ -93,19 +76,13 @@ const ContactPage: React.FC<ContactPageProps> = ({ contactData }) => {
     }
     return null
   }
-  
+
   return (
-    <>
-      <Layout
-        fluid="/images/contact.png"
-      >
-        <div className="tabs is-centered">
-          <ul className="">{mappedListItems}</ul>
-        </div>
-        {renderForm()}
-      </Layout>
-    </>
+    <PageLayout fluid="/images/contact.png">
+      <div className="tabs is-centered">
+        <ul className="">{mappedListItems}</ul>
+      </div>
+      {renderForm()}
+    </PageLayout>
   )
 }
-
-export default ContactPage

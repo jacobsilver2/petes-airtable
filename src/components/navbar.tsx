@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, MouseEvent } from "react"
 import Link from "next/link"
 import filterNavItems from "../utility/filterNavItems"
