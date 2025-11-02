@@ -2,17 +2,9 @@
 
 import React from "react"
 import Image from "next/image"
-import styled from "styled-components"
 import TitleBar from "./TitleBar"
 import { LayoutProps } from "../../types"
-
-const StyledImgContainer = styled.div<{ maxWidth?: string }>`
-  margin-top: 3rem;
-  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "")};
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-`
+import styles from "./PageLayout.module.css"
 
 const PageLayout: React.FC<LayoutProps> = ({
   children,
@@ -24,7 +16,10 @@ const PageLayout: React.FC<LayoutProps> = ({
   return (
     <>
       {fluid && (
-        <StyledImgContainer maxWidth={maxWidth}>
+        <div
+          className={styles.imgContainer}
+          style={maxWidth ? { maxWidth } : undefined}
+        >
           <Image
             src={fluid}
             alt="Pete's Candy Store"
@@ -32,16 +27,11 @@ const PageLayout: React.FC<LayoutProps> = ({
             height={600}
             style={{ width: "100%", height: "auto" }}
           />
-        </StyledImgContainer>
+        </div>
       )}
       {text && <TitleBar text={text} subText={subText} />}
       <section
-        style={{
-          marginTop: fluid ? "0" : "3rem",
-          paddingLeft: "0",
-          paddingRight: "0",
-        }}
-        className="section"
+        className={`section ${styles.section} ${fluid ? styles.sectionWithImage : styles.sectionWithoutImage}`}
       >
         {children}
       </section>

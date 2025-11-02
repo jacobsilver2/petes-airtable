@@ -4,7 +4,6 @@ import EventsRenderer from "../../src/components/EventsRenderer"
 import { getEventsAndSeriesData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function EventsAndSeriesPage() {
   const eventsData = await getEventsAndSeriesData()

@@ -1,17 +1,12 @@
 "use client"
 
 import React from "react"
-import styled from "styled-components"
-
-const StyledTable = styled.table`
-  margin-left: auto;
-  margin-right: auto;
-`
+import styles from "./footer.module.css"
 
 const footer: React.FC = () => (
   <footer className="footer">
     <div className="container">
-      <StyledTable className="table is-narrow">
+      <table className={`table is-narrow ${styles.footerTable}`}>
         <tbody>
           <tr>
             <th>LOCATION</th>
@@ -36,8 +31,8 @@ const footer: React.FC = () => (
             <td>Fri-Sat 4p-4a</td>
           </tr>
         </tbody>
-      </StyledTable>
-      <p style={{ textAlign: "center" }}>
+      </table>
+      <p className={styles.centerText}>
         Take the L Train to Lorimer St - or the G Train to Metropolitan Ave
       </p>
     </div>

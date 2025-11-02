@@ -3,7 +3,6 @@ import { getContactData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 import ContactClient from "./ContactClient"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function ContactPage() {
   const contactData = await getContactData()

@@ -5,7 +5,6 @@ import BookingForm from "../../src/components/Forms/BookingForm"
 import { getBookingData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function BookingPage() {
   const bookingData = await getBookingData()

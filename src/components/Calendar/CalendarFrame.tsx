@@ -1,5 +1,5 @@
 import React from "react"
-import { Wrapper } from "./CalendarStyles"
+import styles from "./CalendarStyles.module.css"
 import CalendarEvent from "./CalendarEvent"
 import { getRandomImage } from "../../utility/getRandomImage"
 import formatCalendarDate from "../../utility/formatCalendarDate"
@@ -48,7 +48,7 @@ const CalendarFrame: React.FC<CalendarFrameProps> = ({ events, data: { allFile }
     )
   })
 
-  return <Wrapper>{myEvents}</Wrapper>
+  return <div className={styles.wrapper}>{myEvents}</div>
 }
 
 export default CalendarFrame

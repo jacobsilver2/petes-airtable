@@ -1,10 +1,8 @@
-import React from "react"
 import PageLayout from "../../src/components/PageLayout"
 import MenuRenderer from "../../src/components/MenuRenderer"
 import { getMenuData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function MenuPage() {
   const menuData = await getMenuData()

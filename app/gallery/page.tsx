@@ -3,7 +3,6 @@ import { getGalleryData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 import GalleryClient from "./GalleryClient"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function GalleryPage() {
   const galleryData = await getGalleryData()

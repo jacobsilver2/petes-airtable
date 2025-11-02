@@ -4,7 +4,6 @@ import ContentRenderer from "../../src/components/ContentRenderer"
 import { getHistoryData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function HistoryPage() {
   const historyData = await getHistoryData()

@@ -2,27 +2,9 @@
 
 import React from "react"
 import Image from "next/image"
-import styled from "styled-components"
 import Link from "next/link"
 import type { AirtableRecord } from "../../types"
-
-export const StyledVideoContainer = styled.div`
-  margin: 50px 25px;
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-  iframe,
-  object,
-  embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`
+import styles from "./createHtml.module.css"
 
 export default function createHtml(
   node: AirtableRecord
@@ -206,14 +188,14 @@ export default function createHtml(
     case "video":
       return (
         <div className="container" key={node.id}>
-          <StyledVideoContainer>
+          <div className={styles.videoContainer}>
             <iframe
               title={node.data.Name}
               src={node.data.website}
               width="853"
               height="480"
             />
-          </StyledVideoContainer>
+          </div>
         </div>
       )
     default:

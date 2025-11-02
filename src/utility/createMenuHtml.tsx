@@ -1,13 +1,7 @@
 "use client"
 
 import React from "react"
-import styled from "styled-components"
-
-const StyledTable = styled.table`
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
-`
+import styles from "./createMenuHtml.module.css"
 
 interface MenuData {
   id?: string
@@ -22,12 +16,11 @@ export default function createMenuHtml(data: MenuData): React.JSX.Element {
     case "heading1":
       return (
         <div
-          className="container"
+          className={`container ${styles.menuHeading}`}
           key={data.id || "default-key"}
-          style={{ paddingBottom: "2rem", paddingTop: "2rem" }}
         >
           <div className="content">
-            <h1 className="has-text-danger" style={{ textAlign: "center" }}>
+            <h1 className="has-text-danger">
               {data.Name}
             </h1>
           </div>
@@ -36,7 +29,7 @@ export default function createMenuHtml(data: MenuData): React.JSX.Element {
     case "text":
       return (
         <div className="container" key={data.id || "default-key"}>
-          <StyledTable className="table is-narrow">
+          <table className={`table is-narrow ${styles.menuTable}`}>
             <tbody>
               <tr>
                 <th className="has-text-danger">{data.Name}</th>
@@ -45,10 +38,10 @@ export default function createMenuHtml(data: MenuData): React.JSX.Element {
                 </th>
               </tr>
               <tr>
-                <td style={{ width: "100%" }}>{data.Description}</td>
+                <td className={styles.fullWidth}>{data.Description}</td>
               </tr>
             </tbody>
-          </StyledTable>
+          </table>
         </div>
       )
     default:

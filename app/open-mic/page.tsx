@@ -4,7 +4,6 @@ import ContentRenderer from "../../src/components/ContentRenderer"
 import { getOpenMicData } from "../../lib/airtable"
 import { AirtableRecord } from "../../types"
 
-export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function OpenMicPage() {
   const openMicData = await getOpenMicData()
