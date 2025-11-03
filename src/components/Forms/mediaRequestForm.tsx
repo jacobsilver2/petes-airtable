@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import { MediaRequestFormProps } from "../../types"
 
-// Get API key from environment
 const getApiKey = () => {
   return process.env.NEXT_PUBLIC_AIRTABLE_API
 }
@@ -28,13 +27,12 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
   const [email, setEmail] = useState("")
   const [website, setWebsite] = useState("")
   const [soundcloud, setSoundCloud] = useState("")
-  const [twitter, setTwitter] = useState("")
   const [instagram, setInstagram] = useState("")
   const [blurb, setBlurb] = useState("")
+  const [spotify, setSpotify] = useState("")
 
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
-  const [largeImage, setLargeImage] = useState(null)
 
   const [tooLarge, setTooLarge] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
@@ -42,14 +40,14 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
 
   useEffect(() => {
     if (!id) return
-    
+
     const base = getAirtableBase()
-    
+
     if (!base) {
       console.error('Cannot load act data: Airtable not available')
       return
     }
-    
+
     base("Acts").find(id, function (err, record) {
       if (err) {
         console.error(err)
@@ -98,13 +96,13 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const base = getAirtableBase()
-    
+
     if (!base) {
       console.error('Cannot submit form: Airtable not available')
       alert('Form submission failed. Please try again later.')
       return
     }
-    
+
     setIsDisabled(true)
 
     if (eventId) {
@@ -140,7 +138,7 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
               Soundcloud: soundcloud,
               Website: website,
               Instagram: instagram,
-              Twitter: twitter,
+              Spotify: spotify,
               ...(imageUrl ? { Image_URL: imageUrl } : {}),
             },
           },
@@ -164,7 +162,6 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
         <form
           name="media request form"
           onSubmit={(e) => handleSubmit(e)}
-          // method="POST"
         >
           <div className="field">
             <label
@@ -249,7 +246,7 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
 
           <div className="field">
             <label htmlFor="date" className="label is-small has-text-white">
-              Date
+              Date of Show
             </label>
             <div className="field is-expanded">
               <div className="field has-addons">
@@ -313,6 +310,65 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
           </div>
 
           <div className="field">
+            <label htmlFor="image" className="label is-small has-text-white">
+              IMPORTANT: IMAGE/ART (The file must be less than 5MB.)
+            </label>
+            {tooLarge && (
+              <label htmlFor="image" className="label is-small has-text-danger">
+                The image is too large.
+              </label>
+            )}
+            <div className="file has-name is-fullwidth">
+              <label className="file-label">
+                <input
+                  id="image"
+                  disabled={loading}
+                  className="file-input"
+                  type="file"
+                  name="picture"
+                  accept="image/gif, image/jpeg, image/png"
+                  onChange={(e) => addImage(e)}
+                />
+                <span className="file-cta">
+                  <span className="file-icon">
+                    <i className="fas fa-upload"></i>
+                  </span>
+                  <span className="file-label">Choose a file…</span>
+                </span>
+                <span className="file-name">{filename}</span>
+              </label>
+            </div>
+            {imageUrl && (
+              <img src={imageUrl} alt="Upload Preview" width="200" />
+            )}
+            <Circles visible={loading} color="#feff03" />
+          </div>
+
+          <div className="field">
+            <label
+              htmlFor="spotify"
+              className="label is-small has-text-white"
+            >
+              Spotify
+            </label>
+            <div className="field is-expanded">
+              <div className="field has-addons">
+                <p className="control is-expanded">
+                  <input
+                    id="spotify"
+                    className="input"
+                    type="url"
+                    placeholder="url"
+                    value={spotify}
+                    onChange={(e) => setSpotify(e.target.value)}
+                    name="spotify"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="field">
             <label
               htmlFor="soundCloud"
               className="label is-small has-text-white"
@@ -330,27 +386,6 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
                     value={soundcloud}
                     onChange={(e) => setSoundCloud(e.target.value)}
                     name="soundcloud"
-                  />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="twitter" className="label is-small has-text-white">
-              Twitter Handle
-            </label>
-            <div className="field is-expanded">
-              <div className="field has-addons">
-                <p className="control is-expanded">
-                  <input
-                    id="twitter"
-                    className="input"
-                    type="text"
-                    placeholder="twitter"
-                    value={twitter}
-                    onChange={(e) => setTwitter(e.target.value)}
-                    name="twitter"
                   />
                 </p>
               </div>
@@ -417,40 +452,6 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
             </div>
           </div>
 
-          <div className="field">
-            <label htmlFor="image" className="label is-small has-text-white">
-              Show Image/Art (The file must be less than 5MB.)
-            </label>
-            {tooLarge && (
-              <label htmlFor="image" className="label is-small has-text-danger">
-                The image is too large.
-              </label>
-            )}
-            <div className="file has-name is-fullwidth">
-              <label className="file-label">
-                <input
-                  id="image"
-                  disabled={loading}
-                  className="file-input"
-                  type="file"
-                  name="picture"
-                  accept="image/gif, image/jpeg, image/png"
-                  onChange={(e) => addImage(e)}
-                />
-                <span className="file-cta">
-                  <span className="file-icon">
-                    <i className="fas fa-upload"></i>
-                  </span>
-                  <span className="file-label">Choose a file…</span>
-                </span>
-                <span className="file-name">{filename}</span>
-              </label>
-            </div>
-            {imageUrl && (
-              <img src={imageUrl} alt="Upload Preview" width="200" />
-            )}
-            <Circles visible={loading} color="#feff03" />
-          </div>
 
           <div className="field">
             <div className="control">
