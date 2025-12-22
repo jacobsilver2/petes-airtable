@@ -14,7 +14,7 @@ export default function filteredAndMappedNavItems(): React.JSX.Element[] {
       target="_blank"
       rel="noreferrer"
       className="navbar-item is-size-6"
-      href="http://petes-candy-store.square.site/"
+      href="https://petes-candy-store.myshopify.com"
     >
       Merch
     </a>,
