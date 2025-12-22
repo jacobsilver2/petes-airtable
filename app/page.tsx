@@ -7,6 +7,10 @@ import { getHomeData } from "../lib/airtable"
 import { checkEnvironment, isDevelopment } from "../lib/env-check"
 import { AirtableRecord } from "../types"
 
+// Force dynamic rendering for homepage (shows today's events)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function HomePage() {
   // Check environment variables in development
   if (isDevelopment()) {
