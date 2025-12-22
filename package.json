@@ -15,7 +15,6 @@
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "next": "^16.0.1",
-    "next-auth": "^5.0.0-beta.30",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +30,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/react-helmet": "^6.1.11",
+    "baseline-browser-mapping": "^2.8.32",
     "eslint-config-react-app": "^7.0.1",
     "prettier": "^2.8.3",
     "typescript": "^5.9.3"

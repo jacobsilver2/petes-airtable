@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import PageLayout from "../../src/components/PageLayout"
 import CalendarFrame from "../../src/components/Calendar/CalendarFrame"
 import { getAllEvents } from "../../src/services/getCalendarEvents"
@@ -13,7 +13,6 @@ export default function CalendarPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [firstEventIds, setFirstEventIds] = useState<string[]>([])
 
-  // Create a list of random images
   const randomImages: string[] = []
   for (let i = 1; i <= 29; i++) {
     randomImages.push(`/images/random/rand${i}.png`)
@@ -48,10 +47,7 @@ export default function CalendarPage() {
         </p>
         <p style={{ textAlign: "center" }}>($10 suggested donation)</p>
         <div style={{ textAlign: "center" }}>
-          <Circles
-            visible={isLoading}
-            color="#feff03"
-          />
+          <Circles visible={isLoading} color="#feff03" />
         </div>
         {renderedCalendar}
       </div>
