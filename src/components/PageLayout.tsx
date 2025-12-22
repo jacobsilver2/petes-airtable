@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import TitleBar from "./TitleBar"
+import SubscriptionEmbed from "./SubscriptionEmbed"
 import { LayoutProps } from "../../types"
 import styles from "./PageLayout.module.css"
 
@@ -12,6 +13,7 @@ const PageLayout: React.FC<LayoutProps> = ({
   text,
   subText,
   maxWidth,
+  showSubscription = true,
 }) => {
   return (
     <>
@@ -29,6 +31,7 @@ const PageLayout: React.FC<LayoutProps> = ({
           />
         </div>
       )}
+      {showSubscription && <SubscriptionEmbed />}
       {text && <TitleBar text={text} subText={subText} />}
       <section
         className={`section ${styles.section} ${fluid ? styles.sectionWithImage : styles.sectionWithoutImage}`}

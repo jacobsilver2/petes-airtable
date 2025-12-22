@@ -3,6 +3,7 @@ import PageLayout from "../src/components/PageLayout"
 import ContentRenderer from "../src/components/ContentRenderer"
 import TodayAtPetes from "../src/components/TodayAtPetes"
 import Button from "../src/components/Button"
+import SubscriptionEmbed from "../src/components/SubscriptionEmbed"
 import { getHomeData } from "../lib/airtable"
 import { checkEnvironment, isDevelopment } from "../lib/env-check"
 import { AirtableRecord } from "../types"
@@ -27,9 +28,10 @@ export default async function HomePage() {
   })
 
   return (
-    <PageLayout fluid="/images/outside.jpeg">
+    <PageLayout fluid="/images/outside.jpeg" showSubscription={false}>
       <div>
         <Button title="FULL CALENDAR" link="/calendar" />
+        <SubscriptionEmbed />
         <TodayAtPetes />
         <ContentRenderer data={sortedData} />
       </div>

@@ -61,4 +61,5 @@ export interface LayoutProps {
   text?: string;
   subText?: string;
   maxWidth?: string;
+  showSubscription?: boolean;
 }
