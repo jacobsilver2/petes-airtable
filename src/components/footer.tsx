@@ -1,0 +1,42 @@
+"use client"
+
+import React from "react"
+import styles from "./footer.module.css"
+
+const footer: React.FC = () => (
+  <footer className="footer">
+    <div className="container">
+      <table className={`table is-narrow ${styles.footerTable}`}>
+        <tbody>
+          <tr>
+            <th>LOCATION</th>
+            <th>HOURS</th>
+          </tr>
+          <tr>
+            <td>
+              <i>Williamsburg</i>
+            </td>
+            <td>Sun 3p-2a</td>
+          </tr>
+          <tr>
+            <td>709 Lorimer St</td>
+            <td>Mon-Wed 5p-2a</td>
+          </tr>
+          <tr>
+            <td>Brooklyn, NY 11211</td>
+            <td>Thu 5p-2a</td>
+          </tr>
+          <tr>
+            <td>718 302-3770</td>
+            <td>Fri-Sat 4p-4a</td>
+          </tr>
+        </tbody>
+      </table>
+      <p className={styles.centerText}>
+        Take the L Train to Lorimer St - or the G Train to Metropolitan Ave
+      </p>
+    </div>
+  </footer>
+)
+
+export default footer

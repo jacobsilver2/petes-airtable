@@ -1,0 +1,95 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 4px;
+}
+
+.events {
+  border: 1px solid white;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: repeat(1, 300px 2fr);
+  grid-template-areas: "image content";
+  grid-gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 980px) {
+  .event {
+    grid-template-columns: 1fr;
+  }
+}
+
+.styledDate {
+  font-size: 3rem;
+  font-style: italic;
+  color: white;
+  text-align: left;
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 980px) {
+  .styledDate {
+    text-align: center;
+  }
+}
+
+.styledBlurb {
+}
+
+.styledImage {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 980px) {
+  .styledImage {
+    grid-column: span 2;
+  }
+}
+
+.styledTitle {
+  color: #ffff04;
+  font-style: italic;
+  display: block;
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.styledTitle:hover {
+  color: red;
+}
+
+.styledLink {
+  color: red;
+  text-decoration: none;
+}
+
+.styledLink:hover {
+  color: white;
+}
+
+.styledContentContainer {
+}
+
+@media screen and (max-width: 980px) {
+  .styledContentContainer {
+    justify-self: center;
+    text-align: center;
+  }
+}
+
+.styledContent {
+  font-size: 1.3rem;
+}

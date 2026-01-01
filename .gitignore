@@ -56,9 +56,17 @@ typings/
 .env.development
 .env.production
 
-# gatsby files
+# gatsby files (legacy)
 .cache/
 public
+
+# next.js files
+.next/
+out/
+
+# next.js environment variables
+.env.local
+.env.build
 
 # Mac files
 .DS_Store
@@ -69,3 +77,6 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Local Netlify folder
+.netlify

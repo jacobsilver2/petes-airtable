@@ -1,69 +1,54 @@
 {
   "name": "PetesCandyStore",
   "private": true,
-  "description": "Pete's Candy Store Website - built with Gatsby and Airtable",
+  "description": "Pete's Candy Store Website - built with Next.js and Airtable",
   "version": "0.1.0",
   "author": "Jacob Silver <jacobsilver2@mac.com>",
   "dependencies": {
     "airtable": "^0.12.2",
     "axios": "^1.3.2",
-    "babel-plugin-styled-components": "^2.0.7",
     "bulma": "^0.9.4",
     "cloudinary-core": "^2.7.4",
     "cloudinary-react": "^1.2.1",
     "dotenv": "^16.0.3",
-    "gatsby": "^5.5.0",
-    "gatsby-cli": "^5.5.0",
-    "gatsby-plugin-image": "^3.5.0",
-    "gatsby-plugin-manifest": "^5.5.0",
-    "gatsby-plugin-offline": "^6.5.0",
-    "gatsby-plugin-react-helmet": "^6.5.0",
-    "gatsby-plugin-sass": "^6.5.0",
-    "gatsby-plugin-sharp": "^5.5.0",
-    "gatsby-plugin-styled-components": "^6.5.0",
-    "gatsby-remark-images": "^7.5.0",
-    "gatsby-source-airtable": "^2.3.1",
-    "gatsby-source-filesystem": "^5.5.0",
-    "gatsby-transformer-javascript-frontmatter": "^5.5.0",
-    "gatsby-transformer-remark": "^6.5.0",
-    "gatsby-transformer-sharp": "^5.5.0",
     "got": "^12.5.3",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
+    "next": "^16.1.1",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-emotion": "^10.0.0",
-    "react-grid-gallery": "^1.0.0",
     "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.2.11",
     "react-loader-spinner": "^5.3.4",
     "sass": "^1.58.0",
-    "styled-components": "^5.3.6",
-    "styled-system": "^5.0.12",
-    "yet-another-react-lightbox": "^2.2.7"
+    "styled-system": "^5.0.12"
   },
   "devDependencies": {
+    "@types/node": "^24.9.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/react-helmet": "^6.1.11",
+    "baseline-browser-mapping": "^2.8.32",
     "eslint-config-react-app": "^7.0.1",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.3",
+    "typescript": "^5.9.3"
   },
   "keywords": [
-    "gatsby"
+    "nextjs"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "format": "prettier --write src/**/*.{ts,tsx}",
+    "lint": "next lint",
+    "test": "echo \"Write tests! -> https://nextjs.org/docs/testing\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/jacobsilver2/petes-airtable"
   }
 }
