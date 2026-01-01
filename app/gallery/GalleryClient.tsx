@@ -21,7 +21,7 @@ export default function GalleryClient({ galleryData }: GalleryPageProps) {
 
   // Convert Airtable data to gallery format
   const images: GalleryImage[] = galleryData.map((node) => ({
-    src: node.data.Attachments?.[0]?.url || '',
+    src: node.data.Image_URL || node.data.Attachments?.[0]?.url || '',
     width: node.data.width || 300,
     height: node.data.height || 200,
     caption: node.data.Name || '',

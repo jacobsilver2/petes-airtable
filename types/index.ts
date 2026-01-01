@@ -16,6 +16,7 @@ export interface AirtableData {
   width?: number;
   height?: number;
   Attachments?: AirtableAttachment[];
+  Image_URL?: string;
   [key: string]: any;
 }
 

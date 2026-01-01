@@ -91,3 +91,7 @@ export const getMenuData = (): Promise<AirtableRecord[]> => {
 export const getOpenMicData = (): Promise<AirtableRecord[]> => {
   return getAirtableData('appNuB0fX4vQbOqdy', 'open mic')
 }
+
+export const getPastPerformersData = (): Promise<AirtableRecord[]> => {
+  return getAirtableData('appNuB0fX4vQbOqdy', 'past performers')
+}

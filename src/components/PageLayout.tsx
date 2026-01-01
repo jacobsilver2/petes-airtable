@@ -31,13 +31,13 @@ const PageLayout: React.FC<LayoutProps> = ({
           />
         </div>
       )}
-      {showSubscription && <SubscriptionEmbed />}
       {text && <TitleBar text={text} subText={subText} />}
       <section
         className={`section ${styles.section} ${fluid ? styles.sectionWithImage : styles.sectionWithoutImage}`}
       >
         {children}
       </section>
+      {showSubscription && <SubscriptionEmbed />}
     </>
   )
 }
