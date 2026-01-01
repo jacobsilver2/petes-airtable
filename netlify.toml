@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NETLIFY_BUILD_IMAGE = "noble"
 
 # Enable Next.js runtime
 [[plugins]]
