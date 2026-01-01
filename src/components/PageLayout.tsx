@@ -28,6 +28,9 @@ const PageLayout: React.FC<LayoutProps> = ({
             width={1200}
             height={600}
             style={{ width: "100%", height: "auto" }}
+            priority
+            quality={85}
+            sizes="100vw"
           />
         </div>
       )}

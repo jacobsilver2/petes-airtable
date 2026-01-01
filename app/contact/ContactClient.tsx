@@ -78,7 +78,7 @@ export default function ContactClient({ contactData }: ContactPageProps) {
   }
 
   return (
-    <PageLayout fluid="/images/contact.png">
+    <PageLayout fluid="/images/contact.jpeg">
       <div className="tabs is-centered">
         <ul className="">{mappedListItems}</ul>
       </div>
