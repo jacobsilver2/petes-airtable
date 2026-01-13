@@ -58,7 +58,6 @@ typings/
 
 # gatsby files (legacy)
 .cache/
-public
 
 # next.js files
 .next/
@@ -80,3 +79,4 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+*.bak
