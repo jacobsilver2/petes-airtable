@@ -13,14 +13,11 @@ const CalendarFrame: React.FC<CalendarFrameProps> = ({ events, data: { allFile }
         isFirstEvent={firstEvents.includes(event.id)}
         date={formatCalendarDate(event.fields.Date)}
         time={formatCalendarTime(event.fields.Date)}
-        // image={
-        //   Boolean(event.fields.Image_URL)
-        //     ? event.fields.Image_URL[0]
-        //     : getRandomImage(allFile.nodes)
-        // }
         image={
           event.fields["Act Image"]
             ? event.fields["Act Image"][0].url
+            : event.fields.Image_URL
+            ? event.fields.Image_URL[0]
             : getRandomImage(allFile.nodes)
         }
         title={
