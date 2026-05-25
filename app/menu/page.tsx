@@ -15,7 +15,7 @@ export default async function MenuPage() {
   })
 
   return (
-    <PageLayout fluid="/images/menu.png">
+    <PageLayout>
       <div>
         <MenuRenderer data={sortedData} />
       </div>
