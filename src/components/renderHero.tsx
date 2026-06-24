@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import Image from "next/image"
+import SmartImage from "./SmartImage"
 import styles from "./renderHero.module.css"
 
 export function renderHero(
@@ -12,7 +12,7 @@ export function renderHero(
   if (src && fullheight) {
     return (
       <section className="hero is-fullheight-with-navbar">
-        <Image
+        <SmartImage
           src={src}
           alt="Hero"
           fill
@@ -26,7 +26,7 @@ export function renderHero(
     return (
       <section className="hero has-bg-img">
         <div className="hero-body">
-          <Image
+          <SmartImage
             src={src}
             alt="Hero"
             width={2048}
@@ -44,7 +44,7 @@ export function renderHero(
     return (
       <section className="hero has-bg-img">
         <div className="hero-body">
-          <Image
+          <SmartImage
             src={src}
             alt="Hero"
             width={2048}

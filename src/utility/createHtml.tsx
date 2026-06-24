@@ -1,8 +1,8 @@
 "use client"
 
 import React from "react"
-import Image from "next/image"
 import Link from "next/link"
+import SmartImage from "../components/SmartImage"
 import type { AirtableRecord } from "../../types"
 import styles from "./createHtml.module.css"
 
@@ -53,7 +53,7 @@ export default function createHtml(
                   rel="noopener noreferrer"
                 >
                   {node.data.Attachments && node.data.Attachments[0] && (
-                    <Image
+                    <SmartImage
                       src={node.data.Attachments[0].url}
                       alt={node.data.Name || "Image"}
                       width={600}
@@ -71,7 +71,7 @@ export default function createHtml(
             <section className="section">
               <Link href={node.data.website} className="image">
                 {node.data.Attachments && node.data.Attachments[0] && (
-                  <Image
+                  <SmartImage
                     src={node.data.Attachments[0].url}
                     alt={node.data.Name || "Image"}
                     width={600}
@@ -91,7 +91,7 @@ export default function createHtml(
             <section className="section">
               <a href={emailWithMailto} className="image">
                 {node.data.Attachments && node.data.Attachments[0] && (
-                  <Image
+                  <SmartImage
                     src={node.data.Attachments[0].url}
                     alt={node.data.Name || "Image"}
                     width={600}
@@ -109,7 +109,7 @@ export default function createHtml(
           <section className="section">
             {node.data.Attachments && node.data.Attachments[0] && (
               <figure className="image">
-                <Image
+                <SmartImage
                   src={node.data.Attachments[0].url}
                   alt={node.data.Name || "Image"}
                   width={600}

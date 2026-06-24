@@ -80,3 +80,8 @@ yarn-error.log
 # Local Netlify folder
 .netlify
 *.bak
+
+# Agent tooling (Cloudinary skills, local Claude config)
+.agents/
+.claude/
+skills-lock.json

@@ -3,7 +3,8 @@
 import { useState } from "react"
 import PageLayout from "../../src/components/PageLayout"
 import { AirtableRecord } from "../../types"
-import Image from "next/image"
+import SmartImage from "../../src/components/SmartImage"
+import { cloudinaryOptimize } from "../../src/utility/cloudinary"
 
 interface GalleryImage {
   src: string
@@ -78,10 +79,11 @@ export default function GalleryClient({ galleryData }: GalleryPageProps) {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              <Image
+              <SmartImage
                 src={image.src}
                 alt={image.caption}
                 fill
+                deliveryWidth={500}
                 style={{ objectFit: 'cover' }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
@@ -198,7 +200,7 @@ export default function GalleryClient({ galleryData }: GalleryPageProps) {
             }}
           >
             <img
-              src={images[selectedIndex].src}
+              src={cloudinaryOptimize(images[selectedIndex].src)}
               alt={images[selectedIndex].caption}
               style={{
                 maxWidth: '100%',

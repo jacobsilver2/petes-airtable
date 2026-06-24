@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import Image from "next/image"
+import SmartImage from "./SmartImage"
 import TitleBar from "./TitleBar"
 import SubscriptionEmbed from "./SubscriptionEmbed"
 import { LayoutProps } from "../../types"
@@ -22,14 +22,13 @@ const PageLayout: React.FC<LayoutProps> = ({
           className={styles.imgContainer}
           style={maxWidth ? { maxWidth } : undefined}
         >
-          <Image
+          <SmartImage
             src={fluid}
             alt="Pete's Candy Store"
             width={1200}
             height={600}
             style={{ width: "100%", height: "auto" }}
             priority
-            quality={85}
             sizes="100vw"
           />
         </div>

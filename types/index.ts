@@ -35,6 +35,7 @@ export interface CalendarEvent {
     Name: string;
     Date: string;
     'Act Image'?: AirtableAttachment[];
+    Cloudinary_Image?: string;
     Image_URL?: string[];
     'Act Hosted'?: string[];
     'Act Blurb'?: string[];
