@@ -8,10 +8,12 @@ const TARGET_FIELD = "Cloudinary_Image"
 const CLOUDINARY_FOLDER = "petes-act-images"
 
 const MAX_RECORDS_PER_RUN = 8
+const CLOUDINARY_MAX_IMAGE_BYTES = 10 * 1024 * 1024
 
 interface AirtableAttachment {
   url: string
   filename?: string
+  size?: number
 }
 
 interface AirtableRecord {
@@ -111,8 +113,18 @@ export default async (req: Request): Promise<void> => {
   for (const record of batch) {
     const attachments = record.fields[SOURCE_FIELD]
     if (!isAttachmentArray(attachments)) continue
+    const source = attachments[0]
+    if (
+      typeof source.size === "number" &&
+      source.size > CLOUDINARY_MAX_IMAGE_BYTES
+    ) {
+      console.warn(
+        `migrate-images: skipping ${record.id} (${source.filename ?? "image"}): ${source.size} bytes exceeds Cloudinary ${CLOUDINARY_MAX_IMAGE_BYTES} limit`
+      )
+      continue
+    }
     try {
-      const url = await uploadToCloudinary(attachments[0].url)
+      const url = await uploadToCloudinary(source.url)
       await writeBack(token, record.id, url)
       migrated++
       console.log(`migrate-images: migrated ${record.id} -> ${url}`)
