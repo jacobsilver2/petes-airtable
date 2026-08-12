@@ -14,7 +14,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
   hosted,
   blurb,
   website,
-  soundcloud,
+  ticketLink,
   id,
   allDay,
 }) => {
@@ -22,12 +22,12 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
 
   const renderRegularEvent = () => (
     <p className={styles.styledContent}>
-      {soundcloud && (
-        <a target="_blank" rel="noopener noreferrer" href={soundcloud}>
-          soundcloud
+      {ticketLink && (
+        <a target="_blank" rel="noopener noreferrer" href={ticketLink}>
+          tickets
         </a>
       )}
-      {soundcloud && website && " | "}
+      {ticketLink && website && !allDay && " | "}
       {website && !allDay ? (
         <a target="_blank" href={website} rel="noopener noreferrer">
           website
@@ -39,6 +39,12 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
   const renderAllDayEvent = () => (
     <p className={styles.styledContent}>
       {blurb && <div className={styles.styledBlurb}>{blurb}</div>}
+      {ticketLink && (
+        <a target="_blank" rel="noopener noreferrer" href={ticketLink}>
+          tickets
+        </a>
+      )}
+      {ticketLink && website && " | "}
       {website && (
         <a target="_blank" href={website} rel="noopener noreferrer">
           website

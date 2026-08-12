@@ -24,7 +24,6 @@ export interface CalendarEventData {
   hosted?: boolean
   blurb?: string
   website?: string
-  soundcloud?: string
   allDay?: boolean
 }
 
@@ -38,7 +37,7 @@ export interface CalendarEventProps {
   hosted: boolean
   blurb?: string | undefined
   website?: string | undefined
-  soundcloud?: string | undefined
+  ticketLink?: string | undefined
   id: string
   allDay?: string | undefined
 }

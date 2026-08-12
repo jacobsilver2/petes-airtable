@@ -44,6 +44,7 @@ export interface CalendarEvent {
     'All Day'?: boolean;
     Ticketed?: boolean;
     'Ticket Price'?: number;
+    'Ticket Link'?: string;
   };
 }
 

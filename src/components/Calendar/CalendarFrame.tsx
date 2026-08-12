@@ -35,10 +35,8 @@ const CalendarFrame: React.FC<CalendarFrameProps> = ({ events, data: { allFile }
         website={
           event.fields["Act Website"] ? event.fields["Act Website"][0] : undefined
         }
-        soundcloud={
-          event.fields["Act Soundcloud"]
-            ? event.fields["Act Soundcloud"][0]
-            : undefined
+        ticketLink={
+          event.fields.Ticketed ? event.fields["Ticket Link"] : undefined
         }
         id={event.id}
         key={event.id}
