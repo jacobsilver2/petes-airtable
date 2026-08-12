@@ -26,10 +26,11 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
   const [act, setAct] = useState("")
   const [email, setEmail] = useState("")
   const [website, setWebsite] = useState("")
-  const [soundcloud, setSoundCloud] = useState("")
+  const [ticketLink, setTicketLink] = useState("")
+  const [ticketed, setTicketed] = useState(false)
   const [instagram, setInstagram] = useState("")
-  const [blurb, setBlurb] = useState("")
   const [spotify, setSpotify] = useState("")
+  const [blurb, setBlurb] = useState("")
 
   const [filename, setFilename] = useState("")
   const [imageUrl, setImageUrl] = useState(null)
@@ -59,6 +60,27 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
       }
     })
   }, [actEmail, id])
+
+  useEffect(() => {
+    if (!eventId) return
+
+    const base = getAirtableBase()
+
+    if (!base) {
+      console.error('Cannot load event data: Airtable not available')
+      return
+    }
+
+    base("Events").find(eventId, function (err, record) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      if (record) {
+        setTicketed(record.fields.Ticketed === true)
+      }
+    })
+  }, [eventId])
 
   async function addImage(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault()
@@ -112,6 +134,7 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
             id: eventId,
             fields: {
               Name: act,
+              ...(ticketed && ticketLink ? { "Ticket Link": ticketLink } : {}),
             },
           },
         ],
@@ -133,12 +156,11 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
               Name: act,
               "First Name": firstName,
               "Last Name": lastName,
-              Blurb: blurb,
               Email: email,
-              Soundcloud: soundcloud,
               Website: website,
               Instagram: instagram,
               Spotify: spotify,
+              Blurb: blurb,
               ...(imageUrl ? { Image_URL: imageUrl } : {}),
             },
           },
@@ -288,6 +310,32 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
             </div>
           </div>
 
+          {ticketed && (
+            <div className="field">
+              <label
+                htmlFor="ticketLink"
+                className="label is-small has-text-white"
+              >
+                Ticket Link
+              </label>
+              <div className="field is-expanded">
+                <div className="field has-addons">
+                  <p className="control is-expanded">
+                    <input
+                      id="ticketLink"
+                      className="input"
+                      type="url"
+                      placeholder="url"
+                      value={ticketLink}
+                      onChange={(e) => setTicketLink(e.target.value)}
+                      name="ticketLink"
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="field">
             <label htmlFor="website" className="label is-small has-text-white">
               Website
@@ -370,30 +418,6 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
 
           <div className="field">
             <label
-              htmlFor="soundCloud"
-              className="label is-small has-text-white"
-            >
-              Soundcloud
-            </label>
-            <div className="field is-expanded">
-              <div className="field has-addons">
-                <p className="control is-expanded">
-                  <input
-                    id="soundCloud"
-                    className="input"
-                    type="url"
-                    placeholder="url"
-                    value={soundcloud}
-                    onChange={(e) => setSoundCloud(e.target.value)}
-                    name="soundcloud"
-                  />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="field">
-            <label
               htmlFor="instagram"
               className="label is-small has-text-white"
             >
@@ -439,11 +463,7 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
                     value={blurb}
                     onChange={(e) => {
                       setBlurb(e.target.value)
-                      if (blurb.length > 450) {
-                        setIsDisabled(true)
-                      } else {
-                        setIsDisabled(false)
-                      }
+                      setIsDisabled(e.target.value.length > 450)
                     }}
                     name="blurb"
                   />
@@ -451,7 +471,6 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
               </div>
             </div>
           </div>
-
 
           <div className="field">
             <div className="control">
