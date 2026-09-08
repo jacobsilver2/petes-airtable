@@ -14,9 +14,7 @@ const CalendarFrame: React.FC<CalendarFrameProps> = ({ events, data: { allFile }
         date={formatCalendarDate(event.fields.Date)}
         time={formatCalendarTime(event.fields.Date)}
         image={
-          event.fields["Cloudinary_Image"]
-            ? event.fields["Cloudinary_Image"]
-            : event.fields.Image_URL
+          event.fields.Image_URL
             ? event.fields.Image_URL[0]
             : event.fields["Act Image"]
             ? event.fields["Act Image"][0].url
