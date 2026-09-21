@@ -1,23 +1,9 @@
 "use client"
 
 import React, { useState, FormEvent, ChangeEvent } from "react"
-import Airtable from "airtable"
 import { useRouter } from "next/navigation"
 import { BookingFormState } from "../../types"
-
-// Get API key from environment
-const getApiKey = () => {
-  return process.env.NEXT_PUBLIC_AIRTABLE_API
-}
-
-const getAirtableBase = () => {
-  const apiKey = getApiKey()
-  if (!apiKey) {
-    console.error('Airtable API key not found')
-    return null
-  }
-  return new Airtable({ apiKey }).base("appNuB0fX4vQbOqdy")
-}
+import { submitForm } from "../../../app/actions/forms"
 
 const BookingForm: React.FC = () => {
   const router = useRouter()
@@ -31,39 +17,25 @@ const BookingForm: React.FC = () => {
   const [message, setMessage] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
-    const base = getAirtableBase()
-
-    if (!base) {
-      console.error('Cannot submit form: Airtable not available')
-      alert('Form submission failed. Please try again later.')
+    setIsDisabled(true)
+    const result = await submitForm("booking", {
+      name,
+      email,
+      "act-name": actName,
+      "number-of-band-members": numberOfBandMembers,
+      website: website1,
+      link1: website2,
+      link2: website3,
+      message,
+    })
+    if (!result.ok) {
+      alert("Form submission failed. Please try again.")
+      setIsDisabled(false)
       return
     }
-
-    base("booking submission form").create(
-      {
-        name,
-        email,
-        "act-name": actName,
-        "number-of-band-members": numberOfBandMembers,
-        website: website1,
-        link1: website2,
-        link2: website3,
-        message,
-      },
-      function(err: any, record?: any) {
-        if (err) {
-          console.error(err)
-          alert('Form submission failed. Please try again.')
-          setIsDisabled(false)
-          return
-        }
-        // Success - redirect to thanks page
-        setIsDisabled(true)
-        router.push("/thanks")
-      }
-    )
+    router.push("/thanks")
   }
 
   return (

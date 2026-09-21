@@ -1,7 +1,7 @@
 import React from "react"
 import PageLayout from "../../src/components/PageLayout"
 import CalendarFrame from "../../src/components/Calendar/CalendarFrame"
-import { getAllEvents } from "../../src/services/getCalendarEvents"
+import { getAllEvents } from "../actions/events"
 import getFirstEventIds from "../../src/utility/returnFirstEventOfDate"
 
 // Force dynamic rendering for calendar page (shows live events)

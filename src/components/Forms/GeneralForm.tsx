@@ -1,22 +1,8 @@
 "use client"
 
 import React, { useState, FormEvent, ChangeEvent } from "react"
-import Airtable from "airtable"
 import { useRouter } from "next/navigation"
-
-// Get API key from environment
-const getApiKey = () => {
-  return process.env.NEXT_PUBLIC_AIRTABLE_API
-}
-
-const getAirtableBase = () => {
-  const apiKey = getApiKey()
-  if (!apiKey) {
-    console.error('Airtable API key not found')
-    return null
-  }
-  return new Airtable({ apiKey }).base("appNuB0fX4vQbOqdy")
-}
+import { submitForm } from "../../../app/actions/forms"
 
 const GeneralForm: React.FC = () => {
   const router = useRouter()
@@ -26,31 +12,15 @@ const GeneralForm: React.FC = () => {
   const [message, setMessage] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
-    const base = getAirtableBase()
-    
-    if (!base) {
-      console.error('Cannot submit form: Airtable not available')
-      alert('Form submission failed. Please try again later.')
+    setIsDisabled(true)
+    const result = await submitForm("general", { name, email, phone, message })
+    if (!result.ok) {
+      alert("Form submission failed. Please try again later.")
+      setIsDisabled(false)
       return
     }
-    
-    base("general inquiry form").create(
-      {
-        name,
-        email,
-        phone,
-        message,
-      },
-      function(err: any, record?: any) {
-        if (err) {
-          console.error(err)
-          return
-        }
-      }
-    )
-    setIsDisabled(true)
     router.push("/thanks")
   }
 

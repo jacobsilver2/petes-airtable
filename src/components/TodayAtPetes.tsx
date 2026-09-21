@@ -1,21 +1,12 @@
-"use client"
-
-import React, { useState, useEffect } from "react"
-import { getTodaysEvents } from "../services/getCalendarEvents"
+import React from "react"
 import formatCalendarTime from "../utility/formatCalendarTime"
 import type { CalendarEvent } from "../../types"
 
-const TodayAtPetes: React.FC = () => {
-  const [events, setEvents] = useState<CalendarEvent["fields"][]>([])
+interface TodayAtPetesProps {
+  events: CalendarEvent["fields"][]
+}
 
-  useEffect(() => {
-    const getEvents = async () => {
-      const eventsFromServer = await getTodaysEvents()
-      setEvents(eventsFromServer)
-    }
-    getEvents()
-  }, [])
-
+const TodayAtPetes: React.FC<TodayAtPetesProps> = ({ events }) => {
   return (
     <>
       <h1

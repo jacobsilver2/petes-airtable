@@ -1,86 +1,38 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
-import Airtable from "airtable"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import { MediaRequestFormProps } from "../../types"
+import { submitActMedia } from "../../../app/actions/act-media"
 
-const getApiKey = () => {
-  return process.env.NEXT_PUBLIC_AIRTABLE_API
-}
-
-const getAirtableBase = () => {
-  const apiKey = getApiKey()
-  if (!apiKey) {
-    console.error('Airtable API key not found')
-    return null
-  }
-  return new Airtable({ apiKey }).base("app4Eb0X39KtGToOS")
-}
-
-const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, actEmail, eventId }) => {
+const MediaRequestForm: React.FC<MediaRequestFormProps> = ({
+  id,
+  date,
+  time,
+  actEmail,
+  eventId,
+  initialActName = "",
+  initialTicketed = false,
+}) => {
   const router = useRouter()
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [act, setAct] = useState("")
-  const [email, setEmail] = useState("")
+  const [act, setAct] = useState(initialActName)
+  const [email, setEmail] = useState(actEmail || "")
   const [website, setWebsite] = useState("")
   const [ticketLink, setTicketLink] = useState("")
-  const [ticketed, setTicketed] = useState(false)
+  const ticketed = initialTicketed
   const [instagram, setInstagram] = useState("")
   const [spotify, setSpotify] = useState("")
   const [blurb, setBlurb] = useState("")
 
   const [filename, setFilename] = useState("")
-  const [imageUrl, setImageUrl] = useState(null)
+  const [imageUrl, setImageUrl] = useState<string | null>(null)
 
   const [tooLarge, setTooLarge] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    if (!id) return
-
-    const base = getAirtableBase()
-
-    if (!base) {
-      console.error('Cannot load act data: Airtable not available')
-      return
-    }
-
-    base("Acts").find(id, function (err, record) {
-      if (err) {
-        console.error(err)
-        return
-      }
-      if (record && record.fields.Name) {
-        setAct(String(record.fields.Name))
-        setEmail(actEmail || '')
-      }
-    })
-  }, [actEmail, id])
-
-  useEffect(() => {
-    if (!eventId) return
-
-    const base = getAirtableBase()
-
-    if (!base) {
-      console.error('Cannot load event data: Airtable not available')
-      return
-    }
-
-    base("Events").find(eventId, function (err, record) {
-      if (err) {
-        console.error(err)
-        return
-      }
-      if (record) {
-        setTicketed(record.fields.Ticketed === true)
-      }
-    })
-  }, [eventId])
 
   async function addImage(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault()
@@ -115,65 +67,28 @@ const MediaRequestForm: React.FC<MediaRequestFormProps> = ({ id, date, time, act
     }
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const base = getAirtableBase()
-
-    if (!base) {
-      console.error('Cannot submit form: Airtable not available')
-      alert('Form submission failed. Please try again later.')
+    setIsDisabled(true)
+    const result = await submitActMedia({
+      actId: id || undefined,
+      eventId: eventId || undefined,
+      act,
+      firstName,
+      lastName,
+      email,
+      website,
+      instagram,
+      spotify,
+      blurb,
+      imageUrl: imageUrl || undefined,
+      ticketLink: ticketed && ticketLink ? ticketLink : undefined,
+    })
+    if (!result.ok) {
+      alert("Form submission failed. Please try again later.")
+      setIsDisabled(false)
       return
     }
-
-    setIsDisabled(true)
-
-    if (eventId) {
-      base("Events").update(
-        [
-          {
-            id: eventId,
-            fields: {
-              Name: act,
-              ...(ticketed && ticketLink ? { "Ticket Link": ticketLink } : {}),
-            },
-          },
-        ],
-        function (err, record) {
-          if (err) {
-            console.log(err)
-            return
-          }
-        }
-      )
-    }
-
-    if (id) {
-      base("Acts").update(
-        [
-          {
-            id: id,
-            fields: {
-              Name: act,
-              "First Name": firstName,
-              "Last Name": lastName,
-              Email: email,
-              Website: website,
-              Instagram: instagram,
-              Spotify: spotify,
-              Blurb: blurb,
-              ...(imageUrl ? { Image_URL: imageUrl } : {}),
-            },
-          },
-        ],
-        function (err, record) {
-          if (err) {
-            console.error(err)
-            return
-          }
-        }
-      )
-    }
-
     router.push("/thanks")
   }
 

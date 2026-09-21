@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import Airtable from "airtable"
 
 const getApiKey = (): string | undefined => {
-  return process.env.NEXT_PUBLIC_AIRTABLE_API
+  return process.env.AIRTABLE_API || process.env.GATSBY_AIRTABLE_API
 }
 
 export async function GET(request: NextRequest) {

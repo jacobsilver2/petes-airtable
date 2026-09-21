@@ -1,5 +1,7 @@
+"use client"
+
 import React, { useState, useEffect } from "react"
-import { getTodaysEvents as getAnniversaryEvents } from "../services/getCalendarEvents"
+import { getTodaysEvents as getAnniversaryEvents } from "../../app/actions/events"
 import formatCalendarTime from "../utility/formatCalendarTime"
 import formatCalendarDate from "../utility/formatCalendarDate"
 import getFirstEventdIds from "../utility/returnFirstEventOfDate"

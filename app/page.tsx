@@ -5,6 +5,7 @@ import TodayAtPetes from "../src/components/TodayAtPetes"
 import Button from "../src/components/Button"
 import SubscriptionEmbed from "../src/components/SubscriptionEmbed"
 import { getHomeData } from "../lib/airtable"
+import { getTodaysEvents } from "./actions/events"
 import { checkEnvironment, isDevelopment } from "../lib/env-check"
 import { AirtableRecord } from "../types"
 
@@ -19,6 +20,7 @@ export default async function HomePage() {
   }
 
   const homeData = await getHomeData()
+  const todaysEvents = await getTodaysEvents()
 
   // Sort by order field if it exists
   const sortedData = homeData.sort((a: AirtableRecord, b: AirtableRecord) => {
@@ -32,7 +34,7 @@ export default async function HomePage() {
       <div>
         <Button title="FULL CALENDAR" link="/calendar" />
         <SubscriptionEmbed />
-        <TodayAtPetes />
+        <TodayAtPetes events={todaysEvents} />
         <ContentRenderer data={sortedData} />
       </div>
     </PageLayout>

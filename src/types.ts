@@ -158,6 +158,8 @@ export interface MediaRequestFormProps {
   time?: string
   actEmail?: string
   eventId?: string
+  initialActName?: string
+  initialTicketed?: boolean
 }
 
 export interface SoundFormState {

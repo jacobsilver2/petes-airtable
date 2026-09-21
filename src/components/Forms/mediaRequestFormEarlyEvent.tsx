@@ -1,25 +1,10 @@
 "use client"
 
 import React, { useState, ChangeEvent, FormEvent } from "react"
-import { AirtableAttachment } from "../../../types"
-import Airtable from "airtable"
 import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import moment from "moment"
-
-// Get API key from environment
-const getApiKey = () => {
-  return process.env.NEXT_PUBLIC_AIRTABLE_API
-}
-
-const getAirtableBase = () => {
-  const apiKey = getApiKey()
-  if (!apiKey) {
-    console.error('Airtable API key not found')
-    return null
-  }
-  return new Airtable({ apiKey }).base("appNuB0fX4vQbOqdy")
-}
+import { submitForm } from "../../../app/actions/forms"
 
 const MediaRequestFormEarlyEvent = () => {
   const router = useRouter()
@@ -74,36 +59,35 @@ const MediaRequestFormEarlyEvent = () => {
     setisDisabled(false)
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
-    const base = getAirtableBase()
-    
-    if (!base) {
-      console.error('Cannot submit form: Airtable not available')
-      alert('Form submission failed. Please try again later.')
+    setisDisabled(true)
+    const result = await submitForm("mediaRequestEarly", {
+      Name: name,
+      Email: email,
+      Date: moment.utc(date + " " + time, "YYYY/MM/DD HH:mm").format(),
+      Facebook: facebook,
+      Website: website,
+      Instagram: instagram,
+      Twitter: twitter,
+      Blurb: blurb,
+      Image: largeImage
+        ? [
+            {
+              id: "temp-id",
+              url: largeImage,
+              filename,
+              type: "image",
+              size: 0,
+            },
+          ]
+        : undefined,
+    })
+    if (!result.ok) {
+      alert("Form submission failed. Please try again later.")
+      setisDisabled(false)
       return
     }
-    
-    base("Media Request Form Early Event").create(
-      {
-        Name: name,
-        Email: email,
-        Date: moment.utc(date + " " + time, "YYYY/MM/DD HH:mm").format(),
-        Facebook: facebook,
-        Website: website,
-        Instagram: instagram,
-        Twitter: twitter,
-        Blurb: blurb,
-        Image: largeImage ? [{ id: 'temp-id', url: largeImage, filename: filename, type: 'image', size: 0 }] : undefined,
-      },
-      function(err: any, record?: any) {
-        if (err) {
-          console.error(err)
-          return
-        }
-      }
-    )
-    setisDisabled(true)
     router.push("/thanks")
   }
 

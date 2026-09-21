@@ -20,11 +20,6 @@ const nextConfig = {
       },
     ],
   },
-  env: {
-    // Make environment variables available to the client
-    // This exposes GATSBY_AIRTABLE_API to the browser for compatibility
-    GATSBY_AIRTABLE_API: process.env.GATSBY_AIRTABLE_API || process.env.NEXT_PUBLIC_AIRTABLE_API,
-  },
 }
 
 module.exports = nextConfig
