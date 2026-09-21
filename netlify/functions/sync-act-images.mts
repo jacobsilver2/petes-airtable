@@ -40,6 +40,22 @@ function publicIdFor(attachmentId: string): string {
   return `${CLOUDINARY_FOLDER}/act_${attachmentId}`
 }
 
+async function resolveSize(
+  attachment: AirtableAttachment
+): Promise<number | null> {
+  if (typeof attachment.size === "number") return attachment.size
+  try {
+    const res = await fetch(attachment.url, { method: "HEAD" })
+    if (!res.ok) return null
+    const length = res.headers.get("content-length")
+    if (!length) return null
+    const parsed = Number(length)
+    return Number.isFinite(parsed) ? parsed : null
+  } catch {
+    return null
+  }
+}
+
 async function fetchActs(token: string): Promise<AirtableRecord[]> {
   const records: AirtableRecord[] = []
   let offset: string | undefined
@@ -133,12 +149,10 @@ export default async (): Promise<void> => {
   for (const record of acts) {
     const attachment = needsSync(record)
     if (!attachment) continue
-    if (
-      typeof attachment.size !== "number" ||
-      attachment.size > CLOUDINARY_MAX_IMAGE_BYTES
-    ) {
+    const size = await resolveSize(attachment)
+    if (size === null || size > CLOUDINARY_MAX_IMAGE_BYTES) {
       oversized.push(
-        `${record.id} (${attachment.filename ?? "image"}, ${attachment.size ?? "unknown"} bytes)`
+        `${record.id} (${attachment.filename ?? "image"}, ${size ?? "unknown"} bytes)`
       )
       continue
     }
