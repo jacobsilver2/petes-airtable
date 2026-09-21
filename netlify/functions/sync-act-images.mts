@@ -129,27 +129,34 @@ export default async (): Promise<void> => {
   const acts = await fetchActs(token)
   const pending: { record: AirtableRecord; attachment: AirtableAttachment }[] =
     []
+  const oversized: string[] = []
   for (const record of acts) {
     const attachment = needsSync(record)
-    if (attachment) pending.push({ record, attachment })
+    if (!attachment) continue
+    if (
+      typeof attachment.size !== "number" ||
+      attachment.size > CLOUDINARY_MAX_IMAGE_BYTES
+    ) {
+      oversized.push(
+        `${record.id} (${attachment.filename ?? "image"}, ${attachment.size ?? "unknown"} bytes)`
+      )
+      continue
+    }
+    pending.push({ record, attachment })
   }
 
   const batch = pending.slice(0, MAX_RECORDS_PER_RUN)
   console.log(
     `sync-act-images: ${pending.length} acts need sync, processing ${batch.length} this run`
   )
+  if (oversized.length > 0) {
+    console.warn(
+      `sync-act-images: ${oversized.length} acts skipped, not known to be within the ${CLOUDINARY_MAX_IMAGE_BYTES} byte Cloudinary limit and need resizing in Airtable: ${oversized.join(", ")}`
+    )
+  }
 
   let synced = 0
   for (const { record, attachment } of batch) {
-    if (
-      typeof attachment.size === "number" &&
-      attachment.size > CLOUDINARY_MAX_IMAGE_BYTES
-    ) {
-      console.warn(
-        `sync-act-images: skipping ${record.id} (${attachment.filename ?? "image"}): ${attachment.size} bytes exceeds Cloudinary ${CLOUDINARY_MAX_IMAGE_BYTES} limit`
-      )
-      continue
-    }
     try {
       const url = await uploadToCloudinary(attachment.url, attachment.id)
       await writeBack(token, record.id, url)
