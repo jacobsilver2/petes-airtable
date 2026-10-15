@@ -3,9 +3,12 @@
 import React, { useState, FormEvent, ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
 import { submitForm } from "../../../app/actions/forms"
+import { readSpamTrap } from "../../utility/spamTrap"
+import SpamTrap from "./SpamTrap"
 
 const PublicPartyForm: React.FC = () => {
   const router = useRouter()
+  const [startedAt] = useState(() => Date.now())
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
@@ -20,6 +23,7 @@ const PublicPartyForm: React.FC = () => {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
+    const trap = readSpamTrap(e.currentTarget, startedAt)
     setIsDisabled(true)
     const result = await submitForm("publicParty", {
         name,
@@ -32,7 +36,7 @@ const PublicPartyForm: React.FC = () => {
         "inside or outside": location,
         occasion,
         "additional info": info,
-      })
+      }, trap)
     if (!result.ok) {
       alert("Form submission failed. Please try again later.")
       setIsDisabled(false)
@@ -50,6 +54,7 @@ const PublicPartyForm: React.FC = () => {
           onSubmit={handleSubmit}
           method="POST"
         >
+          <SpamTrap />
           <div className="field">
             <label htmlFor="name" className="label is-small has-text-white">
               Name

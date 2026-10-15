@@ -2,6 +2,7 @@
 
 import type { FieldSet } from "airtable/lib/field_set"
 import { getServerBase } from "../../lib/airtable-server"
+import type { SpamTrapData } from "../../src/utility/spamTrap"
 
 const MAIN_BASE = "appNuB0fX4vQbOqdy"
 
@@ -14,7 +15,9 @@ const FORM_TABLES = {
   privateParty: { base: MAIN_BASE, table: "private party form" },
   publicParty: { base: MAIN_BASE, table: "public party form" },
   mediaRequestEarly: { base: MAIN_BASE, table: "Media Request Form Early Event" },
-} as const
+}
+
+const MIN_FILL_MS = 3000
 
 export type FormKey = keyof typeof FORM_TABLES
 
@@ -23,13 +26,25 @@ export interface FormActionResult {
   error?: string
 }
 
+function isLikelySpam(trap: SpamTrapData | undefined): boolean {
+  if (typeof trap?.honeypot !== "string" || typeof trap.elapsedMs !== "number") {
+    return true
+  }
+  return trap.honeypot.length > 0 || trap.elapsedMs < MIN_FILL_MS
+}
+
 export async function submitForm(
   formKey: FormKey,
-  fields: FieldSet
+  fields: FieldSet,
+  trap?: SpamTrapData
 ): Promise<FormActionResult> {
   const target = FORM_TABLES[formKey]
   if (!target) {
     return { ok: false, error: "Unknown form" }
+  }
+  if (isLikelySpam(trap)) {
+    console.warn(`submitForm ${formKey}: dropped likely spam submission`)
+    return { ok: true }
   }
   try {
     const base = getServerBase(target.base)

@@ -3,9 +3,12 @@
 import React, { useState, FormEvent, ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
 import { submitForm } from "../../../app/actions/forms"
+import { readSpamTrap } from "../../utility/spamTrap"
+import SpamTrap from "./SpamTrap"
 
 const MediaInquiresForm: React.FC = () => {
   const router = useRouter()
+  const [startedAt] = useState(() => Date.now())
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
@@ -14,13 +17,14 @@ const MediaInquiresForm: React.FC = () => {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
+    const trap = readSpamTrap(e.currentTarget, startedAt)
     setIsDisabled(true)
     const result = await submitForm("mediaInquiries", {
         name,
         email,
         phone,
         message,
-      })
+      }, trap)
     if (!result.ok) {
       alert("Form submission failed. Please try again later.")
       setIsDisabled(false)
@@ -37,6 +41,7 @@ const MediaInquiresForm: React.FC = () => {
           onSubmit={handleSubmit}
           method="POST"
         >
+          <SpamTrap />
           <div className="field">
             <label className="label is-small has-text-white">Name</label>
             <div className="field">

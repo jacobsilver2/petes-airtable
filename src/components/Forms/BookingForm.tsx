@@ -4,9 +4,12 @@ import React, { useState, FormEvent, ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
 import { BookingFormState } from "../../types"
 import { submitForm } from "../../../app/actions/forms"
+import { readSpamTrap } from "../../utility/spamTrap"
+import SpamTrap from "./SpamTrap"
 
 const BookingForm: React.FC = () => {
   const router = useRouter()
+  const [startedAt] = useState(() => Date.now())
   const [name, setName] = useState("")
   const [actName, setActName] = useState("")
   const [email, setEmail] = useState("")
@@ -19,6 +22,7 @@ const BookingForm: React.FC = () => {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
+    const trap = readSpamTrap(e.currentTarget, startedAt)
     setIsDisabled(true)
     const result = await submitForm("booking", {
       name,
@@ -29,7 +33,7 @@ const BookingForm: React.FC = () => {
       link1: website2,
       link2: website3,
       message,
-    })
+    }, trap)
     if (!result.ok) {
       alert("Form submission failed. Please try again.")
       setIsDisabled(false)
@@ -43,6 +47,7 @@ const BookingForm: React.FC = () => {
       <fieldset disabled={isDisabled}>
         <legend>Music Booking Submission Form</legend>
         <form name="booking form" method="POST" onSubmit={handleSubmit}>
+          <SpamTrap />
           <div className="field">
             <label htmlFor="name" className="label is-small has-text-white">
               Name

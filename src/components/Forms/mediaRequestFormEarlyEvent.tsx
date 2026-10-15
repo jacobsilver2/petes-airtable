@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation"
 import { Circles } from "react-loader-spinner"
 import moment from "moment"
 import { submitForm } from "../../../app/actions/forms"
+import { readSpamTrap } from "../../utility/spamTrap"
+import SpamTrap from "./SpamTrap"
 
 const MediaRequestFormEarlyEvent = () => {
   const router = useRouter()
+  const [startedAt] = useState(() => Date.now())
   const [name, setname] = useState("")
   const [email, setEmail] = useState("")
   const [date, setDate] = useState(new Date().toDateString())
@@ -61,6 +64,7 @@ const MediaRequestFormEarlyEvent = () => {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
+    const trap = readSpamTrap(e.currentTarget, startedAt)
     setisDisabled(true)
     const result = await submitForm("mediaRequestEarly", {
       Name: name,
@@ -82,7 +86,7 @@ const MediaRequestFormEarlyEvent = () => {
             },
           ]
         : undefined,
-    })
+    }, trap)
     if (!result.ok) {
       alert("Form submission failed. Please try again later.")
       setisDisabled(false)
@@ -102,6 +106,7 @@ const MediaRequestFormEarlyEvent = () => {
           onSubmit={e => handleSubmit(e)}
           method="POST"
         >
+          <SpamTrap />
           <div className="field">
             <label htmlFor="showName" className="label is-small has-text-white">
               Name of Show

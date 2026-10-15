@@ -3,9 +3,12 @@
 import React, { useState, FormEvent, ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
 import { submitForm } from "../../../app/actions/forms"
+import { readSpamTrap } from "../../utility/spamTrap"
+import SpamTrap from "./SpamTrap"
 
 const PhotoshootForm: React.FC = () => {
   const router = useRouter()
+  const [startedAt] = useState(() => Date.now())
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
@@ -23,6 +26,7 @@ const PhotoshootForm: React.FC = () => {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
+    const trap = readSpamTrap(e.currentTarget, startedAt)
     setIsDisabled(true)
     const result = await submitForm("photoshoot", {
         name,
@@ -38,7 +42,7 @@ const PhotoshootForm: React.FC = () => {
         location,
         "number of vehicles": vehicles,
         "additional info": additionalInfo,
-      })
+      }, trap)
     if (!result.ok) {
       alert("Form submission failed. Please try again later.")
       setIsDisabled(false)
@@ -56,6 +60,7 @@ const PhotoshootForm: React.FC = () => {
           method="POST"
           onSubmit={handleSubmit}
         >
+          <SpamTrap />
           <div className="field">
             <label htmlFor="name" className="label is-small has-text-white">
               Name
