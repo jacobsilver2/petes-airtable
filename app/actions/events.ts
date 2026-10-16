@@ -22,6 +22,13 @@ function asStringArray(value: unknown): string[] | undefined {
   return undefined
 }
 
+function asBooleanArray(value: unknown): boolean[] | undefined {
+  if (Array.isArray(value) && value.every((v) => typeof v === "boolean")) {
+    return value
+  }
+  return undefined
+}
+
 function asBoolean(value: unknown): boolean | undefined {
   return typeof value === "boolean" ? value : undefined
 }
@@ -59,7 +66,7 @@ function toEventFields(fields: Record<string, unknown>): EventFields {
     Date: asString(fields.Date),
     "Act Image": asAttachments(fields["Act Image"]),
     Image_URL: asStringArray(fields.Image_URL),
-    "Act Hosted": asStringArray(fields["Act Hosted"]),
+    "Act Hosted": asBooleanArray(fields["Act Hosted"]),
     "Act Blurb": asStringArray(fields["Act Blurb"]),
     "Act Website": asStringArray(fields["Act Website"]),
     "Act Soundcloud": asStringArray(fields["Act Soundcloud"]),
