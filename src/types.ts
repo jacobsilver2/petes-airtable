@@ -37,6 +37,7 @@ export interface CalendarEventProps {
   hosted: boolean
   blurb?: string | undefined
   website?: string | undefined
+  websiteLabel?: string
   ticketLink?: string | undefined
   id: string
   allDay?: string | undefined

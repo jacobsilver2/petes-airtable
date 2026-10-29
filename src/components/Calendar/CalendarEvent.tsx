@@ -14,6 +14,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
   hosted,
   blurb,
   website,
+  websiteLabel = "website",
   ticketLink,
   id,
   allDay,
@@ -30,7 +31,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
       {ticketLink && website && !allDay && " | "}
       {website && !allDay ? (
         <a target="_blank" href={website} rel="noopener noreferrer">
-          website
+          {websiteLabel}
         </a>
       ) : null}
     </p>
@@ -47,7 +48,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
       {ticketLink && website && " | "}
       {website && (
         <a target="_blank" href={website} rel="noopener noreferrer">
-          website
+          {websiteLabel}
         </a>
       )}
     </p>

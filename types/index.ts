@@ -39,6 +39,7 @@ export interface CalendarEvent {
     'Act Hosted'?: boolean[];
     'Act Blurb'?: string[];
     'Act Website'?: string[];
+    'Act Instagram'?: string;
     'Act Soundcloud'?: string[];
     'All Day'?: boolean;
     Ticketed?: boolean;

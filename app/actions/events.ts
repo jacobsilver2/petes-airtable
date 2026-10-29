@@ -88,14 +88,76 @@ export async function getTodaysEvents(): Promise<EventFields[]> {
   }
 }
 
+const INSTAGRAM_HANDLE = /^[A-Za-z0-9._]{1,30}$/
+const ACT_ID_BATCH = 100
+
+function toInstagramUrl(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined
+  const trimmed = value.trim()
+  if (!trimmed) return undefined
+  if (/instagram\.com\//i.test(trimmed)) {
+    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`
+  }
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
+  const handle = trimmed.replace(/^@/, "")
+  return INSTAGRAM_HANDLE.test(handle)
+    ? `https://www.instagram.com/${handle}/`
+    : undefined
+}
+
+async function getInstagramByActId(
+  actIds: string[]
+): Promise<Map<string, string>> {
+  const result = new Map<string, string>()
+  if (actIds.length === 0) return result
+  try {
+    const base = getServerBase(EVENTS_BASE)
+    for (let i = 0; i < actIds.length; i += ACT_ID_BATCH) {
+      const batch = actIds.slice(i, i + ACT_ID_BATCH)
+      const records = await base("Acts")
+        .select({
+          fields: ["Instagram"],
+          filterByFormula: `OR(${batch
+            .map((id) => `RECORD_ID()='${id}'`)
+            .join(",")})`,
+        })
+        .all()
+      for (const record of records) {
+        const url = toInstagramUrl(record.fields.Instagram)
+        if (url) result.set(record.id, url)
+      }
+    }
+  } catch (err) {
+    console.error("getInstagramByActId failed:", err)
+  }
+  return result
+}
+
 export async function getAllEvents(): Promise<CalendarEvent[]> {
   try {
     const base = getServerBase(EVENTS_BASE)
     const records = await base("Events").select({ view: "Future" }).all()
-    return records.map((record) => ({
+    const events = records.map((record) => ({
       id: record.id,
+      actIds: asStringArray(record.fields["Act (link)"]) ?? [],
       fields: toEventFields(record.fields),
     }))
+    const needsInstagram = new Set<string>()
+    for (const event of events) {
+      if (!event.fields["Act Website"]?.[0]) {
+        event.actIds.forEach((id) => needsInstagram.add(id))
+      }
+    }
+    const instagramByAct = await getInstagramByActId(Array.from(needsInstagram))
+    return events.map(({ id, actIds, fields }) => {
+      const instagram = actIds
+        .map((actId) => instagramByAct.get(actId))
+        .find((url) => url !== undefined)
+      return {
+        id,
+        fields: instagram ? { ...fields, "Act Instagram": instagram } : fields,
+      }
+    })
   } catch (err) {
     console.error("getAllEvents failed:", err)
     return []

@@ -30,9 +30,8 @@ const CalendarFrame: React.FC<CalendarFrameProps> = ({ events, data: { allFile }
           event.fields["Act Hosted"] ? Boolean(event.fields["Act Hosted"][0]) : false
         }
         blurb={event.fields["Act Blurb"] ? event.fields["Act Blurb"][0] : undefined}
-        website={
-          event.fields["Act Website"] ? event.fields["Act Website"][0] : undefined
-        }
+        website={event.fields["Act Website"]?.[0] ?? event.fields["Act Instagram"]}
+        websiteLabel={event.fields["Act Website"]?.[0] ? "website" : "instagram"}
         ticketLink={
           event.fields.Ticketed ? event.fields["Ticket Link"] : undefined
         }
