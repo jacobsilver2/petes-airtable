@@ -125,7 +125,8 @@ async function writeBack(
 }
 
 export default async (): Promise<void> => {
-  const token = Netlify.env.get("GATSBY_AIRTABLE_API")
+  const token =
+    Netlify.env.get("AIRTABLE_API") || Netlify.env.get("GATSBY_AIRTABLE_API")
   const cloudName = Netlify.env.get("CLOUDINARY_CLOUD_NAME")
   const apiKey = Netlify.env.get("CLOUDINARY_API_KEY")
   const apiSecret = Netlify.env.get("CLOUDINARY_API_SECRET")
